@@ -30,6 +30,7 @@ public class Game : MonoBehaviour
     public int score;
     public int level;
     public int maxCombo;
+    public int totalTurn;
     public List<int> slotCardList;
     public int combocount = 0;
 
@@ -51,6 +52,7 @@ public class Game : MonoBehaviour
 
         score = DI.GetExp();
         level = DI.GetLV();
+        totalTurn = DI.GetTotalTurn();
         if (DI.GetBasicRemainTurn() != 0)
         {
             basicRemainTurn = DI.GetBasicRemainTurn();
@@ -281,7 +283,7 @@ public class Game : MonoBehaviour
             checkremainTurncardslot[i] = true;
         }
 
-
+        totalTurn = totalTurn + 1;
 
     }
 

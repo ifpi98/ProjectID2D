@@ -376,6 +376,7 @@ public class GameGui : MonoBehaviour {
             DI.DataReset();
             game.score = DI.GetExp();
             game.level = DI.GetLV();
+            game.totalTurn = DI.GetTotalTurn();
             if (DI.GetBasicRemainTurn() != 0)
             {
                 game.basicRemainTurn = DI.GetBasicRemainTurn();
@@ -391,7 +392,7 @@ public class GameGui : MonoBehaviour {
         int requireLevelup = Convert.ToInt32(mon.expLvData2[game.level + 1, 2]) - game.score;
 
         GUI.color = new Color32(255, 220, 55, 255);
-        GUI.Button(new Rect(100, 200, 150, 100), "Score : " + game.score + " (" + requireLevelup + ") "+  "\n Level : " + game.level + "\n MaxCombo : " + game.maxCombo);
+        GUI.Button(new Rect(100, 200, 150, 100), "Score : " + game.score + " (" + requireLevelup + ") "+  "\n Level : " + game.level + "\n MaxCombo : " + game.maxCombo + "\n TotalTurn : " + game.totalTurn);
 
         
         if (game.combocount != 0)
