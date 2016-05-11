@@ -1,0 +1,252 @@
+ID,Type,desc,Jpn,Eng
+1,character,시마무라 우즈키,島村卯月,UZUKI SHIMAMURA
+2,character,시부야 린,渋谷凛,RIN SHIBUYA
+3,character,혼다 미오,本田未央,MIO HONDA
+4,character,나카노 유카,中野有香,YUKA NAKANO
+5,character,미무라 카나코,三村かな子,KANAKO MIMURA
+6,character,마츠모토 사리나,松本沙理奈,SARINA MATSUMOTO
+7,character,쿠로카와 치아키,黒川千秋,CHIAKI KUROKAWA
+8,character,류자키 카오루,龍崎薫,KAORU RYUJAKI
+9,character,키무라 나츠키,木村夏樹,NATSUKI KIMURA
+10,character,무라마츠 사쿠라,村松さくら,SAKURA MURAMATSU
+11,character,쿠도 시노부,工藤忍,SHINOBU KUDO
+12,character,코시미즈 사치코,輿水幸子,SACHIKO KOSHIMIZU
+13,character,마에카와 미쿠,前川みく,MIKU MAEKAWA
+14,character,카타기리 사나에,片桐早苗,SANAE KATAGIRI
+15,character,하야사카 미레이,早坂美玲,MIREI HAYASAKA
+16,character,사쿠마 마유,佐久間まゆ,MAYU SAKUMA
+17,character,사사키 치에,佐々木千枝,CHIE SASAKI
+18,character,닛타 미나미,新田美波,MINAMI NITTA
+19,character,죠가사키 리카,城ヶ崎莉嘉,RIKA JOUGASAKI
+20,character,모리쿠보 노노,森久保乃々,NONO MORIKUBO
+21,character,모로보시 키라리,諸星きらり,KIRARI MOROBOSHI
+22,character,죠가사키 미카,城ヶ崎美嘉,MIKA JOUGASAKI
+23,character,코히나타 미호,小日向美穂,MIHO KOHINATA
+24,character,미즈모토 유카리,水本ゆかり,YUKARI MIZUMOTO
+25,character,모치다 아리사,持田亜里沙,ARISA MOCHIDA
+26,character,아라키 히나,荒木比奈,HINA ARAKI
+27,character,키리노 아야,桐野アヤ,AYA KIRINO
+28,character,야구치 미우,矢口美羽,MIU YAGUCHI
+29,character,아이노 나기사,愛野渚,NAGISA AINO
+30,character,사이토 요코,斉藤洋子,YOKO SAITO
+31,character,카미야 나오,神谷奈緒,NAO KAMIYA
+32,character,오오이시 이즈미,大石泉,IZUMI OISHI
+33,character,히노 아카네,日野茜,AKANE HINO
+34,character,아야세 호노카,綾瀬穂乃香,HONOKA AYASE
+35,character,시라사카 코우메,白坂小梅,KOUME SHIRASAKA
+36,character,타카미네 노아,高峯のあ,NOA TAKAMINE
+37,character,오이카와 시즈쿠,及川雫,SHIZUKU OIKAWA
+38,character,요코야마 치카,横山千佳,CHIKA YOKOYAMA
+39,character,아나스타샤,アナスタシア,ANASTASIA
+40,character,오가타 치에리,緒方智絵里,CHIERI OGATA
+41,character,아카기 미리아,赤城 みりあ,MIRIA AKAGI
+42,character,타다 리이나,多田李衣菜,RIINA TADA
+43,character,히메카와 유키,姫川友紀,YUKI HIMEKAWA
+44,character,아이카와 치나츠,相川千夏,CHINATSU AIKAWA
+45,character,호시 쇼코,星輝子,SHOKO HOSHI
+46,character,후타바 안즈,双葉杏,ANZU FUTABA
+47,character,이가라시 쿄코,五十嵐響子,KYOKO IGARASHI
+48,character,시이나 노리코,椎名法子,NORIKO SHIINA
+49,character,카미죠 하루나,上条春菜,HARUNA KAMIJO
+50,character,타카하시 레이코,高橋礼子,REIKO TAKAHASHI
+51,character,마츠야마 쿠미코,松山久美子,KUMIKO MATSUYAMA
+52,character,오오츠키 유이,大槻唯,YUI OHTSUKI
+53,character,사와다 마리나,沢田麻理菜,MARINA SAWADA
+54,character,호죠 카렌,北条加蓮,KAREN HOJO
+55,character,츠치야 아코,土屋亜子,AKO TSUCHIYA
+56,character,타카모리 아이코,高森藍子,AIKO TAKAMORI
+57,character,키타미 유즈,喜多見柚,YUZU KITAMI
+58,character,호리 유코,堀優子,YUKO HORI
+59,character,코바야카와 사에,小早川紗枝,SAE KOBAYAKAWA
+60,character,토고 아이,東郷あい,AI TOGO
+61,character,이마이 카나,今井加奈,KANA IMAI
+62,character,야나세 미유키,柳瀬美由紀,MIYUKI YANASE
+63,character,카와시마 미즈키,川島瑞樹,MIZUKI KAWASHIMA
+64,character,마나베 이츠키,真鍋いつき,ITSUKI MANABE
+65,character,모모이 아즈키,桃井あずき,AZUKI MOMOI
+66,character,마나카 미사토,間中美里,MISATO MANAKA
+67,character,칸자키 란코,神崎蘭子,RANKO KANZAKI
+68,character,아베 나나,安部菜々,NANA ABE
+10001,voiceactor,오오하시 아야카,大橋彩香,
+10002,voiceactor,후쿠하라 아야카,福原綾香,
+10003,voiceactor,하라 사유리,原紗友里,
+10004,voiceactor,시모지 시노,下地紫野,
+10005,voiceactor,오오츠보 유카,大坪由佳,
+10006,voiceactor,,,
+10007,voiceactor,,,
+10008,voiceactor,하루세 나츠미,春瀬 なつみ,
+10009,voiceactor,야스노 키요노,安野希世乃,
+10010,voiceactor,,,
+10011,voiceactor,,,
+10012,voiceactor,타케타츠 아야나,竹達彩奈,
+10013,voiceactor,타카모리 나츠미,高森奈津美,
+10014,voiceactor,와키 아즈미,和氣あず未,
+10015,voiceactor,,,
+10016,voiceactor,마키노 유이,牧野由依,
+10017,voiceactor,이마이 아사카,今井麻夏,
+10018,voiceactor,스자키 아야,洲崎綾,
+10019,voiceactor,야마모토 노조미,山本希望,
+10020,voiceactor,,,
+10021,voiceactor,마츠자키 레이,松嵜麗,
+10022,voiceactor,요시무라 하루카,佳村はるか,
+10023,voiceactor,츠다 미나미,津田美波,
+10024,voiceactor,후지타 아카네,藤田茜,
+10025,voiceactor,,,
+10026,voiceactor,,,
+10027,voiceactor,,,
+10028,voiceactor,,,
+10029,voiceactor,,,
+10030,voiceactor,,,
+10031,voiceactor,마츠이 에리코,松井恵理子,
+10032,voiceactor,,,
+10033,voiceactor,,,
+10034,voiceactor,,,
+10035,voiceactor,오우사카 치요,桜咲千依,
+10036,voiceactor,,,
+10037,voiceactor,오이카와 시즈쿠,のぐちゆり,
+10038,voiceactor,,,
+10039,voiceactor,우에사카 스미레,上坂すみれ,
+10040,voiceactor,오오조라 나오미,大空直美,
+10041,voiceactor,쿠로사와 토모요,黒沢ともよ,
+10042,voiceactor,아오키 루리코,青木瑠璃子,
+10043,voiceactor,모리노 마코,杜野まこ,
+10044,voiceactor,,,
+10045,voiceactor,마츠다 사츠미,松田颯水,
+10046,voiceactor,이가라시 히로미,五十嵐裕美,
+10047,voiceactor,타네자키 아츠미,種﨑敦美 ,
+10048,voiceactor,토마루 치요,都丸ちよ,
+10049,voiceactor,나가시마 미나,長島光那,
+10050,voiceactor,,,
+10051,voiceactor,,,
+10052,voiceactor,야마시타 나나미,山下七海(,
+10053,voiceactor,,,
+10054,voiceactor,후치가미 마이,渕上舞,
+10055,voiceactor,,,
+10056,voiceactor,카네코 유키,金子有希,
+10057,voiceactor,,,
+10058,voiceactor,,,
+10059,voiceactor,타치바나 리카,立花理香,
+10060,voiceactor,,,
+10061,voiceactor,,,
+10062,voiceactor,,,
+10063,voiceactor,토야마 나오,東山奈央,
+10064,voiceactor,,,
+10065,voiceactor,,,
+10066,voiceactor,,,
+10067,voiceactor,우치다 마아야,内田真礼,
+10068,voiceactor,미야케 마리에,三宅麻理恵,
+20001,unit,뉴 제너레이션,ニュージェネレーション,new generations
+20002,unit,핑크 체크 스쿨,Pink Check School,Pink Check School
+20003,unit,옐로 릴리,Yellow Lily,Yellow Lily
+20004,unit,핑크 도트 벌룬,Pink Dot Balloon,Pink Dot Balloon
+20005,unit,블루 나폴레옹,Blue Napoleon,Blue Napoleon
+20006,unit,레드 발라드,Red Ballad,Red Ballad
+20007,unit,선셋 노스탤지아,Sunset Nostalgia,Sunset Nostalgia
+20008,unit,카나리아 서머,Canaria Summer,Canaria Summer
+20009,unit,라이트그린 세이프,Lightgreen Safe,Lightgreen Safe
+20010,unit,핑키 큐트,Pinky Cute,Pinky Cute
+20011,unit,핑크 체크 스쿨 eq,Pinky Check School eq,Pinky Check School eq
+20012,unit,트라이어드 프리무스,トライアドプリムス,Triad Primus
+20013,unit,뉴 웨이브,New Wave,New Wave
+20014,unit,포지티브 패션,Positive Passion,Positive Passion
+20015,unit,프릴드 스퀘어,Frilled Square,Frilled Square
+20016,unit,귀여운 나와 142's,Cute me and 142`s,Cute me and 142`s
+20017,unit,냥.냥.냥,Meow.Meow.Meow,Meow.Meow.Meow
+20018,unit,섹시 길티,Sexy Guilty,Sexy Guilty
+20019,unit,인디비쥬얼즈,Indie Visuals,Indie Visuals
+20020,unit,언더 더 데스크,Under the Desk,Under the Desk
+20021,unit,L.M.B.G,L.M.B.G,L.M.B.G
+20022,unit,러브 라이카,ラブライカ,LOVE LAIKA
+20023,unit,캔디 아일랜드,CANDY ISLAND,CANDY ISLAND
+20024,unit,데코레이션,凸レーション,Decoration
+20025,unit,*(아스테리스크),アスタリスク,*(Asterisk)
+20026,unit,귀여운 나와 야구이어요,かわいいボクと野球どすえ,KYBD
+20027,unit,핑크 도트 벌룬 eq,Pink Dot Balloon eq,Pink Dot Balloon eq
+20028,unit,블루 나폴레옹 eq,Blue Napoleon eq,Blue Napoleon eq
+20029,unit,레드 발라드 eq,Red Ballad eq,Red Ballad eq
+20030,unit,가짜라이카,ニセライカ,Fake LAIKA
+20031,unit,프릴드 스퀘어 SP,Frilled Square SP,Frilled Square SP
+20032,unit,아냥 미쿠냥,アニャンミクニャン,Anyang Miku Nyan
+20033,unit,사일런트 스크리머즈,サイレントスクリーマーズ,Silent Screamers
+20034,unit,해피해피 트윈☆,ハッピーハッピーツイン☆,Happy Happy twin ☆
+20035,unit,패밀리어 트윈,ファミリアツイン,Familia Twin
+20036,unit,카나☆카나☆팬시,カナ☆カナ☆ファンシー,Kana Kana ☆ ☆ Fancy
+20037,unit,샤이닝 갓 체리,シャイニングたてチェリー,Shining fresh cherries
+20038,unit,리틀 프렌즈,リトルフレンズ,Little Friends
+20039,unit,록킹 걸,ロッキングガール,Locking Girl
+20040,unit,경정소녀,更正の少女,Correction of girl
+20041,unit,리틀 앤젤스,リトルエンジェルス,Little Angels
+20042,unit,임시 라이카,一時ライカ,One o'clock Leica
+20043,unit,월야의 가희,月夜の歌姫,Moonlit night of diva
+20044,unit,유카타축제13's,浴衣祭り13's,Yukata Festival 13's
+20045,unit,슬리핑 버섯 with 우즈키,スリーピングキノコwithオジュキ,Sleeping mushroom with Ojuki
+20046,unit,트라이어드 프리무스 -N.R-,座標系のフリームース-N.R-,Coordinate system of free mousse -N.R-
+20047,unit,여름색 아가씨,夏色の女性,Women of summer color
+20048,unit,조직의 광견,組織の狂犬,Mad dog of the organization
+20049,unit,미복의 공주,華美な装飾品のプリンセス,Finery Princess
+20050,unit,수증기 소녀,水蒸気の少女,Girl of steam
+20051,unit,귀구부의 소녀들,耳曲げの少女たち,Girls of bending ears
+20052,unit,고양이 눈 세자매,猫の目三姉妹,Cat's eye three sisters
+20053,unit,모리쿠보 가문의 사람들,森久保家の人々,People of Morikubo house
+20054,unit,섹시 경장 사나에&꼬마 순경 카오루,セクシー軽装早苗＆ちび警察官薫,Sexy diatomaceous Sanae & Chibi police Kaoru
+20055,unit,마그나 위치즈,マグナウィッチーズ,Magna Witches
+20056,unit,스몰하트 트릭스터,スモールハートトリックスター,Small Heart Trickster
+20057,unit,해피해피 데몬 트윈&타천마왕 란코,ハッピーハッピーデーモンツイン・他薦魔王蘭子,Happy Happy daemon Twin recommendation devil Ranko
+20058,unit,흡혈백작과 공작부인,吸血伯爵と公爵夫人,Vampire Countess and Duchess
+20059,unit,록 더 비트,ロックよりビット,Bit than the lock
+20060,unit,신데렐라 드림 Ver.1,シンデレラドリームVer.1,Cinderella Dream Ver.1
+20061,unit,스노우 페어리즈,スノーフェアリーズ,Snow Fairies
+20062,unit,홀리 프레젠트,ホーリープレゼント,Holy gift
+20063,unit,발렌타인 1st,バレンタイン1st,Valentine 1st
+20064,unit,over the blue,over the blue,over the blue
+20065,unit,397cherry,397cherry,397cherry
+20066,unit,*(아스테리스크) with 나츠나나,*（アスタリスク）with夏ナナ,* (Asterisk) with summer Nana
+20067,unit,대접하는 메이드,心に抱くメイド,Maid entertaining
+20068,unit,MYSTIQUES,MYSTIQUES,MYSTIQUES
+20069,unit,Jumpin'Joke,Jumpin'Joke,Jumpin'Joke
+20070,unit,리카와 코우메의 파티 프렌즈,リカと小梅のパーティーフレンズ,Party Friends of Rika and small plum
+20071,unit,크리스마스 메모리즈,クリスマスメモリーズ,Christmas Memories
+20072,unit,팜므 파탈 듀오,ファムファタールデュオ,Femme Fatale duo
+20073,unit,벚꽃축제's,桜祭りの 's,Of the Cherry Blossom Festival 's
+20074,unit,하이칼라 벚꽃,ハイカラー桜,High color cherry tree
+20075,unit,미오&리이나 from C.P,ミオ・リーやfrom C.P,Mio Lee and from C.P
+20076,unit,란코&치에리 from 브라이덜,ランコ・チーエリーfromブライダル,Ranco - Chieri from Bridal
+20077,unit,신데렐라 드림 Ver.2,シンデレラドリームVer.2,Cinderella Dream Ver.2
+20078,unit,신데렐라 드림 Ver.3,シンデレラドリームVer.3,Cinderella Dream Ver.3
+20079,unit,신데렐라 드림 Ver.5,シンデレラドリームVer.5,Cinderella Dream Ver.5
+20080,unit,신데렐라 드림 Ver.6,シンデレラドリームVer.6,Cinderella Dream Ver.6
+20081,unit,나오&카렌 from 브라이덜,出てくる＆カレンfromブライダル,Come out and Karen from Bridal
+20082,unit,마시멜로 애슬리트,マシュマロアスリート,Marshmallow athlete
+20083,unit,해피해피☆2DAYS 버스데이,ハッピーハッピー☆2DAYSバースデー,Happy Happy Birthday ☆ 2DAYS
+20084,unit,LOVE LAIKA with Rosenburg Engel,LOVE LAIKA with Rosenburg Engel,LOVE LAIKA with Rosenburg Engel
+20085,unit,록 더 비트 with 우사밍,ロックよりビットwith宇佐光,Bit with Usa light than the lock
+20086,unit,신데렐라 드림 Ver.7,シンデレラドリームVer.7,Cinderella Dream Ver.7
+20087,unit,신데렐라 드림 Ver.8.1,シンデレラドリームVer.8.1,Cinderella Dream Ver.8.1
+20088,unit,신데렐라 드림 Ver.8.3,シンデレラドリームVer.8.3,Cinderella Dream Ver.8.3
+20089,unit,신데렐라 드림 Ver.8.4,シンデレラドリームVer.8.4,Cinderella Dream Ver.8.4
+20090,unit,신데렐라 드림 Ver.8.5,シンデレラドリームVer.8.5,Cinderella Dream Ver.8.5
+20091,unit,신데렐라 드림 Ver.8.6,シンデレラドリームVer.8.6,Cinderella Dream Ver.8.6
+20092,unit,신데렐라 드림 Ver.8.7,シンデレラドリームVer.8.7,Cinderella Dream Ver.8.7
+20093,unit,신데렐라 드림 Ver.8.8,シンデレラドリームVer.8.8,Cinderella Dream Ver.8.8
+20094,unit,"어른 여자, 이렇게 말하다",大人の女性、このように話す,"Adult women, speak in this way"
+20095,unit,snow glasses,snow glasses,snow glasses
+20096,unit,퍼니 데빌 ,ファニーデビル,Fannie Devil
+20097,unit,미카와 카렌의 우즈키를 귀엽게 하고싶은 부대,三河カレンのオジュキを可愛くしたい部隊,Troops you want to cute the Ojuki of Mikawa Karen
+20098,unit,로얄 섬머 치아키・요코,ロイヤルサマー千秋・ヨーコ,Royal Summer Chiaki Yoko
+20099,unit,에이스 미즈키와 조력자 아카네,エース水樹と補助者あかね,Ace Mizuki and assistant Akane
+20100,unit,리카・린・미쿠(출장중),リカ・リン・ミク（出張中）,Rika Lynn Miku (traveling)
+20101,unit,사이킥 히츠,サイキックヒッツ,Psychic Hits
+20102,unit,나나&미쿠 from PM,ナナ＆ミクfrom PM,Nana & Miku from PM
+20103,unit,미즈키 from PM &사치코,水樹from PM＆幸子,Mizuki from PM & Sachiko
+20104,unit,사에&마유 from PM,社に及びまゆ​​from PM,Company to and eyebrow from PM
+20105,unit,쇼코&유코 from PM,翔子＆優子from PM,Shoko & Yuko from PM
+20106,unit,아이코&미오 from PM,愛子＆ミオfrom PM,Aiko & Mio from PM
+20107,unit,치에리&우즈키 from PM,値エリー＆オジュキfrom PM,Value Erie & Ojuki from PM
+20108,unit,북국의 동물원,北国の動物園,Northern Zoo
+20109,unit,신춘 게스트 미호&나나,新春ゲスト美穂＆ナナ,New Year guest Miho & Nana
+20110,unit,WtF 미리아&코우메&리카,WtFあらかじめああ＆小梅＆リカ,WtF in advance Oh & Koume & Rika
+20111,unit,로얄 듀오,ロイヤルデュオ,Royal duo
+20112,unit,NiGHT ENCOUNTER,NiGHT ENCOUNTER,NiGHT ENCOUNTER
+20113,unit,Happy 7.27,Happy 7.27,Happy 7.27
+20114,unit,귀여운 나와 큐티 산타,かわいい私キューティーサンタ,Cute I Cutie Santa
+20115,unit,하드 코어☆업,ハードコア☆アップ,Hardcore ☆ up
