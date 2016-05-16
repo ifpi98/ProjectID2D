@@ -127,7 +127,8 @@ public class GameGui : MonoBehaviour {
             }
 
         }
-        
+
+        GUI.Button(new Rect(820, 10, 150, 100), "Duo : " + game.makecounthistory[2] + "\n Trio : " + game.makecounthistory[3] +"\n Quartet : " + game.makecounthistory[4] + "\n Quintet : " + game.makecounthistory[5]);
 
         if (game.madeSlotList.Count != 0)
         {
@@ -149,8 +150,7 @@ public class GameGui : MonoBehaviour {
             //string aa = Convert.ToString(game.madeSlotList[0]);
             GUI.color = Color.green;
             if (GUI.Button(new Rect(10, 350, 750, 40), str0.ToString()))
-            {                
-                game.score = game.score + 100;
+            {             
                 game.PassTurnWithMake(game.madeSlotList[0]);
             }
         }
@@ -175,7 +175,6 @@ public class GameGui : MonoBehaviour {
             //string aa = Convert.ToString(game.madeSlotList[0]);
             if (GUI.Button(new Rect(10, 400, 750, 40), str1.ToString()))
             {
-                game.score = game.score + 100;
                 game.PassTurnWithMake(game.madeSlotList[1]);
             }
         }
@@ -200,7 +199,6 @@ public class GameGui : MonoBehaviour {
             //string aa = Convert.ToString(game.madeSlotList[0]);
             if (GUI.Button(new Rect(10, 450, 750, 40), str2.ToString()))
             {
-                game.score = game.score + 100;
                 game.PassTurnWithMake(game.madeSlotList[2]);
             }
 
@@ -226,7 +224,6 @@ public class GameGui : MonoBehaviour {
             //string aa = Convert.ToString(game.madeSlotList[0]);
             if (GUI.Button(new Rect(10, 500, 750, 40), str3.ToString()))
             {
-                game.score = game.score + 100;
                 game.PassTurnWithMake(game.madeSlotList[3]);
             }
 
@@ -252,7 +249,6 @@ public class GameGui : MonoBehaviour {
             //string aa = Convert.ToString(game.madeSlotList[0]);
             if (GUI.Button(new Rect(10, 550, 750, 40), str4.ToString()))
             {
-                game.score = game.score + 100;
                 game.PassTurnWithMake(game.madeSlotList[4]);
             }
 
@@ -278,7 +274,6 @@ public class GameGui : MonoBehaviour {
             //string aa = Convert.ToString(game.madeSlotList[0]);
             if (GUI.Button(new Rect(10, 600, 750, 40), str5.ToString()))
             {
-                game.score = game.score + 100;
                 game.PassTurnWithMake(game.madeSlotList[5]);
             }
         }
@@ -303,7 +298,6 @@ public class GameGui : MonoBehaviour {
             //string aa = Convert.ToString(game.madeSlotList[0]);
             if (GUI.Button(new Rect(10, 600, 750, 40), str6.ToString()))
             {
-                game.score = game.score + 100;
                 game.PassTurnWithMake(game.madeSlotList[6]);
             }
         }
@@ -351,13 +345,38 @@ public class GameGui : MonoBehaviour {
         //{
         //    game.score = game.score + 100;
         //}
-
+        
         if (Input.GetKey(KeyCode.W))
         {
-            if (game.madeSlotList.Count != 0)
+            if (game.madeSlotList.Count != 0 && Convert.ToInt32(mon.unitData2[game.madeSlotList[0], 14]) > 3)
             {
-                game.score = game.score + 100;
+                Debug.Log("YOU MADE : " + game.madeSlotList[0]);
                 game.PassTurnWithMake(game.madeSlotList[0]);
+            }
+            else if (game.madeSlotList.Count > 1 && Convert.ToInt32(mon.unitData2[game.madeSlotList[1], 14]) > 3)
+            {
+                Debug.Log("YOU MADE : " + game.madeSlotList[1]);
+                game.PassTurnWithMake(game.madeSlotList[1]);
+            }
+            else if (game.madeSlotList.Count > 2 && Convert.ToInt32(mon.unitData2[game.madeSlotList[2], 14]) > 3)
+            {
+                Debug.Log("YOU MADE : " + game.madeSlotList[2]);
+                game.PassTurnWithMake(game.madeSlotList[2]);
+            }
+            else if (game.madeSlotList.Count > 3 && Convert.ToInt32(mon.unitData2[game.madeSlotList[3], 14]) > 3)
+            {
+                Debug.Log("YOU MADE : " + game.madeSlotList[3]);
+                game.PassTurnWithMake(game.madeSlotList[3]);
+            }
+            else if (game.madeSlotList.Count > 4 && Convert.ToInt32(mon.unitData2[game.madeSlotList[4], 14]) > 3)
+            {
+                Debug.Log("YOU MADE : " + game.madeSlotList[4]);
+                game.PassTurnWithMake(game.madeSlotList[4]);
+            }
+            else if (game.madeSlotList.Count > 5 && Convert.ToInt32(mon.unitData2[game.madeSlotList[5], 14]) > 3)
+            {
+                Debug.Log("YOU MADE : " + game.madeSlotList[5]);
+                game.PassTurnWithMake(game.madeSlotList[5]);
             }
             else
             {
@@ -383,7 +402,13 @@ public class GameGui : MonoBehaviour {
             }
 
             game.maxCombo = DI.GetMaxCombo();
+            game.makecounthistory[2] = DI.GetMakeCountHistory2();
+            game.makecounthistory[3] = DI.GetMakeCountHistory3();
+            game.makecounthistory[4] = DI.GetMakeCountHistory4();
+            game.makecounthistory[5] = DI.GetMakeCountHistory5();
             game.checkExp();
+
+            
             Debug.Log("Game Data Reset" + game.score);
         }
 

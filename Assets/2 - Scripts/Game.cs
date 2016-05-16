@@ -27,6 +27,7 @@ public class Game : MonoBehaviour
     int tempnum;
     int[] tempnumarray;
     //public Texture tex1;
+    public int[] makecounthistory;
     public int score;
     public int level;
     public int maxCombo;
@@ -52,17 +53,27 @@ public class Game : MonoBehaviour
 
         score = DI.GetExp();
         level = DI.GetLV();
+        if (level == 0)
+        {
+            level = 1;
+        }
         totalTurn = DI.GetTotalTurn();
         if (DI.GetBasicRemainTurn() != 0)
         {
             basicRemainTurn = DI.GetBasicRemainTurn();
         }
-            
+
+        maxCombo = 0;
         maxCombo = DI.GetMaxCombo();
 
         remainturncardslot = new int[5];
-        maxCombo = 0;
+        makecounthistory = new int[6];
 
+        makecounthistory[2] = DI.GetMakeCountHistory2();
+        makecounthistory[3] = DI.GetMakeCountHistory3();
+        makecounthistory[4] = DI.GetMakeCountHistory4();
+        makecounthistory[5] = DI.GetMakeCountHistory5();        
+        
         for (int i = 0; i < 5; i++)
         {
             remainturncardslot[i] = basicRemainTurn;
@@ -351,7 +362,7 @@ public class Game : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            if (mon.unitData3[decideUnit, i] != 0)
+            if (mon.unitData3[decideUnit-1, i] != 0)
             {
                 findMember.Add(mon.unitData3[decideUnit-1, i]);
                 //Debug.Log(findMember[i]);                
@@ -370,12 +381,37 @@ public class Game : MonoBehaviour
                 //Debug.Log(slotCardList[y]);
                 if (findMember[i] == slotCardList[y])
                 {
-                    findMemberplace.Add(y);                    
+                    findMemberplace.Add(y);
                     //Debug.Log("check : " + findMemberplace[i]);
                 }
-                
             }            
         }
+        //Debug.Log(findMemberplace.Count);
+
+        switch (findMemberplace.Count)
+        {
+            case 2:
+                score = Convert.ToInt32(score + 50 * (1 + 0.1f * (combocount - 1)));
+                makecounthistory[2] = makecounthistory[2] + 1;
+                DI.SetMakeCountHistory();
+                break;
+            case 3:
+                score = Convert.ToInt32(score + 200 * (1 + 0.1f * (combocount - 1)));
+                makecounthistory[3] = makecounthistory[3] + 1;
+                DI.SetMakeCountHistory();
+                break;
+            case 4:
+                score = Convert.ToInt32(score + 900 * (1 + 0.1f * (combocount - 1)));
+                makecounthistory[4] = makecounthistory[4] + 1;
+                DI.SetMakeCountHistory();
+                break;
+            case 5:
+                score = Convert.ToInt32(score + 1600 * (1 + 0.1f * (combocount - 1)));
+                makecounthistory[5] = makecounthistory[5] + 1;
+                DI.SetMakeCountHistory();
+                break;
+        }
+
 
         for (int i = 0; i < 5; i++)
         {

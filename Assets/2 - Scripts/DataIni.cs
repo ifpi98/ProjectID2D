@@ -49,6 +49,20 @@ public class DataIni : MonoBehaviour {
         pIDIni.SetInt("MaxCombo", 0);
         pIDIni.SetInt("BasicRemainTurn", 5);
         pIDIni.SetInt("TotalTurn", 0);
+        pIDIni.SetInt("MakeCountHistory2", 0);
+        pIDIni.SetInt("MakeCountHistory3", 0);
+        pIDIni.SetInt("MakeCountHistory4", 0);
+        pIDIni.SetInt("MakeCountHistory5", 0);
+
+        pIDIni.Save("ProjectID");
+    }
+
+    public void SetMakeCountHistory()
+    {
+        pIDIni.SetInt("MakeCountHistory2", game.makecounthistory[2]);
+        pIDIni.SetInt("MakeCountHistory3", game.makecounthistory[3]);
+        pIDIni.SetInt("MakeCountHistory4", game.makecounthistory[4]);
+        pIDIni.SetInt("MakeCountHistory5", game.makecounthistory[5]);        
 
         pIDIni.Save("ProjectID");
     }
@@ -86,5 +100,31 @@ public class DataIni : MonoBehaviour {
         return basicRemainTurn;
 
     }
+
+    public int GetMakeCountHistory2()
+    {
+        int makeCountHistory2 = pIDIni.GetInt("MakeCountHistory2");
+        return makeCountHistory2;
+    }
+
+    public int GetMakeCountHistory3()
+    {
+        int makeCountHistory3 = pIDIni.GetInt("MakeCountHistory3");
+        return makeCountHistory3;
+    }
+
+    public int GetMakeCountHistory4()
+    {
+        int makeCountHistory4 = pIDIni.GetInt("MakeCountHistory4");
+        return makeCountHistory4;
+    }
+
+    public int GetMakeCountHistory5()
+    {
+        int makeCountHistory5 = pIDIni.GetInt("MakeCountHistory5");
+        return makeCountHistory5;
+    }
+
+
 
 }
