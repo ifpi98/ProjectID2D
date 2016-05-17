@@ -6,6 +6,7 @@ public class DataIni : MonoBehaviour {
     IniFile pIDIni;
     Monster mon;
     Game game;
+    DataArrayJson dAJ;
     bool latestartcheck;
 
     // Use this for initialization
@@ -24,6 +25,7 @@ public class DataIni : MonoBehaviour {
         {
             mon = GameObject.Find("GameObj").GetComponent<Monster>();
             game = GameObject.Find("GameObj").GetComponent<Game>();
+            dAJ = GameObject.Find("DataObj").GetComponent<DataArrayJson>();
             //Debug.Log(game.score);
             latestartcheck = true;
         }
@@ -66,6 +68,15 @@ public class DataIni : MonoBehaviour {
 
         pIDIni.Save("ProjectID");
     }
+
+    public void SetUnitDegreeString()
+    {
+        pIDIni.SetString("UnitDegreeString", dAJ.DearDegreeEncodedString1);
+        //Debug.Log("SETTING");
+
+        pIDIni.Save("ProjectID");
+    }
+
 
     public int GetExp()
     {

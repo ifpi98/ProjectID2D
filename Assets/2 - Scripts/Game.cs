@@ -10,7 +10,7 @@ public class Game : MonoBehaviour
     public int basicRemainTurn = 5;
 
     public int[] cardSlot;
-    public string cardSlot0;
+    //public string cardSlot0;
     string cardSlot1;
     string cardSlot2;
     string cardSlot3;
@@ -34,7 +34,8 @@ public class Game : MonoBehaviour
     public int totalTurn;
     public List<int> slotCardList;
     public int combocount = 0;
-
+    public int[] charDearDegree;
+    public bool[] unitDebutHistory;
 
 
     // Use this for initialization
@@ -51,6 +52,9 @@ public class Game : MonoBehaviour
 
         checkExp();
 
+        charDearDegree = new int[mon.charcount];
+        unitDebutHistory = new bool[mon.unitcount];
+        
         score = DI.GetExp();
         level = DI.GetLV();
         if (level == 0)
@@ -142,7 +146,6 @@ public class Game : MonoBehaviour
                 
         if (secondcheck == false && thirdcheck == false)
         {
-
             PassTurnWithoutMake(checkremainTurncardslot[0], checkremainTurncardslot[1],checkremainTurncardslot[2],
                 checkremainTurncardslot[3],checkremainTurncardslot[4]);
             SlotCardMaKe();
@@ -168,6 +171,7 @@ public class Game : MonoBehaviour
                 if (firstcheck == true)
                 {
                     DI.SetExpLvMC();
+                    DI.SetUnitDegreeString();
                 }                
                 break;
             }
@@ -313,7 +317,7 @@ public class Game : MonoBehaviour
             //Debug.Log(slotCardList[i]);
         }
 
-        for (int i = 0; i < mon.unitcount - 1; i++)
+        for (int i = 0; i < mon.unitcount-1; i++)
         {
             for (int y = 0; y < 5; y++)
             {

@@ -348,17 +348,17 @@ public class GameGui : MonoBehaviour {
         
         if (Input.GetKey(KeyCode.W))
         {
-            if (game.madeSlotList.Count != 0 && Convert.ToInt32(mon.unitData2[game.madeSlotList[0], 14]) > 3)
+            if (game.madeSlotList.Count != 0 && Convert.ToInt32(mon.unitData2[game.madeSlotList[0], 14]) > 2)
             {
                 Debug.Log("YOU MADE : " + game.madeSlotList[0]);
                 game.PassTurnWithMake(game.madeSlotList[0]);
             }
-            else if (game.madeSlotList.Count > 1 && Convert.ToInt32(mon.unitData2[game.madeSlotList[1], 14]) > 3)
+            else if (game.madeSlotList.Count > 1 && Convert.ToInt32(mon.unitData2[game.madeSlotList[1], 14]) > 1)
             {
                 Debug.Log("YOU MADE : " + game.madeSlotList[1]);
                 game.PassTurnWithMake(game.madeSlotList[1]);
             }
-            else if (game.madeSlotList.Count > 2 && Convert.ToInt32(mon.unitData2[game.madeSlotList[2], 14]) > 3)
+            else if (game.madeSlotList.Count > 2 && Convert.ToInt32(mon.unitData2[game.madeSlotList[2], 14]) > 1)
             {
                 Debug.Log("YOU MADE : " + game.madeSlotList[2]);
                 game.PassTurnWithMake(game.madeSlotList[2]);
