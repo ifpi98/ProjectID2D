@@ -3,37 +3,90 @@
 
 public class DataArrayJson : MonoBehaviour {
 
-    public JSONObject unitDearDegreeObj = new JSONObject(JSONObject.Type.OBJECT);
-    public JSONObject unitDearDegreeArray = new JSONObject(JSONObject.Type.ARRAY);
-    public string DearDegreeEncodedString1;
-
+    public JSONObject charDearDegreeObj = new JSONObject(JSONObject.Type.OBJECT);
+    public JSONObject charDearDegreeArray = new JSONObject(JSONObject.Type.ARRAY);
+    public JSONObject unitDebutHistoryObj = new JSONObject(JSONObject.Type.OBJECT);
+    public JSONObject unitDebutHistoryArray = new JSONObject(JSONObject.Type.ARRAY);
+    public string dearDegreeEncodedString1;
+    public string debutHistoryEncodedString1;
+    Monster mon;
+    Game game;
+    bool latestartcheck;
 
 
     // Use this for initialization
     void Start () {
 
-        //unitDearDegreeObj.AddField("field1", 0.5f);
-        //unitDearDegreeObj.AddField("field2", "sampletext");
-        unitDearDegreeObj.AddField("field1", unitDearDegreeArray);
-
-        unitDearDegreeArray.Add(1);
-        unitDearDegreeArray.Add(2);
-        unitDearDegreeArray.Add(3);
-
-        DearDegreeEncodedString1 = unitDearDegreeObj.Print();
-        //Debug.Log(DearDegreeEncodedString1);
-
-        JSONObject sampleJson1 = new JSONObject(DearDegreeEncodedString1);
-        accessData(sampleJson1);
+        latestartcheck = false;
 
     }
 	
     // Update is called once per frame
 	void Update () {
-	
-	}
 
-    void accessData(JSONObject obj)
+        if (latestartcheck == false)
+        { 
+            mon = GameObject.Find("GameObj").GetComponent<Monster>();
+            game = GameObject.Find("GameObj").GetComponent<Game>();
+
+            MakeObjCharDearDegree();
+            MakeObjUnitDebutHistory();
+            latestartcheck = true;
+        }
+
+
+    }
+
+    public void MakeObjCharDearDegree()
+    {
+        //unitDearDegreeObj.AddField("field1", 0.5f);
+        //unitDearDegreeObj.AddField("field2", "sampletext");
+        if (!charDearDegreeObj.HasField("DearDegree"))
+        {
+            charDearDegreeObj.AddField("DearDegree", charDearDegreeArray);
+        }
+
+        charDearDegreeArray.Clear();
+        
+        //Debug.Log("character count :" + mon.charcount);
+        for (int i = 0; i < mon.charcount; i++)
+        {            
+            charDearDegreeArray.Add(game.charDearDegree[i]);
+            Debug.Log(game.charDearDegree[i]);
+        }
+
+        dearDegreeEncodedString1 = charDearDegreeObj.Print();
+        //Debug.Log(dearDegreeEncodedString1);
+
+        //JSONObject sampleJson1 = new JSONObject(dearDegreeEncodedString1);
+        //accessData(sampleJson1);
+    }
+
+    public void MakeObjUnitDebutHistory()
+    {
+        if (!unitDebutHistoryObj.HasField("DebutHistory"))
+        {
+            unitDebutHistoryObj.AddField("DebutHistory", unitDebutHistoryArray);
+        }
+
+        unitDebutHistoryArray.Clear();
+        
+        for (int i = 0; i < mon.unitcount; i++)
+        {            
+            unitDebutHistoryArray.Add(game.unitDebutHistory[i]);
+        }
+
+        debutHistoryEncodedString1 = unitDebutHistoryObj.Print();
+        //Debug.Log(debutHistoryEncodedString1);
+
+        //sampleJson1 = new JSONObject(debutHistoryEncodedString1);
+        //accessData(sampleJson1);     
+    }
+
+    
+
+
+    public void accessData(JSONObject obj)
     {
         switch (obj.type)
         {
@@ -42,7 +95,7 @@ public class DataArrayJson : MonoBehaviour {
                 {
                     string key = (string)obj.keys[i];
                     JSONObject sampleJson1 = (JSONObject)obj.list[i];
-                    Debug.Log(key);
+                    //Debug.Log(key);
                     accessData(sampleJson1);
                 }
                 break;
@@ -53,16 +106,16 @@ public class DataArrayJson : MonoBehaviour {
                 }
                 break;
             case JSONObject.Type.STRING:
-                Debug.Log(obj.str);
+                //Debug.Log(obj.str);
                 break;
             case JSONObject.Type.NUMBER:
-                Debug.Log(obj.n);
+                //Debug.Log(obj.n);
                 break;
             case JSONObject.Type.BOOL:
-                Debug.Log(obj.b);
+                //Debug.Log(obj.b);
                 break;
             case JSONObject.Type.NULL:
-                Debug.Log("NULL");
+                //Debug.Log("NULL");
                 break;
         }
     }

@@ -46,17 +46,19 @@ public class DataIni : MonoBehaviour {
 
     public void DataReset()
     {
-        pIDIni.SetInt("Exp", 0);
-        pIDIni.SetInt("Level", 1);
-        pIDIni.SetInt("MaxCombo", 0);
-        pIDIni.SetInt("BasicRemainTurn", 5);
-        pIDIni.SetInt("TotalTurn", 0);
-        pIDIni.SetInt("MakeCountHistory2", 0);
-        pIDIni.SetInt("MakeCountHistory3", 0);
-        pIDIni.SetInt("MakeCountHistory4", 0);
-        pIDIni.SetInt("MakeCountHistory5", 0);
+        //pIDIni.SetInt("Exp", 0);
+        //pIDIni.SetInt("Level", 1);
+        //pIDIni.SetInt("MaxCombo", 0);
+        //pIDIni.SetInt("BasicRemainTurn", 5);
+        //pIDIni.SetInt("TotalTurn", 0);
+        //pIDIni.SetInt("MakeCountHistory2", 0);
+        //pIDIni.SetInt("MakeCountHistory3", 0);
+        //pIDIni.SetInt("MakeCountHistory4", 0);
+        //pIDIni.SetInt("MakeCountHistory5", 0);
 
+        pIDIni.Clear();
         pIDIni.Save("ProjectID");
+        
     }
 
     public void SetMakeCountHistory()
@@ -69,14 +71,35 @@ public class DataIni : MonoBehaviour {
         pIDIni.Save("ProjectID");
     }
 
-    public void SetUnitDegreeString()
+    public void SetCharDearDegreeString()
     {
-        pIDIni.SetString("UnitDegreeString", dAJ.DearDegreeEncodedString1);
+        dAJ.MakeObjCharDearDegree();
+        pIDIni.SetString("CharDearDegreeString", dAJ.dearDegreeEncodedString1);     
         //Debug.Log("SETTING");
 
         pIDIni.Save("ProjectID");
     }
 
+    public void SetUnitDebutHistoryString()
+    {
+        dAJ.MakeObjUnitDebutHistory();
+        pIDIni.SetString("UnitDebutHistoryString", dAJ.debutHistoryEncodedString1);
+        //Debug.Log("SETTING");
+
+        pIDIni.Save("ProjectID");
+    }
+
+    public string GetCharDearDegreeString()
+    {
+        string charDearDegreeString = pIDIni.GetString("CharDearDegreeString");
+        return charDearDegreeString;
+    }
+
+    public string GetUnitDebutHistoryString()
+    {
+        string unitDebutHistoryString = pIDIni.GetString("UnitDebutHistoryString");
+        return unitDebutHistoryString;
+    }
 
     public int GetExp()
     {

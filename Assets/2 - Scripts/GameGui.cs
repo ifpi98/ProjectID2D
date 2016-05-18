@@ -407,7 +407,8 @@ public class GameGui : MonoBehaviour {
             game.makecounthistory[4] = DI.GetMakeCountHistory4();
             game.makecounthistory[5] = DI.GetMakeCountHistory5();
             game.checkExp();
-
+            game.charDearDegree = new int[mon.charcount];
+            game.unitDebutHistory = new bool[mon.unitcount];        
             
             Debug.Log("Game Data Reset" + game.score);
         }

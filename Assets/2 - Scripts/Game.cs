@@ -35,7 +35,10 @@ public class Game : MonoBehaviour
     public List<int> slotCardList;
     public int combocount = 0;
     public int[] charDearDegree;
+    string charDearDegreeEncodedString1;
     public bool[] unitDebutHistory;
+    string unitDebutHistoryEncodedString1;
+    DataArrayJson dAJ;
 
 
     // Use this for initialization
@@ -49,11 +52,45 @@ public class Game : MonoBehaviour
 
         DI = GameObject.Find("DataObj").GetComponent<DataIni>();
         mon = GameObject.Find("GameObj").GetComponent<Monster>();
+        dAJ = GameObject.Find("DataObj").GetComponent<DataArrayJson>();
 
         checkExp();
 
-        charDearDegree = new int[mon.charcount];
+        charDearDegree = new int[mon.charcount];        
         unitDebutHistory = new bool[mon.unitcount];
+
+        charDearDegreeEncodedString1 = DI.GetCharDearDegreeString();
+
+        if (charDearDegreeEncodedString1 != "")
+        {
+            JSONObject charDearJson = new JSONObject(charDearDegreeEncodedString1);
+            //Debug.Log("CharDear : " + charDearDegreeEncodedString1);        
+            dAJ.accessData(charDearJson);
+            JSONObject arr1 = charDearJson["DearDegree"];
+            //Debug.Log(arr1[1].n);
+
+            for (int i = 1; i < mon.charcount; i++)
+            {
+                charDearDegree[i] = Convert.ToInt32(arr1[i].n);
+            }
+        }
+
+        unitDebutHistoryEncodedString1 = DI.GetUnitDebutHistoryString();
+
+        if (unitDebutHistoryEncodedString1 != "")
+        {            
+            //Debug.Log("UnitDebut : " + unitDebutHistoryEncodedString1);
+
+            JSONObject unitDebutJson = new JSONObject(unitDebutHistoryEncodedString1);
+            dAJ.accessData(unitDebutJson);
+            JSONObject arr2 = unitDebutJson["DebutHistory"];
+            //Debug.Log(arr2[1].n);
+
+            for (int i = 1; i < mon.unitcount; i++)
+            {
+                unitDebutHistory[i] = arr2[i].b;
+            }
+        }               
         
         score = DI.GetExp();
         level = DI.GetLV();
@@ -171,7 +208,8 @@ public class Game : MonoBehaviour
                 if (firstcheck == true)
                 {
                     DI.SetExpLvMC();
-                    DI.SetUnitDegreeString();
+                    //DI.SetCharDearDegreeString();
+                    //DI.SetUnitDebutHistoryString();
                 }                
                 break;
             }
@@ -369,6 +407,15 @@ public class Game : MonoBehaviour
             if (mon.unitData3[decideUnit-1, i] != 0)
             {
                 findMember.Add(mon.unitData3[decideUnit-1, i]);
+                if (charDearDegree[(mon.unitData3[decideUnit - 1, i])] <= 600)
+                {
+                    charDearDegree[(mon.unitData3[decideUnit - 1, i])] = charDearDegree[(mon.unitData3[decideUnit - 1, i])] + 1;
+                }
+                else
+                {
+                    charDearDegree[(mon.unitData3[decideUnit - 1, i])] = 600;
+                }
+                
                 //Debug.Log(findMember[i]);                
             }
             else
@@ -393,26 +440,38 @@ public class Game : MonoBehaviour
         //Debug.Log(findMemberplace.Count);
 
         switch (findMemberplace.Count)
-        {
+        {            
             case 2:
-                score = Convert.ToInt32(score + 50 * (1 + 0.1f * (combocount - 1)));
+                int sumDearDegree = 0;
+                sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]];
+                score = Convert.ToInt32(score + 50 * (1 + 0.1f * (combocount - 1)) + sumDearDegree);
                 makecounthistory[2] = makecounthistory[2] + 1;
                 DI.SetMakeCountHistory();
+                DI.SetCharDearDegreeString();
                 break;
             case 3:
-                score = Convert.ToInt32(score + 200 * (1 + 0.1f * (combocount - 1)));
+                sumDearDegree = 0;
+                sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]] + charDearDegree[findMember[2]];
+                score = Convert.ToInt32(score + 200 * (1 + 0.1f * (combocount - 1)) + sumDearDegree);
                 makecounthistory[3] = makecounthistory[3] + 1;
                 DI.SetMakeCountHistory();
+                DI.SetCharDearDegreeString();
                 break;
             case 4:
-                score = Convert.ToInt32(score + 900 * (1 + 0.1f * (combocount - 1)));
+                sumDearDegree = 0;
+                sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]] + charDearDegree[findMember[2]] + charDearDegree[findMember[3]];
+                score = Convert.ToInt32(score + 900 * (1 + 0.1f * (combocount - 1)) + sumDearDegree);
                 makecounthistory[4] = makecounthistory[4] + 1;
                 DI.SetMakeCountHistory();
+                DI.SetCharDearDegreeString();
                 break;
             case 5:
-                score = Convert.ToInt32(score + 1600 * (1 + 0.1f * (combocount - 1)));
+                sumDearDegree = 0;
+                sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]] + charDearDegree[findMember[2]] + charDearDegree[findMember[3]] + charDearDegree[findMember[4]];
+                score = Convert.ToInt32(score + 1600 * (1 + 0.1f * (combocount - 1)) + sumDearDegree);
                 makecounthistory[5] = makecounthistory[5] + 1;
                 DI.SetMakeCountHistory();
+                DI.SetCharDearDegreeString();
                 break;
         }
 
