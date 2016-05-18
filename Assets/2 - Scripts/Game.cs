@@ -373,8 +373,9 @@ public class Game : MonoBehaviour
             {
                 //secondcheck = true;
                 //Debug.Log(isSubset);
-                Debug.Log(i + 1 + " : " + mon.unitData2[i+1,1]);
+                //Debug.Log(i + 1 + " : " + mon.unitData2[i+1,1]);
                 madeSlotList.Add(i + 1);
+                //Debug.Log(madeSlotList[0]);
 
             }
 
@@ -395,6 +396,15 @@ public class Game : MonoBehaviour
         if (combocount > maxCombo)
         {
             maxCombo = combocount;
+        }
+
+        Debug.Log("YOU MADE : " + mon.unitData2[decideUnit, 1] + " Unit Number : " + decideUnit);
+
+        if (unitDebutHistory[decideUnit] == false)
+        {
+            unitDebutHistory[decideUnit] = true;
+            Debug.Log("You just made them DO DEBUT : " + mon.unitData2[decideUnit, 1] + " Unit Number : " + decideUnit);
+            DI.SetUnitDebutHistoryString();
         }
 
         List<int> findMember = new List<int>();

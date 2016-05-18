@@ -134,7 +134,15 @@ public class GameGui : MonoBehaviour {
         {
             //mon = GameObject.Find("GameObj").GetComponent<Monster>();
             StringBuilder str0 = new StringBuilder();
-            str0.Append(mon.unitData2[game.madeSlotList[0], 1]);
+
+            if (game.unitDebutHistory[game.madeSlotList[0]])
+            {
+                str0.Append(mon.unitData2[game.madeSlotList[0], 1]);
+            }
+            else
+            {
+                str0.Append("?아직 데뷰하지 않은 유닛?");
+            }            
             str0.Append(" : ");
             str0.Append(mon.unitData2[game.madeSlotList[0], 9]);
             str0.Append(" ");
@@ -159,7 +167,14 @@ public class GameGui : MonoBehaviour {
         {
             //mon = GameObject.Find("GameObj").GetComponent<Monster>();
             StringBuilder str1 = new StringBuilder();
-            str1.Append(mon.unitData2[game.madeSlotList[1], 1]);
+            if (game.unitDebutHistory[game.madeSlotList[1]])
+            {
+                str1.Append(mon.unitData2[game.madeSlotList[1], 1]);
+            }
+            else
+            {
+                str1.Append("?아직 데뷰하지 않은 유닛?");
+            }            
             str1.Append(" : ");
             str1.Append(mon.unitData2[game.madeSlotList[1], 9]);
             str1.Append(" ");
@@ -183,7 +198,14 @@ public class GameGui : MonoBehaviour {
         {
             //mon = GameObject.Find("GameObj").GetComponent<Monster>();
             StringBuilder str2 = new StringBuilder();
-            str2.Append(mon.unitData2[game.madeSlotList[2], 1]);
+            if (game.unitDebutHistory[game.madeSlotList[2]])
+            {
+                str2.Append(mon.unitData2[game.madeSlotList[2], 1]);
+            }
+            else
+            {
+                str2.Append("?아직 데뷰하지 않은 유닛?");
+            }
             str2.Append(" : ");
             str2.Append(mon.unitData2[game.madeSlotList[2], 9]);
             str2.Append(" ");
@@ -208,7 +230,14 @@ public class GameGui : MonoBehaviour {
         {
             //mon = GameObject.Find("GameObj").GetComponent<Monster>();
             StringBuilder str3 = new StringBuilder();
-            str3.Append(mon.unitData2[game.madeSlotList[3], 1]);
+            if (game.unitDebutHistory[game.madeSlotList[3]])
+            {
+                str3.Append(mon.unitData2[game.madeSlotList[3], 1]);
+            }
+            else
+            {
+                str3.Append("?아직 데뷰하지 않은 유닛?");
+            }
             str3.Append(" : ");
             str3.Append(mon.unitData2[game.madeSlotList[3], 9]);
             str3.Append(" ");
@@ -233,7 +262,14 @@ public class GameGui : MonoBehaviour {
         {
             //mon = GameObject.Find("GameObj").GetComponent<Monster>();
             StringBuilder str4 = new StringBuilder();
-            str4.Append(mon.unitData2[game.madeSlotList[4], 1]);
+            if (game.unitDebutHistory[game.madeSlotList[4]])
+            {
+                str4.Append(mon.unitData2[game.madeSlotList[4], 1]);
+            }
+            else
+            {
+                str4.Append("?아직 데뷰하지 않은 유닛?");
+            }
             str4.Append(" : ");
             str4.Append(mon.unitData2[game.madeSlotList[4], 9]);
             str4.Append(" ");
@@ -258,7 +294,14 @@ public class GameGui : MonoBehaviour {
         {
             //mon = GameObject.Find("GameObj").GetComponent<Monster>();
             StringBuilder str5 = new StringBuilder();
-            str5.Append(mon.unitData2[game.madeSlotList[5], 1]);
+            if (game.unitDebutHistory[game.madeSlotList[5]])
+            {
+                str5.Append(mon.unitData2[game.madeSlotList[5], 1]);
+            }
+            else
+            {
+                str5.Append("?아직 데뷰하지 않은 유닛?");
+            }
             str5.Append(" : ");
             str5.Append(mon.unitData2[game.madeSlotList[5], 9]);
             str5.Append(" ");
@@ -282,7 +325,14 @@ public class GameGui : MonoBehaviour {
         {
             //mon = GameObject.Find("GameObj").GetComponent<Monster>();
             StringBuilder str6 = new StringBuilder();
-            str6.Append(mon.unitData2[game.madeSlotList[6], 1]);
+            if (game.unitDebutHistory[game.madeSlotList[6]])
+            {
+                str6.Append(mon.unitData2[game.madeSlotList[6], 1]);
+            }
+            else
+            {
+                str6.Append("?아직 데뷰하지 않은 유닛?");
+            }
             str6.Append(" : ");
             str6.Append(mon.unitData2[game.madeSlotList[6], 9]);
             str6.Append(" ");
@@ -350,32 +400,32 @@ public class GameGui : MonoBehaviour {
         {
             if (game.madeSlotList.Count != 0 && Convert.ToInt32(mon.unitData2[game.madeSlotList[0], 14]) > 2)
             {
-                Debug.Log("YOU MADE : " + game.madeSlotList[0]);
+                //Debug.Log("YOU MADE : " + game.madeSlotList[0]);
                 game.PassTurnWithMake(game.madeSlotList[0]);
             }
             else if (game.madeSlotList.Count > 1 && Convert.ToInt32(mon.unitData2[game.madeSlotList[1], 14]) > 1)
             {
-                Debug.Log("YOU MADE : " + game.madeSlotList[1]);
+                //Debug.Log("YOU MADE : " + game.madeSlotList[1]);
                 game.PassTurnWithMake(game.madeSlotList[1]);
             }
             else if (game.madeSlotList.Count > 2 && Convert.ToInt32(mon.unitData2[game.madeSlotList[2], 14]) > 1)
             {
-                Debug.Log("YOU MADE : " + game.madeSlotList[2]);
+                //Debug.Log("YOU MADE : " + game.madeSlotList[2]);
                 game.PassTurnWithMake(game.madeSlotList[2]);
             }
             else if (game.madeSlotList.Count > 3 && Convert.ToInt32(mon.unitData2[game.madeSlotList[3], 14]) > 3)
             {
-                Debug.Log("YOU MADE : " + game.madeSlotList[3]);
+                //Debug.Log("YOU MADE : " + game.madeSlotList[3]);
                 game.PassTurnWithMake(game.madeSlotList[3]);
             }
             else if (game.madeSlotList.Count > 4 && Convert.ToInt32(mon.unitData2[game.madeSlotList[4], 14]) > 3)
             {
-                Debug.Log("YOU MADE : " + game.madeSlotList[4]);
+                //Debug.Log("YOU MADE : " + game.madeSlotList[4]);
                 game.PassTurnWithMake(game.madeSlotList[4]);
             }
             else if (game.madeSlotList.Count > 5 && Convert.ToInt32(mon.unitData2[game.madeSlotList[5], 14]) > 3)
             {
-                Debug.Log("YOU MADE : " + game.madeSlotList[5]);
+                //Debug.Log("YOU MADE : " + game.madeSlotList[5]);
                 game.PassTurnWithMake(game.madeSlotList[5]);
             }
             else

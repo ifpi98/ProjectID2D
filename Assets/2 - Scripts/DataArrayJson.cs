@@ -52,7 +52,7 @@ public class DataArrayJson : MonoBehaviour {
         for (int i = 0; i < mon.charcount; i++)
         {            
             charDearDegreeArray.Add(game.charDearDegree[i]);
-            Debug.Log(game.charDearDegree[i]);
+            //Debug.Log(game.charDearDegree[i]);
         }
 
         dearDegreeEncodedString1 = charDearDegreeObj.Print();
