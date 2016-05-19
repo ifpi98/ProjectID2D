@@ -71,7 +71,14 @@ public class Game : MonoBehaviour
 
             for (int i = 1; i < mon.charcount; i++)
             {
-                charDearDegree[i] = Convert.ToInt32(arr1[i].n);
+                try
+                {
+                    charDearDegree[i] = Convert.ToInt32(arr1[i].n);
+                }
+                catch
+                {
+                    Debug.Log("nullException??");                    
+                }
             }
         }
 
@@ -88,7 +95,15 @@ public class Game : MonoBehaviour
 
             for (int i = 1; i < mon.unitcount; i++)
             {
-                unitDebutHistory[i] = arr2[i].b;
+                try
+                {
+                    unitDebutHistory[i] = arr2[i].b;
+                }
+                catch
+                {
+                    Debug.Log("nullException??");
+                }
+                
             }
         }               
         
@@ -403,9 +418,9 @@ public class Game : MonoBehaviour
         if (unitDebutHistory[decideUnit] == false)
         {
             unitDebutHistory[decideUnit] = true;
-            Debug.Log("You just made them DO DEBUT : " + mon.unitData2[decideUnit, 1] + " Unit Number : " + decideUnit);
-            DI.SetUnitDebutHistoryString();
+            Debug.Log("You just made them DO DEBUT : " + mon.unitData2[decideUnit, 1] + " Unit Number : " + decideUnit);            
         }
+        DI.SetUnitDebutHistoryString();
 
         List<int> findMember = new List<int>();
         List<int> findMemberplace = new List<int>();
