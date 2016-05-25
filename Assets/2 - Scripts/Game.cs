@@ -25,6 +25,10 @@ public class Game : MonoBehaviour
     int[,] unitArray;
     public List<int> madeSlotList = new List<int>();
     int tempnum;
+    int maxSkillPoint;
+    bool skillcheck;
+    public float skillPoint;
+    public bool[] skillOnCheck;
     int[] tempnumarray;
     //public Texture tex1;
     public int[] makecounthistory;
@@ -109,6 +113,10 @@ public class Game : MonoBehaviour
         
         score = DI.GetExp();
         level = DI.GetLV();
+        maxSkillPoint = level * 10 + 100;
+        skillPoint = 0;
+        skillOnCheck = new bool[3];
+
         if (level == 0)
         {
             level = 1;
@@ -205,6 +213,14 @@ public class Game : MonoBehaviour
             secondcheck = true;
         }
                 
+        if (skillPoint <= maxSkillPoint)
+        { 
+            skillPoint = skillPoint + Time.deltaTime * 3;
+        }
+        if (skillPoint > maxSkillPoint)
+        {
+            skillPoint = maxSkillPoint;
+        }
 
     }
 
@@ -217,6 +233,7 @@ public class Game : MonoBehaviour
             if (score < Convert.ToInt32(mon.expLvData2[i, 2]))
             {
                 level = i-1;
+                maxSkillPoint = level * 10 + 100;
                 basicRemainTurn = Convert.ToInt32(mon.expLvData2[i - 1, 4]);
                 //Debug.Log("Level = " +  mon.expLvData2[i - 1, 1]);
                 //Debug.Log("bRT = " + mon.expLvData2[i - 1, 4]);
@@ -232,6 +249,44 @@ public class Game : MonoBehaviour
         }
     }
 
+    void SkillCheck()
+    {
+        skillcheck = true;
+        for (int i = 0; i < 3; i++)
+        {            
+            if (skillOnCheck[i] == true)
+            { 
+                switch (i)
+                {
+                    case 0:
+
+                        if (mon.charData2[tempnum, 3] != "Cute")
+                        {                         
+                            skillcheck = false;
+                        }
+                        break;
+
+                    case 1:
+
+                        if (mon.charData2[tempnum, 3] != "Cool")
+                        {
+                            skillcheck = false;
+                        }
+                        break;
+
+                    case 2:
+
+                        if (mon.charData2[tempnum, 3] != "Passion")
+                        {
+                            skillcheck = false;
+                        }
+                        break;
+                }
+            }
+        }
+    }
+
+
 
     public void PassTurnWithoutMake(bool check0, bool check1, bool check2, bool check3, bool check4)
     {
@@ -242,6 +297,7 @@ public class Game : MonoBehaviour
 
         if (check0 == false || remainturncardslot[0] == 0)
         {
+            int tempchecknum = 0;
             checkIsExisted[0] = true;
             while (checkIsExisted[0] == true)
             {
@@ -254,6 +310,17 @@ public class Game : MonoBehaviour
                     {
                         checkIsExisted[0] = true;
                         break;
+                    }
+                }
+
+                if (checkIsExisted[0] == false)
+                { 
+                    SkillCheck();
+
+                    if (skillcheck == false)
+                    {
+                        checkIsExisted[0] = true;
+                        //Debug.Log("SKILL CHECK");
                     }
                 }
             }
@@ -277,6 +344,17 @@ public class Game : MonoBehaviour
                         break;
                     }
                 }
+
+                if (checkIsExisted[1] == false)
+                {
+                    SkillCheck();
+
+                    if (skillcheck == false)
+                    {
+                        checkIsExisted[1] = true;
+                        //Debug.Log("SKILL CHECK");
+                    }
+                }
             }
             cardSlot[1] = tempnum;
             remainturncardslot[1] = basicRemainTurn + 1;
@@ -296,6 +374,17 @@ public class Game : MonoBehaviour
                     {
                         checkIsExisted[2] = true;
                         break;
+                    }
+                }
+
+                if (checkIsExisted[2] == false)
+                {
+                    SkillCheck();
+
+                    if (skillcheck == false)
+                    {
+                        checkIsExisted[2] = true;
+                        //Debug.Log("SKILL CHECK");
                     }
                 }
             }
@@ -319,6 +408,17 @@ public class Game : MonoBehaviour
                         break;
                     }
                 }
+
+                if (checkIsExisted[3] == false)
+                {
+                    SkillCheck();
+
+                    if (skillcheck == false)
+                    {
+                        checkIsExisted[3] = true;
+                        //Debug.Log("SKILL CHECK");
+                    }
+                }
             }
             cardSlot[3] = tempnum;
             remainturncardslot[3] = basicRemainTurn + 1;
@@ -340,6 +440,17 @@ public class Game : MonoBehaviour
                         break;
                     }
                 }
+
+                if (checkIsExisted[4] == false)
+                {
+                    SkillCheck();
+
+                    if (skillcheck == false)
+                    {
+                        checkIsExisted[4] = true;
+                        //Debug.Log("SKILL CHECK");
+                    }
+                }
             }
             cardSlot[4] = tempnum;
             remainturncardslot[4] = basicRemainTurn + 1;
@@ -350,6 +461,12 @@ public class Game : MonoBehaviour
             remainturncardslot[i] = remainturncardslot[i] - 1;
             checkremainTurncardslot[i] = true;
         }
+
+        for (int i = 0; i < 3; i++)
+        {
+            skillOnCheck[i] = false;
+        }
+
 
         totalTurn = totalTurn + 1;
 
@@ -471,6 +588,7 @@ public class Game : MonoBehaviour
                 sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]];
                 score = Convert.ToInt32(score + 50 * (1 + 0.1f * (combocount - 1)) + sumDearDegree);
                 makecounthistory[2] = makecounthistory[2] + 1;
+                skillPoint = skillPoint + findMemberplace.Count * 10;                
                 DI.SetMakeCountHistory();
                 DI.SetCharDearDegreeString();
                 break;
@@ -479,6 +597,7 @@ public class Game : MonoBehaviour
                 sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]] + charDearDegree[findMember[2]];
                 score = Convert.ToInt32(score + 200 * (1 + 0.1f * (combocount - 1)) + sumDearDegree);
                 makecounthistory[3] = makecounthistory[3] + 1;
+                skillPoint = skillPoint + findMemberplace.Count * 10;
                 DI.SetMakeCountHistory();
                 DI.SetCharDearDegreeString();
                 break;
@@ -487,6 +606,7 @@ public class Game : MonoBehaviour
                 sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]] + charDearDegree[findMember[2]] + charDearDegree[findMember[3]];
                 score = Convert.ToInt32(score + 900 * (1 + 0.1f * (combocount - 1)) + sumDearDegree);
                 makecounthistory[4] = makecounthistory[4] + 1;
+                skillPoint = skillPoint + findMemberplace.Count * 10;
                 DI.SetMakeCountHistory();
                 DI.SetCharDearDegreeString();
                 break;
@@ -495,6 +615,7 @@ public class Game : MonoBehaviour
                 sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]] + charDearDegree[findMember[2]] + charDearDegree[findMember[3]] + charDearDegree[findMember[4]];
                 score = Convert.ToInt32(score + 1600 * (1 + 0.1f * (combocount - 1)) + sumDearDegree);
                 makecounthistory[5] = makecounthistory[5] + 1;
+                skillPoint = skillPoint + findMemberplace.Count * 10;
                 DI.SetMakeCountHistory();
                 DI.SetCharDearDegreeString();
                 break;
@@ -540,6 +661,17 @@ public class Game : MonoBehaviour
                         break;
                     }
                 }
+
+                if (checkIsExisted[0] == false)
+                {
+                    SkillCheck();
+
+                    if (skillcheck == false)
+                    {
+                        checkIsExisted[0] = true;
+                        //Debug.Log("SKILL CHECK");
+                    }
+                }
             }
             cardSlot[0] = tempnum;
             remainturncardslot[0] = basicRemainTurn;
@@ -559,6 +691,17 @@ public class Game : MonoBehaviour
                     {
                         checkIsExisted[1] = true;
                         break;
+                    }
+                }
+
+                if (checkIsExisted[1] == false)
+                {
+                    SkillCheck();
+
+                    if (skillcheck == false)
+                    {
+                        checkIsExisted[1] = true;
+                        //Debug.Log("SKILL CHECK");
                     }
                 }
             }
@@ -582,6 +725,17 @@ public class Game : MonoBehaviour
                         break;
                     }
                 }
+
+                if (checkIsExisted[2] == false)
+                {
+                    SkillCheck();
+
+                    if (skillcheck == false)
+                    {
+                        checkIsExisted[2] = true;
+                        //Debug.Log("SKILL CHECK");
+                    }
+                }
             }
             cardSlot[2] = tempnum;
             remainturncardslot[2] = basicRemainTurn;
@@ -601,6 +755,17 @@ public class Game : MonoBehaviour
                     {
                         checkIsExisted[3] = true;
                         break;
+                    }
+                }
+
+                if (checkIsExisted[3] == false)
+                {
+                    SkillCheck();
+
+                    if (skillcheck == false)
+                    {
+                        checkIsExisted[3] = true;
+                        //Debug.Log("SKILL CHECK");
                     }
                 }
             }
@@ -624,10 +789,27 @@ public class Game : MonoBehaviour
                         break;
                     }
                 }
+
+                if (checkIsExisted[4] == false)
+                {
+                    SkillCheck();
+
+                    if (skillcheck == false)
+                    {
+                        checkIsExisted[4] = true;
+                        //Debug.Log("SKILL CHECK");
+                    }
+                }
             }
             cardSlot[4] = tempnum;
             remainturncardslot[4] = basicRemainTurn;
         }
+
+        for (int i = 0; i < 5; i++)
+        {
+            checkremainTurncardslot[i] = true;
+        }
+        
         checkExp();
     }
 

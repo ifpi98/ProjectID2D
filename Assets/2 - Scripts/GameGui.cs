@@ -28,11 +28,11 @@ public class GameGui : MonoBehaviour {
         void OnGUI()
     {
         var oldcolor = GUI.color;
-        cardSlot0 = mon.charData2[game.cardSlot[0], 1];
-        cardSlot1 = mon.charData2[game.cardSlot[1], 1];
-        cardSlot2 = mon.charData2[game.cardSlot[2], 1];
-        cardSlot3 = mon.charData2[game.cardSlot[3], 1];
-        cardSlot4 = mon.charData2[game.cardSlot[4], 1];
+        cardSlot0 = mon.charData2[game.cardSlot[0], 1] + "\n (" + mon.charData2[game.cardSlot[0], 3] + ")";
+        cardSlot1 = mon.charData2[game.cardSlot[1], 1] + "\n (" + mon.charData2[game.cardSlot[1], 3] + ")";
+        cardSlot2 = mon.charData2[game.cardSlot[2], 1] + "\n (" + mon.charData2[game.cardSlot[2], 3] + ")";
+        cardSlot3 = mon.charData2[game.cardSlot[3], 1] + "\n (" + mon.charData2[game.cardSlot[3], 3] + ")";
+        cardSlot4 = mon.charData2[game.cardSlot[4], 1] + "\n (" + mon.charData2[game.cardSlot[4], 3] + ")";
 
         if (game.checkremainTurncardslot[0] == false || game.remainturncardslot[0] == 0)
         {
@@ -129,6 +129,62 @@ public class GameGui : MonoBehaviour {
         }
 
         GUI.Button(new Rect(820, 10, 150, 100), "Duo : " + game.makecounthistory[2] + "\n Trio : " + game.makecounthistory[3] +"\n Quartet : " + game.makecounthistory[4] + "\n Quintet : " + game.makecounthistory[5]);
+
+        if (game.skillPoint > 100 && !game.skillOnCheck[0] == true)
+        {
+            GUI.color = oldcolor;
+            if (GUI.Button(new Rect(800, 150, 190, 90), "Skill(100) : Cute\n" + "\n 다음 턴까지 Cute 타입 \n아이돌만 등장합니다. "))
+            {
+                game.skillPoint = game.skillPoint - 100;
+                game.skillOnCheck[0] = true;
+                game.skillOnCheck[1] = false;
+                game.skillOnCheck[2] = false;
+            }
+        }
+
+        if (game.skillOnCheck[0] == true)
+        {
+            GUI.color = Color.yellow;
+            GUI.Button(new Rect(800, 150, 190, 90), "Cute 스킬 발동 중!\n" + "\n 다음 턴까지 Cute 타입 \n아이돌만 등장합니다. ");
+        }
+
+        if (game.skillPoint > 100 && !game.skillOnCheck[1] == true)
+        {
+            GUI.color = oldcolor;
+            if (GUI.Button(new Rect(800, 250, 190, 90), "Skill(100) : Cool\n" + "\n 다음 턴까지 Cool 타입 \n아이돌만 등장합니다. "))
+            {
+                game.skillPoint = game.skillPoint - 100;
+                game.skillOnCheck[0] = false;
+                game.skillOnCheck[1] = true;
+                game.skillOnCheck[2] = false;
+            }
+        }
+
+        if (game.skillOnCheck[1] == true)
+        {
+            GUI.color = Color.yellow;
+            GUI.Button(new Rect(800, 250, 190, 90), "Cool 스킬 발동 중!\n" + "\n 다음 턴까지 Cool 타입 \n아이돌만 등장합니다. ");
+        }
+
+        if (game.skillPoint > 100 && !game.skillOnCheck[2] == true)
+        {
+            GUI.color = oldcolor;
+            if (GUI.Button(new Rect(800, 350, 190, 90), "Skill(100) : Passion\n" + "\n 다음 턴까지 Passion 타입 \n아이돌만 등장합니다. "))
+            {
+                game.skillPoint = game.skillPoint - 100;
+                game.skillOnCheck[0] = false;
+                game.skillOnCheck[1] = false;
+                game.skillOnCheck[2] = true;
+            }
+        }
+
+        if (game.skillOnCheck[2] == true)
+        {
+            GUI.color = Color.yellow;
+            GUI.Button(new Rect(800, 350, 190, 90), "Passion 스킬 발동 중!\n" + "\n 다음 턴까지 Passion 타입 \n아이돌만 등장합니다. ");
+        }
+
+
 
         if (game.madeSlotList.Count != 0)
         {
@@ -458,8 +514,8 @@ public class GameGui : MonoBehaviour {
             game.makecounthistory[5] = DI.GetMakeCountHistory5();
             game.checkExp();
             game.charDearDegree = new int[mon.charcount];
-            game.unitDebutHistory = new bool[mon.unitcount];        
-            
+            game.unitDebutHistory = new bool[mon.unitcount];             
+
             Debug.Log("Game Data Reset" + game.score);
         }
 
@@ -468,7 +524,7 @@ public class GameGui : MonoBehaviour {
         int requireLevelup = Convert.ToInt32(mon.expLvData2[game.level + 1, 2]) - game.score;
 
         GUI.color = new Color32(255, 220, 55, 255);
-        GUI.Button(new Rect(100, 200, 150, 100), "Score : " + game.score + " (" + requireLevelup + ") "+  "\n Level : " + game.level + "\n MaxCombo : " + game.maxCombo + "\n TotalTurn : " + game.totalTurn);
+        GUI.Button(new Rect(100, 200, 150, 100), "SP : " + Convert.ToInt32(game.skillPoint) +  "\n Score : " + game.score + " (" + requireLevelup + ") "+  "\n Level : " + game.level + "\n MaxCombo : " + game.maxCombo + "\n TotalTurn : " + game.totalTurn);
 
         
         if (game.combocount != 0)
