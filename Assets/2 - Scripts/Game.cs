@@ -641,169 +641,53 @@ public class Game : MonoBehaviour
 
     void PassTurnWithMakeCardChange(bool check0, bool check1, bool check2, bool check3, bool check4)
     {
+                
+        bool[] checkIsExisted = new bool[5];        
+        bool[] checknumber = new bool[] { check0, check1, check2, check3, check4 };
 
-        //bool internalcheck = false;
-        bool[] checkIsExisted = new bool[5];
+        // 무작위로 카드를 뽑습니다. (1과 캐릭터 수 사이의 숫자만큼)
+        // 단 선택된 카드는 이미 슬롯에 있는 카드여선 안되고, 해당 카드의 등장 레벨 숫자가 현재의 레벨보다 커선 안됩니다.
 
-        if (check0 == false)
+        for (int i = 0; i < 5; i++)
         {
-            checkIsExisted[0] = true;
-            while (checkIsExisted[0] == true)
+            if (checknumber[i]== false)
             {
-                tempnum = UnityEngine.Random.Range(1, mon.charcount);
-                for (int i = 0; i < 5; i++)
+                checkIsExisted[i] = true;
+                while (checkIsExisted[i] == true)
                 {
-                    checkIsExisted[0] = false;
-
-                    if (tempnum == cardSlot[i] || Convert.ToInt32(mon.charData2[tempnum, 2]) > level)
+                    tempnum = UnityEngine.Random.Range(1, mon.charcount);
+                    for (int y = 0; y < 5; y++)
                     {
-                        checkIsExisted[0] = true;
-                        break;
+                        checkIsExisted[i] = false;
+
+                        if (tempnum == cardSlot[y] || Convert.ToInt32(mon.charData2[tempnum, 2]) > level)
+                        {
+                            checkIsExisted[i] = true;
+                            break;
+                        }
+                    }
+
+                    // 체크값이 실패라면, 스킬이 켜져 있는 지를 확인합니다. 
+                    // 스킬 체크에서 실패한다면 다시 while로 돌아가서 이 과정을 반복합니다.
+
+                    if (checkIsExisted[i] == false)
+                    {
+                        SkillCheck();
+
+                        if (skillcheck == false)
+                        {
+                            checkIsExisted[i] = true;
+                            //Debug.Log("SKILL CHECK");
+                        }
                     }
                 }
-
-                if (checkIsExisted[0] == false)
-                {
-                    SkillCheck();
-
-                    if (skillcheck == false)
-                    {
-                        checkIsExisted[0] = true;
-                        //Debug.Log("SKILL CHECK");
-                    }
-                }
+                cardSlot[i] = tempnum;
+                remainturncardslot[i] = basicRemainTurn;
             }
-            cardSlot[0] = tempnum;
-            remainturncardslot[0] = basicRemainTurn;
         }
+               
 
-        if (check1 == false)
-        {
-            checkIsExisted[1] = true;
-            while (checkIsExisted[1] == true)
-            {
-                tempnum = UnityEngine.Random.Range(1, mon.charcount);
-                for (int i = 0; i < 5; i++)
-                {
-                    checkIsExisted[1] = false;
-
-                    if (tempnum == cardSlot[i] || Convert.ToInt32(mon.charData2[tempnum, 2]) > level)
-                    {
-                        checkIsExisted[1] = true;
-                        break;
-                    }
-                }
-
-                if (checkIsExisted[1] == false)
-                {
-                    SkillCheck();
-
-                    if (skillcheck == false)
-                    {
-                        checkIsExisted[1] = true;
-                        //Debug.Log("SKILL CHECK");
-                    }
-                }
-            }
-            cardSlot[1] = tempnum;
-            remainturncardslot[1] = basicRemainTurn;
-        }
-
-        if (check2 == false)
-        {
-            checkIsExisted[2] = true;
-            while (checkIsExisted[2] == true)
-            {
-                tempnum = UnityEngine.Random.Range(1, mon.charcount);
-                for (int i = 0; i < 5; i++)
-                {
-                    checkIsExisted[2] = false;
-
-                    if (tempnum == cardSlot[i] || Convert.ToInt32(mon.charData2[tempnum, 2]) > level)
-                    {
-                        checkIsExisted[2] = true;
-                        break;
-                    }
-                }
-
-                if (checkIsExisted[2] == false)
-                {
-                    SkillCheck();
-
-                    if (skillcheck == false)
-                    {
-                        checkIsExisted[2] = true;
-                        //Debug.Log("SKILL CHECK");
-                    }
-                }
-            }
-            cardSlot[2] = tempnum;
-            remainturncardslot[2] = basicRemainTurn;
-        }
-
-        if (check3 == false)
-        {
-            checkIsExisted[3] = true;
-            while (checkIsExisted[3] == true)
-            {
-                tempnum = UnityEngine.Random.Range(1, mon.charcount);
-                for (int i = 0; i < 5; i++)
-                {
-                    checkIsExisted[3] = false;
-
-                    if (tempnum == cardSlot[i] || Convert.ToInt32(mon.charData2[tempnum, 2]) > level)
-                    {
-                        checkIsExisted[3] = true;
-                        break;
-                    }
-                }
-
-                if (checkIsExisted[3] == false)
-                {
-                    SkillCheck();
-
-                    if (skillcheck == false)
-                    {
-                        checkIsExisted[3] = true;
-                        //Debug.Log("SKILL CHECK");
-                    }
-                }
-            }
-            cardSlot[3] = tempnum;
-            remainturncardslot[3] = basicRemainTurn;
-        }
-
-        if (check4 == false)
-        {
-            checkIsExisted[4] = true;
-            while (checkIsExisted[4] == true)
-            {
-                tempnum = UnityEngine.Random.Range(1, mon.charcount);
-                for (int i = 0; i < 5; i++)
-                {
-                    checkIsExisted[4] = false;
-
-                    if (tempnum == cardSlot[i] || Convert.ToInt32(mon.charData2[tempnum, 2]) > level)
-                    {
-                        checkIsExisted[4] = true;
-                        break;
-                    }
-                }
-
-                if (checkIsExisted[4] == false)
-                {
-                    SkillCheck();
-
-                    if (skillcheck == false)
-                    {
-                        checkIsExisted[4] = true;
-                        //Debug.Log("SKILL CHECK");
-                    }
-                }
-            }
-            cardSlot[4] = tempnum;
-            remainturncardslot[4] = basicRemainTurn;
-        }
+        // 체크해놨던 슬롯을 모두 해제하고, 경험치 체크를 한번 돌립니다.
 
         for (int i = 0; i < 5; i++)
         {
