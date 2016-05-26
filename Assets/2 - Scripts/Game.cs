@@ -115,7 +115,7 @@ public class Game : MonoBehaviour
         level = DI.GetLV();
         maxSkillPoint = level * 10 + 100;
         skillPoint = 0;
-        skillOnCheck = new bool[3];
+        skillOnCheck = new bool[5];
 
         if (level == 0)
         {
@@ -249,9 +249,43 @@ public class Game : MonoBehaviour
         }
     }
 
+    void SkillCheck2()
+    {
+        if (skillOnCheck[3] == true)
+        {
+            if (mon.charAge[tempnum] < 17)
+            {
+                // do nothing. it means OK!
+            }
+            else
+            {
+                skillcheck = false;                
+            }
+        }
+        else if (skillOnCheck[4] == true)
+        {
+            if (mon.charAge[tempnum] > 16)
+            {
+                // do nothing. it means OK!
+            }
+            else
+            {
+                skillcheck = false;                
+            }
+        }
+    }
+
     void SkillCheck()
     {
         skillcheck = true;
+
+        SkillCheck2();
+
+        if (skillcheck == false)
+        {
+            return;
+        }        
+
         for (int i = 0; i < 3; i++)
         {            
             if (skillOnCheck[i] == true)
@@ -261,26 +295,29 @@ public class Game : MonoBehaviour
                     case 0:
 
                         if (mon.charData2[tempnum, 3] != "Cute")
-                        {                         
-                            skillcheck = false;
-                        }
+                        {                        
+                            skillcheck = false;        
+                        }                                                
                         break;
 
                     case 1:
 
                         if (mon.charData2[tempnum, 3] != "Cool")
                         {
-                            skillcheck = false;
+                            skillcheck = false;                        
                         }
+                                                
                         break;
 
                     case 2:
 
                         if (mon.charData2[tempnum, 3] != "Passion")
                         {
-                            skillcheck = false;
+                            skillcheck = false;                            
                         }
+                                                
                         break;
+
                 }
             }
         }
@@ -338,7 +375,7 @@ public class Game : MonoBehaviour
             checkremainTurncardslot[i] = true;
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
             skillOnCheck[i] = false;
         }

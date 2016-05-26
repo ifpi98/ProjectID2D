@@ -10,6 +10,7 @@ public class Monster : MonoBehaviour
     public string[,] expLvData2 = new string[200, 15];
     public string[,] locData2 = new string[400, 15];
     public int[,] unitData3 = new int[200, 5];
+    public int[] charAge;
     public int charcount;
     public int unitcount;
     public int expLvcount;
@@ -19,6 +20,7 @@ public class Monster : MonoBehaviour
     void Start()
     {
 
+        charAge = new int[200];
         SetCharData();
         SetUnitData();
         SetExpLvData();
@@ -32,6 +34,13 @@ public class Monster : MonoBehaviour
         CharParser Char1 = GameObject.Find("DataObj").GetComponent<CharParser>();
         charData2 = Char1._tempCD2;
         charcount = Char1._charData.Length;
+
+        for (int i = 1; i < charcount; i++)
+        {
+            charAge[i] = Convert.ToInt32(charData2[i, 4]);
+            //Debug.Log(charData2[i, 4]);
+        }
+        
         //Debug.Log(charData2[1, 1]);
         //Debug.Log(charcount);
     }
