@@ -28,105 +28,105 @@ public class GameGui : MonoBehaviour {
         void OnGUI()
     {
         var oldcolor = GUI.color;
-        cardSlot0 = mon.charData2[game.cardSlot[0], 1] + "\n(" + mon.charData2[game.cardSlot[0], 3] + ")";
-        cardSlot1 = mon.charData2[game.cardSlot[1], 1] + "\n(" + mon.charData2[game.cardSlot[1], 3] + ")";
-        cardSlot2 = mon.charData2[game.cardSlot[2], 1] + "\n(" + mon.charData2[game.cardSlot[2], 3] + ")";
-        cardSlot3 = mon.charData2[game.cardSlot[3], 1] + "\n(" + mon.charData2[game.cardSlot[3], 3] + ")";
-        cardSlot4 = mon.charData2[game.cardSlot[4], 1] + "\n(" + mon.charData2[game.cardSlot[4], 3] + ")";
+        //cardSlot0 = mon.charData2[game.cardSlot[0], 1] + "\n(" + mon.charData2[game.cardSlot[0], 3] + ")";
+        //cardSlot1 = mon.charData2[game.cardSlot[1], 1] + "\n(" + mon.charData2[game.cardSlot[1], 3] + ")";
+        //cardSlot2 = mon.charData2[game.cardSlot[2], 1] + "\n(" + mon.charData2[game.cardSlot[2], 3] + ")";
+        //cardSlot3 = mon.charData2[game.cardSlot[3], 1] + "\n(" + mon.charData2[game.cardSlot[3], 3] + ")";
+        //cardSlot4 = mon.charData2[game.cardSlot[4], 1] + "\n(" + mon.charData2[game.cardSlot[4], 3] + ")";
 
-        if (game.checkremainTurncardslot[0] == false || game.remainturncardslot[0] == 0)
-        {
-            GUI.color = new Color32(255, 127, 0, 255);
-            if (GUI.Button(new Rect(10, 10, 150, 100), cardSlot0))
-            {
-                game.checkremainTurncardslot[0] = !game.checkremainTurncardslot[0];
-            }
-        }
-        else
-        {
-            GUI.color = oldcolor;
-            if (GUI.Button(new Rect(10, 10, 150, 100), cardSlot0))
-            {
-                game.checkremainTurncardslot[0] = !game.checkremainTurncardslot[0];
-            }
+        //if (game.checkremainTurncardslot[0] == false || game.remainturncardslot[0] == 0)
+        //{
+        //    GUI.color = new Color32(255, 127, 0, 255);
+        //    if (GUI.Button(new Rect(10, 10, 150, 100), cardSlot0))
+        //    {
+        //        game.checkremainTurncardslot[0] = !game.checkremainTurncardslot[0];
+        //    }
+        //}
+        //else
+        //{
+        //    GUI.color = oldcolor;
+        //    if (GUI.Button(new Rect(10, 10, 150, 100), cardSlot0))
+        //    {
+        //        game.checkremainTurncardslot[0] = !game.checkremainTurncardslot[0];
+        //    }
 
-        }
+        //}
 
-        if (game.checkremainTurncardslot[1] == false || game.remainturncardslot[1] == 0)
-        {
-            GUI.color = new Color32(255, 127, 0, 255);
-            if (GUI.Button(new Rect(160, 10, 150, 100), cardSlot1))
-            {
-                game.checkremainTurncardslot[1] = !game.checkremainTurncardslot[1];
-            }
+        //if (game.checkremainTurncardslot[1] == false || game.remainturncardslot[1] == 0)
+        //{
+        //    GUI.color = new Color32(255, 127, 0, 255);
+        //    if (GUI.Button(new Rect(160, 10, 150, 100), cardSlot1))
+        //    {
+        //        game.checkremainTurncardslot[1] = !game.checkremainTurncardslot[1];
+        //    }
 
-        }
-        else
-        {
-            GUI.color = oldcolor;
-            if (GUI.Button(new Rect(160, 10, 150, 100), cardSlot1))
-            {
-                game.checkremainTurncardslot[1] = !game.checkremainTurncardslot[1];
-            }
+        //}
+        //else
+        //{
+        //    GUI.color = oldcolor;
+        //    if (GUI.Button(new Rect(160, 10, 150, 100), cardSlot1))
+        //    {
+        //        game.checkremainTurncardslot[1] = !game.checkremainTurncardslot[1];
+        //    }
 
-        }
+        //}
 
-        if (game.checkremainTurncardslot[2] == false || game.remainturncardslot[2] == 0)
-        {
-            GUI.color = new Color32(255, 127, 0, 255);
-            if (GUI.Button(new Rect(310, 10, 150, 100), cardSlot2))
-            {
-                game.checkremainTurncardslot[2] = !game.checkremainTurncardslot[2];
-            }
+        //if (game.checkremainTurncardslot[2] == false || game.remainturncardslot[2] == 0)
+        //{
+        //    GUI.color = new Color32(255, 127, 0, 255);
+        //    if (GUI.Button(new Rect(310, 10, 150, 100), cardSlot2))
+        //    {
+        //        game.checkremainTurncardslot[2] = !game.checkremainTurncardslot[2];
+        //    }
 
-        }
-        else
-        {
-            GUI.color = oldcolor;
-            if (GUI.Button(new Rect(310, 10, 150, 100), cardSlot2))
-            {
-                game.checkremainTurncardslot[2] = !game.checkremainTurncardslot[2];
-            }
+        //}
+        //else
+        //{
+        //    GUI.color = oldcolor;
+        //    if (GUI.Button(new Rect(310, 10, 150, 100), cardSlot2))
+        //    {
+        //        game.checkremainTurncardslot[2] = !game.checkremainTurncardslot[2];
+        //    }
 
-        }
+        //}
 
-        if (game.checkremainTurncardslot[3] == false || game.remainturncardslot[3] == 0)
-        {
-            GUI.color = new Color32(255, 127, 0, 255);
-            if (GUI.Button(new Rect(460, 10, 150, 100), cardSlot3))
-            {
-                game.checkremainTurncardslot[3] = !game.checkremainTurncardslot[3];
-            }
+        //if (game.checkremainTurncardslot[3] == false || game.remainturncardslot[3] == 0)
+        //{
+        //    GUI.color = new Color32(255, 127, 0, 255);
+        //    if (GUI.Button(new Rect(460, 10, 150, 100), cardSlot3))
+        //    {
+        //        game.checkremainTurncardslot[3] = !game.checkremainTurncardslot[3];
+        //    }
 
-        }
-        else
-        {
-            GUI.color = oldcolor;
-            if (GUI.Button(new Rect(460, 10, 150, 100), cardSlot3))
-            {
-                game.checkremainTurncardslot[3] = !game.checkremainTurncardslot[3];
-            }
+        //}
+        //else
+        //{
+        //    GUI.color = oldcolor;
+        //    if (GUI.Button(new Rect(460, 10, 150, 100), cardSlot3))
+        //    {
+        //        game.checkremainTurncardslot[3] = !game.checkremainTurncardslot[3];
+        //    }
 
-        }
+        //}
 
-        if (game.checkremainTurncardslot[4] == false || game.remainturncardslot[4] == 0)
-        {
-            GUI.color = new Color32(255, 127, 0, 255);
-            if (GUI.Button(new Rect(610, 10, 150, 100), cardSlot4))
-            {
-                game.checkremainTurncardslot[4] = !game.checkremainTurncardslot[4];
-            }
+        //if (game.checkremainTurncardslot[4] == false || game.remainturncardslot[4] == 0)
+        //{
+        //    GUI.color = new Color32(255, 127, 0, 255);
+        //    if (GUI.Button(new Rect(610, 10, 150, 100), cardSlot4))
+        //    {
+        //        game.checkremainTurncardslot[4] = !game.checkremainTurncardslot[4];
+        //    }
 
-        }
-        else
-        {
-            GUI.color = oldcolor;
-            if (GUI.Button(new Rect(610, 10, 150, 100), cardSlot4))
-            {
-                game.checkremainTurncardslot[4] = !game.checkremainTurncardslot[4];
-            }
+        //}
+        //else
+        //{
+        //    GUI.color = oldcolor;
+        //    if (GUI.Button(new Rect(610, 10, 150, 100), cardSlot4))
+        //    {
+        //        game.checkremainTurncardslot[4] = !game.checkremainTurncardslot[4];
+        //    }
 
-        }
+        //}
 
         GUI.Button(new Rect(820, 10, 150, 100), "Duo : " + game.makecounthistory[2] + "\n Trio : " + game.makecounthistory[3] +"\n Quartet : " + game.makecounthistory[4] + "\n Quintet : " + game.makecounthistory[5]);
 
@@ -461,27 +461,27 @@ public class GameGui : MonoBehaviour {
 
         }
 
-        if (game.checkremainTurncardslot[0] == false || game.remainturncardslot[0] == 0
-            || game.checkremainTurncardslot[1] == false || game.remainturncardslot[1] == 0
-            || game.checkremainTurncardslot[2] == false || game.remainturncardslot[2] == 0
-            || game.checkremainTurncardslot[3] == false || game.remainturncardslot[3] == 0
-            || game.checkremainTurncardslot[4] == false || game.remainturncardslot[4] == 0)
-        {
-            GUI.color = oldcolor;
-            if (Input.GetKey(KeyCode.A) || GUI.Button(new Rect(280, 200, 250, 100), "버튼을 누르면 다음 턴이 진행됩니다." + "\n 변경할 멤버를 더 고를 수 있습니다."))
-            {
-                if (game.thirdcheck == false)
-                {
-                    game.madeSlotList.Clear();
-                    game.secondcheck = false;
-                }
-            }
-        }
-        else
-        {
-            GUI.color = Color.red;
-            GUI.Button(new Rect(280, 200, 250, 100), "변경할 멤버를 고르세요.");
-        }
+        //if (game.checkremainTurncardslot[0] == false || game.remainturncardslot[0] == 0
+        //    || game.checkremainTurncardslot[1] == false || game.remainturncardslot[1] == 0
+        //    || game.checkremainTurncardslot[2] == false || game.remainturncardslot[2] == 0
+        //    || game.checkremainTurncardslot[3] == false || game.remainturncardslot[3] == 0
+        //    || game.checkremainTurncardslot[4] == false || game.remainturncardslot[4] == 0)
+        //{
+        //    GUI.color = oldcolor;
+        //    if (Input.GetKey(KeyCode.A) || GUI.Button(new Rect(280, 200, 250, 100), "버튼을 누르면 다음 턴이 진행됩니다." + "\n 변경할 멤버를 더 고를 수 있습니다."))
+        //    {
+        //        if (game.thirdcheck == false)
+        //        {
+        //            game.madeSlotList.Clear();
+        //            game.secondcheck = false;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    GUI.color = Color.red;
+        //    GUI.Button(new Rect(280, 200, 250, 100), "변경할 멤버를 고르세요.");
+        //}
 
         //if (Input.GetKey(KeyCode.E))
         //{
@@ -555,29 +555,29 @@ public class GameGui : MonoBehaviour {
             Debug.Log("Game Data Reset" + game.score);
         }
 
-        GUI.color = oldcolor;
+        //GUI.color = oldcolor;
 
-        int requireLevelup = Convert.ToInt32(mon.expLvData2[game.level + 1, 2]) - game.score;
+        //int requireLevelup = Convert.ToInt32(mon.expLvData2[game.level + 1, 2]) - game.score;
 
-        GUI.color = new Color32(255, 220, 55, 255);
-        GUI.Button(new Rect(100, 200, 150, 100), "SP : " + Convert.ToInt32(game.skillPoint) +  "\n Score : " + game.score + " (" + requireLevelup + ") "+  "\n Level : " + game.level + "\n MaxCombo : " + game.maxCombo + "\n TotalTurn : " + game.totalTurn);
+        //GUI.color = new Color32(255, 220, 55, 255);
+        //GUI.Button(new Rect(100, 200, 150, 100), "SP : " + Convert.ToInt32(game.skillPoint) +  "\n Score : " + game.score + " (" + requireLevelup + ") "+  "\n Level : " + game.level + "\n MaxCombo : " + game.maxCombo + "\n TotalTurn : " + game.totalTurn);
 
         
-        if (game.combocount != 0)
-        {
-            GUI.Button(new Rect(560, 200, 200, 100), "ComboCount : " + game.combocount + " " + finishWord);
-        }
-        GUI.color = oldcolor;
+        //if (game.combocount != 0)
+        //{
+        //    GUI.Button(new Rect(560, 200, 200, 100), "ComboCount : " + game.combocount + " " + finishWord);
+        //}
+        //GUI.color = oldcolor;
 
 
-        if (game.madeSlotList.Count == 0)
-        {
-            finishWord = "Done!";
-        }
-        else
-        {
-            finishWord = "";
-        }
+        //if (game.madeSlotList.Count == 0)
+        //{
+        //    finishWord = "Done!";
+        //}
+        //else
+        //{
+        //    finishWord = "";
+        //}
 
 
         if (game.thirdcheck == true)
@@ -590,60 +590,60 @@ public class GameGui : MonoBehaviour {
         }
 
 
-        if (game.remainturncardslot[0] == 0)
-        {
-            GUI.color = Color.red;
-            GUI.Box(new Rect(10, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[0]);
-        }
-        else
-        {
-            GUI.color = oldcolor;
-            GUI.Box(new Rect(10, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[0]);
-        }
+        //if (game.remainturncardslot[0] == 0)
+        //{
+        //    GUI.color = Color.red;
+        //    GUI.Box(new Rect(10, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[0]);
+        //}
+        //else
+        //{
+        //    GUI.color = oldcolor;
+        //    GUI.Box(new Rect(10, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[0]);
+        //}
 
-        if (game.remainturncardslot[1] == 0)
-        {
-            GUI.color = Color.red;
-            GUI.Box(new Rect(160, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[1]);
-        }
-        else
-        {
-            GUI.color = oldcolor;
-            GUI.Box(new Rect(160, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[1]);
-        }
+        //if (game.remainturncardslot[1] == 0)
+        //{
+        //    GUI.color = Color.red;
+        //    GUI.Box(new Rect(160, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[1]);
+        //}
+        //else
+        //{
+        //    GUI.color = oldcolor;
+        //    GUI.Box(new Rect(160, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[1]);
+        //}
 
-        if (game.remainturncardslot[2] == 0)
-        {
-            GUI.color = Color.red;
-            GUI.Box(new Rect(310, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[2]);
-        }
-        else
-        {
-            GUI.color = oldcolor;
-            GUI.Box(new Rect(310, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[2]);
-        }
+        //if (game.remainturncardslot[2] == 0)
+        //{
+        //    GUI.color = Color.red;
+        //    GUI.Box(new Rect(310, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[2]);
+        //}
+        //else
+        //{
+        //    GUI.color = oldcolor;
+        //    GUI.Box(new Rect(310, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[2]);
+        //}
 
-        if (game.remainturncardslot[3] == 0)
-        {
-            GUI.color = Color.red;
-            GUI.Box(new Rect(460, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[3]);
-        }
-        else
-        {
-            GUI.color = oldcolor;
-            GUI.Box(new Rect(460, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[3]);
-        }
+        //if (game.remainturncardslot[3] == 0)
+        //{
+        //    GUI.color = Color.red;
+        //    GUI.Box(new Rect(460, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[3]);
+        //}
+        //else
+        //{
+        //    GUI.color = oldcolor;
+        //    GUI.Box(new Rect(460, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[3]);
+        //}
 
-        if (game.remainturncardslot[4] == 0)
-        {
-            GUI.color = Color.red;
-            GUI.Box(new Rect(610, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[4]);
-        }
-        else
-        {
-            GUI.color = oldcolor;
-            GUI.Box(new Rect(610, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[4]);
-        }
+        //if (game.remainturncardslot[4] == 0)
+        //{
+        //    GUI.color = Color.red;
+        //    GUI.Box(new Rect(610, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[4]);
+        //}
+        //else
+        //{
+        //    GUI.color = oldcolor;
+        //    GUI.Box(new Rect(610, 120, 150, 25), "남은 턴 : " + game.remainturncardslot[4]);
+        //}
         
 
     }
