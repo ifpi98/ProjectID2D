@@ -222,227 +222,227 @@ public class GameGui : MonoBehaviour {
 
 
 
-        if (game.madeSlotList.Count != 0)
-        {
-            //mon = GameObject.Find("GameObj").GetComponent<Monster>();
-            StringBuilder str0 = new StringBuilder();
+        //if (game.madeSlotList.Count != 0)
+        //{
+        //    //mon = GameObject.Find("GameObj").GetComponent<Monster>();
+        //    StringBuilder str0 = new StringBuilder();
 
-            if (game.unitDebutHistory[game.madeSlotList[0]])
-            {
-                str0.Append(mon.unitData2[game.madeSlotList[0], 1]);
-            }
-            else
-            {
-                str0.Append("?아직 데뷰하지 않은 유닛?");
-            }            
-            str0.Append(" : ");
-            str0.Append(mon.unitData2[game.madeSlotList[0], 9]);
-            str0.Append(" ");
-            str0.Append(mon.unitData2[game.madeSlotList[0], 10]);
-            str0.Append(" ");
-            str0.Append(mon.unitData2[game.madeSlotList[0], 11]);
-            str0.Append(" ");
-            str0.Append(mon.unitData2[game.madeSlotList[0], 12]);
-            str0.Append(" ");
-            str0.Append(mon.unitData2[game.madeSlotList[0], 13]);
+        //    if (game.unitDebutHistory[game.madeSlotList[0]])
+        //    {
+        //        str0.Append(mon.unitData2[game.madeSlotList[0], 1]);
+        //    }
+        //    else
+        //    {
+        //        str0.Append("?아직 데뷰하지 않은 유닛?");
+        //    }            
+        //    str0.Append(" : ");
+        //    str0.Append(mon.unitData2[game.madeSlotList[0], 9]);
+        //    str0.Append(" ");
+        //    str0.Append(mon.unitData2[game.madeSlotList[0], 10]);
+        //    str0.Append(" ");
+        //    str0.Append(mon.unitData2[game.madeSlotList[0], 11]);
+        //    str0.Append(" ");
+        //    str0.Append(mon.unitData2[game.madeSlotList[0], 12]);
+        //    str0.Append(" ");
+        //    str0.Append(mon.unitData2[game.madeSlotList[0], 13]);
 
-            //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
-            //string aa = Convert.ToString(game.madeSlotList[0]);
-            GUI.color = Color.green;
-            if (GUI.Button(new Rect(10, 350, 750, 40), str0.ToString()))
-            {             
-                game.PassTurnWithMake(game.madeSlotList[0]);
-            }
-        }
+        //    //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
+        //    //string aa = Convert.ToString(game.madeSlotList[0]);
+        //    GUI.color = Color.green;
+        //    if (GUI.Button(new Rect(10, 350, 750, 40), str0.ToString()))
+        //    {             
+        //        game.PassTurnWithMake(game.madeSlotList[0]);
+        //    }
+        //}
 
-        if (game.madeSlotList.Count > 1)
-        {
-            //mon = GameObject.Find("GameObj").GetComponent<Monster>();
-            StringBuilder str1 = new StringBuilder();
-            if (game.unitDebutHistory[game.madeSlotList[1]])
-            {
-                str1.Append(mon.unitData2[game.madeSlotList[1], 1]);
-            }
-            else
-            {
-                str1.Append("?아직 데뷰하지 않은 유닛?");
-            }            
-            str1.Append(" : ");
-            str1.Append(mon.unitData2[game.madeSlotList[1], 9]);
-            str1.Append(" ");
-            str1.Append(mon.unitData2[game.madeSlotList[1], 10]);
-            str1.Append(" ");
-            str1.Append(mon.unitData2[game.madeSlotList[1], 11]);
-            str1.Append(" ");
-            str1.Append(mon.unitData2[game.madeSlotList[1], 12]);
-            str1.Append(" ");
-            str1.Append(mon.unitData2[game.madeSlotList[1], 13]);
+        //if (game.madeSlotList.Count > 1)
+        //{
+        //    //mon = GameObject.Find("GameObj").GetComponent<Monster>();
+        //    StringBuilder str1 = new StringBuilder();
+        //    if (game.unitDebutHistory[game.madeSlotList[1]])
+        //    {
+        //        str1.Append(mon.unitData2[game.madeSlotList[1], 1]);
+        //    }
+        //    else
+        //    {
+        //        str1.Append("?아직 데뷰하지 않은 유닛?");
+        //    }            
+        //    str1.Append(" : ");
+        //    str1.Append(mon.unitData2[game.madeSlotList[1], 9]);
+        //    str1.Append(" ");
+        //    str1.Append(mon.unitData2[game.madeSlotList[1], 10]);
+        //    str1.Append(" ");
+        //    str1.Append(mon.unitData2[game.madeSlotList[1], 11]);
+        //    str1.Append(" ");
+        //    str1.Append(mon.unitData2[game.madeSlotList[1], 12]);
+        //    str1.Append(" ");
+        //    str1.Append(mon.unitData2[game.madeSlotList[1], 13]);
 
-            //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
-            //string aa = Convert.ToString(game.madeSlotList[0]);
-            if (GUI.Button(new Rect(10, 400, 750, 40), str1.ToString()))
-            {
-                game.PassTurnWithMake(game.madeSlotList[1]);
-            }
-        }
+        //    //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
+        //    //string aa = Convert.ToString(game.madeSlotList[0]);
+        //    if (GUI.Button(new Rect(10, 400, 750, 40), str1.ToString()))
+        //    {
+        //        game.PassTurnWithMake(game.madeSlotList[1]);
+        //    }
+        //}
 
-        if (game.madeSlotList.Count > 2)
-        {
-            //mon = GameObject.Find("GameObj").GetComponent<Monster>();
-            StringBuilder str2 = new StringBuilder();
-            if (game.unitDebutHistory[game.madeSlotList[2]])
-            {
-                str2.Append(mon.unitData2[game.madeSlotList[2], 1]);
-            }
-            else
-            {
-                str2.Append("?아직 데뷰하지 않은 유닛?");
-            }
-            str2.Append(" : ");
-            str2.Append(mon.unitData2[game.madeSlotList[2], 9]);
-            str2.Append(" ");
-            str2.Append(mon.unitData2[game.madeSlotList[2], 10]);
-            str2.Append(" ");
-            str2.Append(mon.unitData2[game.madeSlotList[2], 11]);
-            str2.Append(" ");
-            str2.Append(mon.unitData2[game.madeSlotList[2], 12]);
-            str2.Append(" ");
-            str2.Append(mon.unitData2[game.madeSlotList[2], 13]);
+        //if (game.madeSlotList.Count > 2)
+        //{
+        //    //mon = GameObject.Find("GameObj").GetComponent<Monster>();
+        //    StringBuilder str2 = new StringBuilder();
+        //    if (game.unitDebutHistory[game.madeSlotList[2]])
+        //    {
+        //        str2.Append(mon.unitData2[game.madeSlotList[2], 1]);
+        //    }
+        //    else
+        //    {
+        //        str2.Append("?아직 데뷰하지 않은 유닛?");
+        //    }
+        //    str2.Append(" : ");
+        //    str2.Append(mon.unitData2[game.madeSlotList[2], 9]);
+        //    str2.Append(" ");
+        //    str2.Append(mon.unitData2[game.madeSlotList[2], 10]);
+        //    str2.Append(" ");
+        //    str2.Append(mon.unitData2[game.madeSlotList[2], 11]);
+        //    str2.Append(" ");
+        //    str2.Append(mon.unitData2[game.madeSlotList[2], 12]);
+        //    str2.Append(" ");
+        //    str2.Append(mon.unitData2[game.madeSlotList[2], 13]);
 
-            //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
-            //string aa = Convert.ToString(game.madeSlotList[0]);
-            if (GUI.Button(new Rect(10, 450, 750, 40), str2.ToString()))
-            {
-                game.PassTurnWithMake(game.madeSlotList[2]);
-            }
+        //    //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
+        //    //string aa = Convert.ToString(game.madeSlotList[0]);
+        //    if (GUI.Button(new Rect(10, 450, 750, 40), str2.ToString()))
+        //    {
+        //        game.PassTurnWithMake(game.madeSlotList[2]);
+        //    }
 
-        }
+        //}
 
-        if (game.madeSlotList.Count > 3)
-        {
-            //mon = GameObject.Find("GameObj").GetComponent<Monster>();
-            StringBuilder str3 = new StringBuilder();
-            if (game.unitDebutHistory[game.madeSlotList[3]])
-            {
-                str3.Append(mon.unitData2[game.madeSlotList[3], 1]);
-            }
-            else
-            {
-                str3.Append("?아직 데뷰하지 않은 유닛?");
-            }
-            str3.Append(" : ");
-            str3.Append(mon.unitData2[game.madeSlotList[3], 9]);
-            str3.Append(" ");
-            str3.Append(mon.unitData2[game.madeSlotList[3], 10]);
-            str3.Append(" ");
-            str3.Append(mon.unitData2[game.madeSlotList[3], 11]);
-            str3.Append(" ");
-            str3.Append(mon.unitData2[game.madeSlotList[3], 12]);
-            str3.Append(" ");
-            str3.Append(mon.unitData2[game.madeSlotList[3], 13]);
+        //if (game.madeSlotList.Count > 3)
+        //{
+        //    //mon = GameObject.Find("GameObj").GetComponent<Monster>();
+        //    StringBuilder str3 = new StringBuilder();
+        //    if (game.unitDebutHistory[game.madeSlotList[3]])
+        //    {
+        //        str3.Append(mon.unitData2[game.madeSlotList[3], 1]);
+        //    }
+        //    else
+        //    {
+        //        str3.Append("?아직 데뷰하지 않은 유닛?");
+        //    }
+        //    str3.Append(" : ");
+        //    str3.Append(mon.unitData2[game.madeSlotList[3], 9]);
+        //    str3.Append(" ");
+        //    str3.Append(mon.unitData2[game.madeSlotList[3], 10]);
+        //    str3.Append(" ");
+        //    str3.Append(mon.unitData2[game.madeSlotList[3], 11]);
+        //    str3.Append(" ");
+        //    str3.Append(mon.unitData2[game.madeSlotList[3], 12]);
+        //    str3.Append(" ");
+        //    str3.Append(mon.unitData2[game.madeSlotList[3], 13]);
 
-            //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
-            //string aa = Convert.ToString(game.madeSlotList[0]);
-            if (GUI.Button(new Rect(10, 500, 750, 40), str3.ToString()))
-            {
-                game.PassTurnWithMake(game.madeSlotList[3]);
-            }
+        //    //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
+        //    //string aa = Convert.ToString(game.madeSlotList[0]);
+        //    if (GUI.Button(new Rect(10, 500, 750, 40), str3.ToString()))
+        //    {
+        //        game.PassTurnWithMake(game.madeSlotList[3]);
+        //    }
 
-        }
+        //}
 
-        if (game.madeSlotList.Count > 4)
-        {
-            //mon = GameObject.Find("GameObj").GetComponent<Monster>();
-            StringBuilder str4 = new StringBuilder();
-            if (game.unitDebutHistory[game.madeSlotList[4]])
-            {
-                str4.Append(mon.unitData2[game.madeSlotList[4], 1]);
-            }
-            else
-            {
-                str4.Append("?아직 데뷰하지 않은 유닛?");
-            }
-            str4.Append(" : ");
-            str4.Append(mon.unitData2[game.madeSlotList[4], 9]);
-            str4.Append(" ");
-            str4.Append(mon.unitData2[game.madeSlotList[4], 10]);
-            str4.Append(" ");
-            str4.Append(mon.unitData2[game.madeSlotList[4], 11]);
-            str4.Append(" ");
-            str4.Append(mon.unitData2[game.madeSlotList[4], 12]);
-            str4.Append(" ");
-            str4.Append(mon.unitData2[game.madeSlotList[4], 13]);
+        //if (game.madeSlotList.Count > 4)
+        //{
+        //    //mon = GameObject.Find("GameObj").GetComponent<Monster>();
+        //    StringBuilder str4 = new StringBuilder();
+        //    if (game.unitDebutHistory[game.madeSlotList[4]])
+        //    {
+        //        str4.Append(mon.unitData2[game.madeSlotList[4], 1]);
+        //    }
+        //    else
+        //    {
+        //        str4.Append("?아직 데뷰하지 않은 유닛?");
+        //    }
+        //    str4.Append(" : ");
+        //    str4.Append(mon.unitData2[game.madeSlotList[4], 9]);
+        //    str4.Append(" ");
+        //    str4.Append(mon.unitData2[game.madeSlotList[4], 10]);
+        //    str4.Append(" ");
+        //    str4.Append(mon.unitData2[game.madeSlotList[4], 11]);
+        //    str4.Append(" ");
+        //    str4.Append(mon.unitData2[game.madeSlotList[4], 12]);
+        //    str4.Append(" ");
+        //    str4.Append(mon.unitData2[game.madeSlotList[4], 13]);
 
-            //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
-            //string aa = Convert.ToString(game.madeSlotList[0]);
-            if (GUI.Button(new Rect(10, 550, 750, 40), str4.ToString()))
-            {
-                game.PassTurnWithMake(game.madeSlotList[4]);
-            }
+        //    //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
+        //    //string aa = Convert.ToString(game.madeSlotList[0]);
+        //    if (GUI.Button(new Rect(10, 550, 750, 40), str4.ToString()))
+        //    {
+        //        game.PassTurnWithMake(game.madeSlotList[4]);
+        //    }
 
-        }
+        //}
 
-        if (game.madeSlotList.Count > 5)
-        {
-            //mon = GameObject.Find("GameObj").GetComponent<Monster>();
-            StringBuilder str5 = new StringBuilder();
-            if (game.unitDebutHistory[game.madeSlotList[5]])
-            {
-                str5.Append(mon.unitData2[game.madeSlotList[5], 1]);
-            }
-            else
-            {
-                str5.Append("?아직 데뷰하지 않은 유닛?");
-            }
-            str5.Append(" : ");
-            str5.Append(mon.unitData2[game.madeSlotList[5], 9]);
-            str5.Append(" ");
-            str5.Append(mon.unitData2[game.madeSlotList[5], 10]);
-            str5.Append(" ");
-            str5.Append(mon.unitData2[game.madeSlotList[5], 11]);
-            str5.Append(" ");
-            str5.Append(mon.unitData2[game.madeSlotList[5], 12]);
-            str5.Append(" ");
-            str5.Append(mon.unitData2[game.madeSlotList[5], 13]);
+        //if (game.madeSlotList.Count > 5)
+        //{
+        //    //mon = GameObject.Find("GameObj").GetComponent<Monster>();
+        //    StringBuilder str5 = new StringBuilder();
+        //    if (game.unitDebutHistory[game.madeSlotList[5]])
+        //    {
+        //        str5.Append(mon.unitData2[game.madeSlotList[5], 1]);
+        //    }
+        //    else
+        //    {
+        //        str5.Append("?아직 데뷰하지 않은 유닛?");
+        //    }
+        //    str5.Append(" : ");
+        //    str5.Append(mon.unitData2[game.madeSlotList[5], 9]);
+        //    str5.Append(" ");
+        //    str5.Append(mon.unitData2[game.madeSlotList[5], 10]);
+        //    str5.Append(" ");
+        //    str5.Append(mon.unitData2[game.madeSlotList[5], 11]);
+        //    str5.Append(" ");
+        //    str5.Append(mon.unitData2[game.madeSlotList[5], 12]);
+        //    str5.Append(" ");
+        //    str5.Append(mon.unitData2[game.madeSlotList[5], 13]);
 
-            //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
-            //string aa = Convert.ToString(game.madeSlotList[0]);
-            if (GUI.Button(new Rect(10, 600, 750, 40), str5.ToString()))
-            {
-                game.PassTurnWithMake(game.madeSlotList[5]);
-            }
-        }
+        //    //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
+        //    //string aa = Convert.ToString(game.madeSlotList[0]);
+        //    if (GUI.Button(new Rect(10, 600, 750, 40), str5.ToString()))
+        //    {
+        //        game.PassTurnWithMake(game.madeSlotList[5]);
+        //    }
+        //}
 
-        if (game.madeSlotList.Count > 6)
-        {
-            //mon = GameObject.Find("GameObj").GetComponent<Monster>();
-            StringBuilder str6 = new StringBuilder();
-            if (game.unitDebutHistory[game.madeSlotList[6]])
-            {
-                str6.Append(mon.unitData2[game.madeSlotList[6], 1]);
-            }
-            else
-            {
-                str6.Append("?아직 데뷰하지 않은 유닛?");
-            }
-            str6.Append(" : ");
-            str6.Append(mon.unitData2[game.madeSlotList[6], 9]);
-            str6.Append(" ");
-            str6.Append(mon.unitData2[game.madeSlotList[6], 10]);
-            str6.Append(" ");
-            str6.Append(mon.unitData2[game.madeSlotList[6], 11]);
-            str6.Append(" ");
-            str6.Append(mon.unitData2[game.madeSlotList[6], 12]);
-            str6.Append(" ");
-            str6.Append(mon.unitData2[game.madeSlotList[6], 13]);
+        //if (game.madeSlotList.Count > 6)
+        //{
+        //    //mon = GameObject.Find("GameObj").GetComponent<Monster>();
+        //    StringBuilder str6 = new StringBuilder();
+        //    if (game.unitDebutHistory[game.madeSlotList[6]])
+        //    {
+        //        str6.Append(mon.unitData2[game.madeSlotList[6], 1]);
+        //    }
+        //    else
+        //    {
+        //        str6.Append("?아직 데뷰하지 않은 유닛?");
+        //    }
+        //    str6.Append(" : ");
+        //    str6.Append(mon.unitData2[game.madeSlotList[6], 9]);
+        //    str6.Append(" ");
+        //    str6.Append(mon.unitData2[game.madeSlotList[6], 10]);
+        //    str6.Append(" ");
+        //    str6.Append(mon.unitData2[game.madeSlotList[6], 11]);
+        //    str6.Append(" ");
+        //    str6.Append(mon.unitData2[game.madeSlotList[6], 12]);
+        //    str6.Append(" ");
+        //    str6.Append(mon.unitData2[game.madeSlotList[6], 13]);
 
-            //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
-            //string aa = Convert.ToString(game.madeSlotList[0]);
-            if (GUI.Button(new Rect(10, 600, 750, 40), str6.ToString()))
-            {
-                game.PassTurnWithMake(game.madeSlotList[6]);
-            }
-        }
+        //    //Debug.Log(mon.unitData2[game.madeSlotList[0] + 1, 1]);
+        //    //string aa = Convert.ToString(game.madeSlotList[0]);
+        //    if (GUI.Button(new Rect(10, 600, 750, 40), str6.ToString()))
+        //    {
+        //        game.PassTurnWithMake(game.madeSlotList[6]);
+        //    }
+        //}
 
         //if (game.madeSlotList.Count > 4)
         //{

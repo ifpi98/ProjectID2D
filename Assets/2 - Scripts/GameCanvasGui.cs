@@ -14,6 +14,13 @@ public class GameCanvasGui : MonoBehaviour
     Game game;
     DataIni DI;
 
+    public GameObject madeSlot0;
+    public GameObject madeSlot1;
+    public GameObject madeSlot2;
+    public GameObject madeSlot3;
+    public GameObject madeSlot4;
+    public GameObject madeSlot5;
+    
     string[] cardSlot;
     string finishWord;
     int requireLevelup;    
@@ -25,6 +32,13 @@ public class GameCanvasGui : MonoBehaviour
     public Button mButton4;
     public Button nTurnButton;
 
+    public Button madeSlotButton0;
+    public Button madeSlotButton1;
+    public Button madeSlotButton2;
+    public Button madeSlotButton3;
+    public Button madeSlotButton4;
+    public Button madeSlotButton5;
+
     public Text mButText0;
     public Text mButText1;
     public Text mButText2;
@@ -34,13 +48,20 @@ public class GameCanvasGui : MonoBehaviour
     public Text pointDisplay;
     public Text maxCombo;
 
-    public Text RemainTurnButton0;
-    public Text RemainTurnButton1;
-    public Text RemainTurnButton2;
-    public Text RemainTurnButton3;
-    public Text RemainTurnButton4;
+    public Text RemainTurnText0;
+    public Text RemainTurnText1;
+    public Text RemainTurnText2;
+    public Text RemainTurnText3;
+    public Text RemainTurnText4;
 
-
+    public Text madeSlotButtonText0;
+    public Text madeSlotButtonText1;
+    public Text madeSlotButtonText2;
+    public Text madeSlotButtonText3;
+    public Text madeSlotButtonText4;
+    public Text madeSlotButtonText5;
+    public Text madeSlotButtonText6;
+    
 
     //Canvas gameCanvas;
 
@@ -52,6 +73,13 @@ public class GameCanvasGui : MonoBehaviour
         game = GameObject.Find("GameObj").GetComponent<Game>();
         DI = GameObject.Find("DataObj").GetComponent<DataIni>();
 
+        madeSlot0 = GameObject.Find("Made Slot Button 0");
+        madeSlot1 = GameObject.Find("Made Slot Button 1");
+        madeSlot2 = GameObject.Find("Made Slot Button 2");
+        madeSlot3 = GameObject.Find("Made Slot Button 3");
+        madeSlot4 = GameObject.Find("Made Slot Button 4");
+        madeSlot5 = GameObject.Find("Made Slot Button 5");
+        
         finishWord = "";
         cardSlot = new string[5];
 
@@ -66,6 +94,19 @@ public class GameCanvasGui : MonoBehaviour
         mButton4 = GameObject.Find("Member Button 4").GetComponent<Button>();
         mButText4 = mButton4.GetComponentInChildren<Text>();
 
+        madeSlotButton0 = madeSlot0.GetComponent<Button>();
+        madeSlotButtonText0 = madeSlotButton0.GetComponentInChildren<Text>();
+        madeSlotButton1 = madeSlot1.GetComponent<Button>();
+        madeSlotButtonText1 = madeSlotButton1.GetComponentInChildren<Text>();
+        madeSlotButton2 = madeSlot2.GetComponent<Button>();
+        madeSlotButtonText2 = madeSlotButton2.GetComponentInChildren<Text>();
+        madeSlotButton3 = madeSlot3.GetComponent<Button>();
+        madeSlotButtonText3 = madeSlotButton3.GetComponentInChildren<Text>();
+        madeSlotButton4 = madeSlot4.GetComponent<Button>();
+        madeSlotButtonText4 = madeSlotButton4.GetComponentInChildren<Text>();
+        madeSlotButton5 = madeSlot5.GetComponent<Button>();
+        madeSlotButtonText5 = madeSlotButton5.GetComponentInChildren<Text>();
+        
         nTurnButton = GameObject.Find("Next Turn Button").GetComponent<Button>();
         nTurnButText = nTurnButton.GetComponentInChildren<Text>();
 
@@ -73,11 +114,13 @@ public class GameCanvasGui : MonoBehaviour
         requireLevelup = Convert.ToInt32(mon.expLvData2[game.level + 1, 2]) - game.score;
         maxCombo = GameObject.Find("Combo Text").GetComponent<Text>();
 
-        RemainTurnButton0 = GameObject.Find("Remain Turn Button 0").GetComponent<Text>();
-        RemainTurnButton1 = GameObject.Find("Remain Turn Button 1").GetComponent<Text>();
-        RemainTurnButton2 = GameObject.Find("Remain Turn Button 2").GetComponent<Text>();
-        RemainTurnButton3 = GameObject.Find("Remain Turn Button 3").GetComponent<Text>();
-        RemainTurnButton4 = GameObject.Find("Remain Turn Button 4").GetComponent<Text>();
+        RemainTurnText0 = GameObject.Find("Remain Turn Text 0").GetComponent<Text>();
+        RemainTurnText1 = GameObject.Find("Remain Turn Text 1").GetComponent<Text>();
+        RemainTurnText2 = GameObject.Find("Remain Turn Text 2").GetComponent<Text>();
+        RemainTurnText3 = GameObject.Find("Remain Turn Text 3").GetComponent<Text>();
+        RemainTurnText4 = GameObject.Find("Remain Turn Text 4").GetComponent<Text>();
+
+        
     }
 
     void Update()
@@ -106,43 +149,43 @@ public class GameCanvasGui : MonoBehaviour
 
         if (game.checkremainTurncardslot[0] == true && game.remainturncardslot[0] != 0)
         {
-            RemainTurnButton0.text = "남은 턴 : " + game.remainturncardslot[0];
+            RemainTurnText0.text = "남은 턴 : " + game.remainturncardslot[0];
         }
         else
         {
-            RemainTurnButton0.text = "다음 턴 교체 예정";
+            RemainTurnText0.text = "다음 턴 교체 예정";
         }
         if (game.checkremainTurncardslot[1] == true && game.remainturncardslot[1] != 0)
         {
-            RemainTurnButton1.text = "남은 턴 : " + game.remainturncardslot[1];
+            RemainTurnText1.text = "남은 턴 : " + game.remainturncardslot[1];
         }
         else
         {
-            RemainTurnButton1.text = "다음 턴 교체 예정";
+            RemainTurnText1.text = "다음 턴 교체 예정";
         }
         if (game.checkremainTurncardslot[2] == true && game.remainturncardslot[2] != 0)
         {
-            RemainTurnButton2.text = "남은 턴 : " + game.remainturncardslot[2];
+            RemainTurnText2.text = "남은 턴 : " + game.remainturncardslot[2];
         }
         else
         {
-            RemainTurnButton2.text = "다음 턴 교체 예정";
+            RemainTurnText2.text = "다음 턴 교체 예정";
         }
         if (game.checkremainTurncardslot[3] == true && game.remainturncardslot[3] != 0)
         {
-            RemainTurnButton3.text = "남은 턴 : " + game.remainturncardslot[3];
+            RemainTurnText3.text = "남은 턴 : " + game.remainturncardslot[3];
         }
         else
         {
-            RemainTurnButton3.text = "다음 턴 교체 예정";
+            RemainTurnText3.text = "다음 턴 교체 예정";
         }
         if (game.checkremainTurncardslot[4] == true && game.remainturncardslot[4] != 0)
         {
-            RemainTurnButton4.text = "남은 턴 : " + game.remainturncardslot[4];
+            RemainTurnText4.text = "남은 턴 : " + game.remainturncardslot[4];
         }
         else
         {
-            RemainTurnButton4.text = "다음 턴 교체 예정";
+            RemainTurnText4.text = "다음 턴 교체 예정";
         }
 
 
