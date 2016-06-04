@@ -8,7 +8,7 @@ public class MadeSlotSelector : MonoBehaviour {
     Game game;
     Monster mon;
     GameCanvasGui gCanvas;
-    ColorBlock defaultCB;
+    //ColorBlock defaultCB;
     ColorBlock selectedCB;
     ColorBlock notYetDebutCB;
 
@@ -31,13 +31,12 @@ public class MadeSlotSelector : MonoBehaviour {
         notYetDebutCB.disabledColor = new Color32(0, 255, 0, 255);
         notYetDebutCB.colorMultiplier = 1;
         notYetDebutCB.fadeDuration = 0.1f;
-
-        gCanvas.madeSlotButton0.colors = selectedCB;
-        gCanvas.madeSlotButton1.colors = selectedCB;
-        gCanvas.madeSlotButton2.colors = selectedCB;
-        gCanvas.madeSlotButton3.colors = selectedCB;
-        gCanvas.madeSlotButton4.colors = selectedCB;
-        gCanvas.madeSlotButton5.colors = selectedCB;
+        
+        for (int i = 0; i < 6; i++)
+        {
+            gCanvas.madeSlotButton[0].colors = selectedCB;
+        }
+        
 
     }
 	
@@ -57,83 +56,83 @@ public class MadeSlotSelector : MonoBehaviour {
         switch (game.madeSlotList.Count)
         {
             case 0:
-                Debug.LogWarning("Logical Error! Check!");
-                gCanvas.madeSlot0.SetActive(false);
-                gCanvas.madeSlot1.SetActive(false);
-                gCanvas.madeSlot2.SetActive(false);
-                gCanvas.madeSlot3.SetActive(false);
-                gCanvas.madeSlot4.SetActive(false);
-                gCanvas.madeSlot5.SetActive(false);
+                //Debug.LogWarning("Logical Error! Check!");
+                gCanvas.madeSlot[0].SetActive(false);
+                gCanvas.madeSlot[1].SetActive(false);
+                gCanvas.madeSlot[2].SetActive(false);
+                gCanvas.madeSlot[3].SetActive(false);
+                gCanvas.madeSlot[4].SetActive(false);
+                gCanvas.madeSlot[5].SetActive(false);
                 break;
 
             case 1:
 
-                gCanvas.madeSlot0.SetActive(true);
-                gCanvas.madeSlot1.SetActive(false);
-                gCanvas.madeSlot2.SetActive(false);
-                gCanvas.madeSlot3.SetActive(false);
-                gCanvas.madeSlot4.SetActive(false);
-                gCanvas.madeSlot5.SetActive(false);                                        
+                gCanvas.madeSlot[0].SetActive(true);
+                gCanvas.madeSlot[1].SetActive(false);
+                gCanvas.madeSlot[2].SetActive(false);
+                gCanvas.madeSlot[3].SetActive(false);
+                gCanvas.madeSlot[4].SetActive(false);
+                gCanvas.madeSlot[5].SetActive(false);
                 break;
 
             case 2:
 
-                gCanvas.madeSlot0.SetActive(true);
-                gCanvas.madeSlot1.SetActive(true);
-                gCanvas.madeSlot2.SetActive(false);
-                gCanvas.madeSlot3.SetActive(false);
-                gCanvas.madeSlot4.SetActive(false);
-                gCanvas.madeSlot5.SetActive(false);
+                gCanvas.madeSlot[0].SetActive(true);
+                gCanvas.madeSlot[1].SetActive(true);
+                gCanvas.madeSlot[2].SetActive(false);
+                gCanvas.madeSlot[3].SetActive(false);
+                gCanvas.madeSlot[4].SetActive(false);
+                gCanvas.madeSlot[5].SetActive(false);
                 break;
 
             case 3:
 
-                gCanvas.madeSlot0.SetActive(true);
-                gCanvas.madeSlot1.SetActive(true);
-                gCanvas.madeSlot2.SetActive(true);
-                gCanvas.madeSlot3.SetActive(false);
-                gCanvas.madeSlot4.SetActive(false);
-                gCanvas.madeSlot5.SetActive(false);
+                gCanvas.madeSlot[0].SetActive(true);
+                gCanvas.madeSlot[1].SetActive(true);
+                gCanvas.madeSlot[2].SetActive(true);
+                gCanvas.madeSlot[3].SetActive(false);
+                gCanvas.madeSlot[4].SetActive(false);
+                gCanvas.madeSlot[5].SetActive(false);
                 break;
 
             case 4:
 
-                gCanvas.madeSlot0.SetActive(true);
-                gCanvas.madeSlot1.SetActive(true);
-                gCanvas.madeSlot2.SetActive(true);
-                gCanvas.madeSlot3.SetActive(true);
-                gCanvas.madeSlot4.SetActive(false);
-                gCanvas.madeSlot5.SetActive(false);
+                gCanvas.madeSlot[0].SetActive(true);
+                gCanvas.madeSlot[1].SetActive(true);
+                gCanvas.madeSlot[2].SetActive(true);
+                gCanvas.madeSlot[3].SetActive(true);
+                gCanvas.madeSlot[4].SetActive(false);
+                gCanvas.madeSlot[5].SetActive(false);
                 break;
                 
             case 5:
 
-                gCanvas.madeSlot0.SetActive(true);
-                gCanvas.madeSlot1.SetActive(true);
-                gCanvas.madeSlot2.SetActive(true);
-                gCanvas.madeSlot3.SetActive(true);
-                gCanvas.madeSlot4.SetActive(true);
-                gCanvas.madeSlot5.SetActive(false);
+                gCanvas.madeSlot[0].SetActive(true);
+                gCanvas.madeSlot[1].SetActive(true);
+                gCanvas.madeSlot[2].SetActive(true);
+                gCanvas.madeSlot[3].SetActive(true);
+                gCanvas.madeSlot[4].SetActive(true);
+                gCanvas.madeSlot[5].SetActive(false);
                 break;
 
             case 6:
 
-                gCanvas.madeSlot0.SetActive(true);
-                gCanvas.madeSlot1.SetActive(true);
-                gCanvas.madeSlot2.SetActive(true);
-                gCanvas.madeSlot3.SetActive(true);
-                gCanvas.madeSlot4.SetActive(true);
-                gCanvas.madeSlot5.SetActive(true);
+                gCanvas.madeSlot[0].SetActive(true);
+                gCanvas.madeSlot[1].SetActive(true);
+                gCanvas.madeSlot[2].SetActive(true);
+                gCanvas.madeSlot[3].SetActive(true);
+                gCanvas.madeSlot[4].SetActive(true);
+                gCanvas.madeSlot[5].SetActive(true);
                 break;
 
             default:
                 Debug.LogWarning("There are Seven or More MADESLOT! Check it!");
-                gCanvas.madeSlot0.SetActive(true);
-                gCanvas.madeSlot1.SetActive(true);
-                gCanvas.madeSlot2.SetActive(true);
-                gCanvas.madeSlot3.SetActive(true);
-                gCanvas.madeSlot4.SetActive(true);
-                gCanvas.madeSlot5.SetActive(true);
+                gCanvas.madeSlot[0].SetActive(true);
+                gCanvas.madeSlot[1].SetActive(true);
+                gCanvas.madeSlot[2].SetActive(true);
+                gCanvas.madeSlot[3].SetActive(true);
+                gCanvas.madeSlot[4].SetActive(true);
+                gCanvas.madeSlot[5].SetActive(true);
                 break;
 
         }
@@ -149,72 +148,14 @@ public class MadeSlotSelector : MonoBehaviour {
         if (game.unitDebutHistory[game.madeSlotList[madeslot]])
         {
             str.Append(mon.unitData2[game.madeSlotList[madeslot], 1]);
-
-            switch (madeslot)
-            {
-                case 0:
-                    gCanvas.madeSlotButton0.colors = selectedCB;
-                    break;
-
-                case 1:
-                    gCanvas.madeSlotButton1.colors = selectedCB;
-                    break;
-
-                case 2:
-                    gCanvas.madeSlotButton2.colors = selectedCB;
-                    break;
-
-                case 3:
-                    gCanvas.madeSlotButton3.colors = selectedCB;
-                    break;
-
-                case 4:
-                    gCanvas.madeSlotButton4.colors = selectedCB;
-                    break;
-
-                case 5:
-                    gCanvas.madeSlotButton5.colors = selectedCB;
-                    break;
-
-                default:
-                    Debug.LogWarning("There is seven or more MADESLOT!, Check this!");
-                    break;
-            }
+            gCanvas.madeSlotButton[madeslot].colors = selectedCB;
+            
         }
         else
         {
-            switch (madeslot)
-            {
-                case 0:
-                    gCanvas.madeSlotButton0.colors = notYetDebutCB;
-                    break;
-
-                case 1:
-                    gCanvas.madeSlotButton1.colors = notYetDebutCB;
-                    break;
-
-                case 2:
-                    gCanvas.madeSlotButton2.colors = notYetDebutCB;
-                    break;
-
-                case 3:
-                    gCanvas.madeSlotButton3.colors = notYetDebutCB;
-                    break;
-
-                case 4:
-                    gCanvas.madeSlotButton4.colors = notYetDebutCB;
-                    break;
-
-                case 5:
-                    gCanvas.madeSlotButton5.colors = notYetDebutCB;
-                    break;
-
-                default:
-                    Debug.LogWarning("There is seven or more MADESLOT!, Check this!");
-                    break;
-            }
-            
             str.Append("?아직 데뷰하지 않은 유닛?");
+            gCanvas.madeSlotButton[madeslot].colors = notYetDebutCB;
+            
         }
         str.Append(" : ");
         str.Append(mon.unitData2[game.madeSlotList[madeslot], 9]);
@@ -226,38 +167,9 @@ public class MadeSlotSelector : MonoBehaviour {
         str.Append(mon.unitData2[game.madeSlotList[madeslot], 12]);
         str.Append(" ");
         str.Append(mon.unitData2[game.madeSlotList[madeslot], 13]);
-
-        switch (madeslot)
-        {
-            case 0:
-                gCanvas.madeSlotButtonText0.text = str.ToString();
-                break;
-
-            case 1:
-                gCanvas.madeSlotButtonText1.text = str.ToString();
-                break;
-
-            case 2:
-                gCanvas.madeSlotButtonText2.text = str.ToString();
-                break;
-
-            case 3:
-                gCanvas.madeSlotButtonText3.text = str.ToString();
-                break;
-
-            case 4:
-                gCanvas.madeSlotButtonText4.text = str.ToString();
-                break;
-
-            case 5:
-                gCanvas.madeSlotButtonText5.text = str.ToString();
-                break;
-
-            default:
-                Debug.LogWarning("There are Seven or More MADESLOT! Check it!");
-                break;
-        }
-                
+        
+        gCanvas.madeSlotButtonText[madeslot].text = str.ToString();        
+   
     }    
 
     public void MadeSlotDecide(int a)

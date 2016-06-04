@@ -9,12 +9,7 @@ public class Game : MonoBehaviour
 {
     public int basicRemainTurn = 5;
 
-    public int[] cardSlot;
-    //public string cardSlot0;
-    string cardSlot1;
-    string cardSlot2;
-    string cardSlot3;
-    string cardSlot4;
+    public int[] cardSlot;    
     public int[] remainturncardslot;
     public bool[] checkremainTurncardslot;
     bool firstcheck = false;
@@ -50,7 +45,7 @@ public class Game : MonoBehaviour
     {
         //Screen.SetResolution(Screen.width* 16 / 9, Screen.width , false);
         //Screen.SetResolution(960, 720, false);
-        Screen.SetResolution(1152, 648, false);
+        //Screen.SetResolution(1152, 648, false);
               
         
 
@@ -336,7 +331,7 @@ public class Game : MonoBehaviour
         {
             if (checknumber[i] == false || remainturncardslot[i] == 0)
             {
-                int tempchecknum = 0;
+                //int tempchecknum = 0;
                 checkIsExisted[i] = true;
                 while (checkIsExisted[i] == true)
                 {
@@ -522,6 +517,7 @@ public class Game : MonoBehaviour
                 skillPoint = skillPoint + findMemberplace.Count * 10;
                 DI.SetMakeCountHistory();
                 DI.SetCharDearDegreeString();
+                Debug.LogWarning("wow!" + decideUnit);
                 break;
             case 5:
                 sumDearDegree = 0;
@@ -531,6 +527,7 @@ public class Game : MonoBehaviour
                 skillPoint = skillPoint + findMemberplace.Count * 10;
                 DI.SetMakeCountHistory();
                 DI.SetCharDearDegreeString();
+                Debug.LogWarning("wow!" + decideUnit);
                 break;
         }
 

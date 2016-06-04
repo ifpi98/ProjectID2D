@@ -8,19 +8,13 @@ public class GameGui : MonoBehaviour {
     Monster mon;
     Game game;
     DataIni DI;
-    string cardSlot0;
-    string cardSlot1;
-    string cardSlot2;
-    string cardSlot3;
-    string cardSlot4;
-    string finishWord;    
 
     void Start()
     {
         mon = GameObject.Find("GameObj").GetComponent<Monster>();
         game = GameObject.Find("GameObj").GetComponent<Game>();
         DI = GameObject.Find("DataObj").GetComponent<DataIni>();
-        finishWord = "";
+        //finishWord = "";
     }
 
    
@@ -128,97 +122,97 @@ public class GameGui : MonoBehaviour {
 
         //}
 
-        GUI.Button(new Rect(820, 10, 150, 100), "Duo : " + game.makecounthistory[2] + "\n Trio : " + game.makecounthistory[3] +"\n Quartet : " + game.makecounthistory[4] + "\n Quintet : " + game.makecounthistory[5]);
+        // GUI.Button(new Rect(820, 10, 150, 100), "Duo : " + game.makecounthistory[2] + "\n Trio : " + game.makecounthistory[3] +"\n Quartet : " + game.makecounthistory[4] + "\n Quintet : " + game.makecounthistory[5]);
 
-        if (game.skillPoint >= 100 && !game.skillOnCheck[0] == true)
-        {
-            GUI.color = oldcolor;
-            if (GUI.Button(new Rect(800, 150, 190, 70), "Skill(100) : Cute\n" + "\n 다음 턴까지 Cute 타입 \n아이돌만 등장합니다. "))
-            {
-                game.skillPoint = game.skillPoint - 100;
-                game.skillOnCheck[0] = true;
-                game.skillOnCheck[1] = false;
-                game.skillOnCheck[2] = false;
-            }
-        }
+        //if (game.skillPoint >= 100 && !game.skillOnCheck[0] == true)
+        //{
+        //    GUI.color = oldcolor;
+        //    if (GUI.Button(new Rect(800, 150, 190, 70), "Skill(100) : Cute\n" + "\n 다음 턴까지 Cute 타입 \n아이돌만 등장합니다. "))
+        //    {
+        //        game.skillPoint = game.skillPoint - 100;
+        //        game.skillOnCheck[0] = true;
+        //        game.skillOnCheck[1] = false;
+        //        game.skillOnCheck[2] = false;
+        //    }
+        //}
 
-        if (game.skillOnCheck[0] == true)
-        {
-            GUI.color = Color.yellow;
-            GUI.Button(new Rect(800, 150, 190, 70), "Cute 스킬 발동 중!\n" + "\n 다음 턴까지 Cute 타입 \n아이돌만 등장합니다. ");
-        }
+        //if (game.skillOnCheck[0] == true)
+        //{
+        //    GUI.color = Color.yellow;
+        //    GUI.Button(new Rect(800, 150, 190, 70), "Cute 스킬 발동 중!\n" + "\n 다음 턴까지 Cute 타입 \n아이돌만 등장합니다. ");
+        //}
 
-        if (game.skillPoint >= 100 && !game.skillOnCheck[1] == true)
-        {
-            GUI.color = oldcolor;
-            if (GUI.Button(new Rect(800, 230, 190, 70), "Skill(100) : Cool\n" + "\n 다음 턴까지 Cool 타입 \n아이돌만 등장합니다. "))
-            {
-                game.skillPoint = game.skillPoint - 100;
-                game.skillOnCheck[0] = false;
-                game.skillOnCheck[1] = true;
-                game.skillOnCheck[2] = false;
-            }
-        }
+        //if (game.skillPoint >= 100 && !game.skillOnCheck[1] == true)
+        //{
+        //    GUI.color = oldcolor;
+        //    if (GUI.Button(new Rect(800, 230, 190, 70), "Skill(100) : Cool\n" + "\n 다음 턴까지 Cool 타입 \n아이돌만 등장합니다. "))
+        //    {
+        //        game.skillPoint = game.skillPoint - 100;
+        //        game.skillOnCheck[0] = false;
+        //        game.skillOnCheck[1] = true;
+        //        game.skillOnCheck[2] = false;
+        //    }
+        //}
 
-        if (game.skillOnCheck[1] == true)
-        {
-            GUI.color = Color.yellow;
-            GUI.Button(new Rect(800, 230, 190, 70), "Cool 스킬 발동 중!\n" + "\n 다음 턴까지 Cool 타입 \n아이돌만 등장합니다. ");
-        }
+        //if (game.skillOnCheck[1] == true)
+        //{
+        //    GUI.color = Color.yellow;
+        //    GUI.Button(new Rect(800, 230, 190, 70), "Cool 스킬 발동 중!\n" + "\n 다음 턴까지 Cool 타입 \n아이돌만 등장합니다. ");
+        //}
 
-        if (game.skillPoint >= 100 && !game.skillOnCheck[2] == true)
-        {
-            GUI.color = oldcolor;
-            if (GUI.Button(new Rect(800, 310, 190, 70), "Skill(100) : Passion\n" + "\n 다음 턴까지 Passion 타입 \n아이돌만 등장합니다. "))
-            {
-                game.skillPoint = game.skillPoint - 100;
-                game.skillOnCheck[0] = false;
-                game.skillOnCheck[1] = false;
-                game.skillOnCheck[2] = true;
-            }
-        }
+        //if (game.skillPoint >= 100 && !game.skillOnCheck[2] == true)
+        //{
+        //    GUI.color = oldcolor;
+        //    if (GUI.Button(new Rect(800, 310, 190, 70), "Skill(100) : Passion\n" + "\n 다음 턴까지 Passion 타입 \n아이돌만 등장합니다. "))
+        //    {
+        //        game.skillPoint = game.skillPoint - 100;
+        //        game.skillOnCheck[0] = false;
+        //        game.skillOnCheck[1] = false;
+        //        game.skillOnCheck[2] = true;
+        //    }
+        //}
 
-        if (game.skillOnCheck[2] == true)
-        {
-            GUI.color = Color.yellow;
-            GUI.Button(new Rect(800, 310, 190, 70), "Passion 스킬 발동 중!\n" + "\n 다음 턴까지 Passion 타입 \n아이돌만 등장합니다. ");
-        }
-
-
-        if (game.skillPoint >= 300 && !game.skillOnCheck[3] == true)
-        {
-            GUI.color = oldcolor;
-            if (GUI.Button(new Rect(800, 390, 190, 70), "Skill(300) : Sixteen \n" + "\n 다음 턴까지 16세 이하 \n아이돌만 등장합니다. "))
-            {
-                game.skillPoint = game.skillPoint - 300;
-                game.skillOnCheck[3] = true;
-                game.skillOnCheck[4] = false;                
-            }
-        }
-
-        if (game.skillOnCheck[3] == true)
-        {
-            GUI.color = Color.yellow;
-            GUI.Button(new Rect(800, 390, 190, 70), "Sixteen 스킬 발동 중!\n" + "\n 다음 턴까지 16세 이하 \n아이돌만 등장합니다. ");
-        }
+        //if (game.skillOnCheck[2] == true)
+        //{
+        //    GUI.color = Color.yellow;
+        //    GUI.Button(new Rect(800, 310, 190, 70), "Passion 스킬 발동 중!\n" + "\n 다음 턴까지 Passion 타입 \n아이돌만 등장합니다. ");
+        //}
 
 
-        if (game.skillPoint >= 300 && !game.skillOnCheck[4] == true)
-        {
-            GUI.color = oldcolor;
-            if (GUI.Button(new Rect(800, 470, 190, 70), "Skill (300) : Seventeen\n" + "\n 다음 턴까지 17세 이상 \n아이돌만 등장합니다. "))
-            {
-                game.skillPoint = game.skillPoint - 300;
-                game.skillOnCheck[3] = false;
-                game.skillOnCheck[4] = true;
-            }
-        }
+        //if (game.skillPoint >= 300 && !game.skillOnCheck[3] == true)
+        //{
+        //    GUI.color = oldcolor;
+        //    if (GUI.Button(new Rect(800, 390, 190, 70), "Skill(300) : Sixteen \n" + "\n 다음 턴까지 16세 이하 \n아이돌만 등장합니다. "))
+        //    {
+        //        game.skillPoint = game.skillPoint - 300;
+        //        game.skillOnCheck[3] = true;
+        //        game.skillOnCheck[4] = false;                
+        //    }
+        //}
 
-        if (game.skillOnCheck[4] == true)
-        {
-            GUI.color = Color.yellow;
-            GUI.Button(new Rect(800, 470, 190, 70), "Seventeen 스킬 발동 중!\n" + "\n 다음 턴까지 17세 이상 \n아이돌만 등장합니다. ");
-        }
+        //if (game.skillOnCheck[3] == true)
+        //{
+        //    GUI.color = Color.yellow;
+        //    GUI.Button(new Rect(800, 390, 190, 70), "Sixteen 스킬 발동 중!\n" + "\n 다음 턴까지 16세 이하 \n아이돌만 등장합니다. ");
+        //}
+
+
+        //if (game.skillPoint >= 300 && !game.skillOnCheck[4] == true)
+        //{
+        //    GUI.color = oldcolor;
+        //    if (GUI.Button(new Rect(800, 470, 190, 70), "Skill (300) : Seventeen\n" + "\n 다음 턴까지 17세 이상 \n아이돌만 등장합니다. "))
+        //    {
+        //        game.skillPoint = game.skillPoint - 300;
+        //        game.skillOnCheck[3] = false;
+        //        game.skillOnCheck[4] = true;
+        //    }
+        //}
+
+        //if (game.skillOnCheck[4] == true)
+        //{
+        //    GUI.color = Color.yellow;
+        //    GUI.Button(new Rect(800, 470, 190, 70), "Seventeen 스킬 발동 중!\n" + "\n 다음 턴까지 17세 이상 \n아이돌만 등장합니다. ");
+        //}
 
 
 

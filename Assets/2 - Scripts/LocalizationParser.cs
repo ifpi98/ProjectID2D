@@ -4,7 +4,7 @@ using System.IO;
 
 public class LocalizationParser : MonoBehaviour
 {
-    string path;
+    //string path;
     public string[] _localizationData;
     string[] sourceLocalization;
     string[] _tempLD;

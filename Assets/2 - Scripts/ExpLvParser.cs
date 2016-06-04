@@ -3,8 +3,7 @@ using System.Collections;
 using System.IO;
 
 public class ExpLvParser : MonoBehaviour
-{
-    string path;
+{    
     public string[] _expLvData;
     string[] sourceExpLv;
     string[] _tempED;

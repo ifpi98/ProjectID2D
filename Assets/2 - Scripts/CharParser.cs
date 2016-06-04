@@ -3,8 +3,7 @@ using System.IO;
 
 
 public class CharParser : MonoBehaviour
-{
-    string path;    
+{    
     public string[] _charData;
     string[] sourceChar;
     string[] _tempCD;
