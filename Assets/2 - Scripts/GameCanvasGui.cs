@@ -113,7 +113,7 @@ public class GameCanvasGui : MonoBehaviour
         RemainTurnText[3] = GameObject.Find("Remain Turn Text 3").GetComponent<Text>();
         RemainTurnText[4] = GameObject.Find("Remain Turn Text 4").GetComponent<Text>();
 
-        historyDisplay = GameObject.Find("Make History Text").GetComponent<Text>();
+        //historyDisplay = GameObject.Find("Make History Text").GetComponent<Text>();
         
     }
 
@@ -166,7 +166,7 @@ public class GameCanvasGui : MonoBehaviour
             finishWord = "";
         }
 
-        historyDisplay.text = "Duo : " + game.makecounthistory[2] + "\nTrio : " + game.makecounthistory[3] +"\nQuartet : " + game.makecounthistory[4] + "\nQuintet : " + game.makecounthistory[5];
+        //historyDisplay.text = "Duo : " + game.makecounthistory[2] + "\nTrio : " + game.makecounthistory[3] +"\nQuartet : " + game.makecounthistory[4] + "\nQuintet : " + game.makecounthistory[5];
 
     }
 
