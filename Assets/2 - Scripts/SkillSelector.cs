@@ -65,7 +65,7 @@ public class SkillSelector : MonoBehaviour {
                         {
                             gCanvas.skillButton[i].colors = condCanCB;
                         }                        
-                        gCanvas.skillButtonText[i].text = "Skill : <color=#F000F0FF>Cute(100)</color>\n" + "\n다음 턴까지 <color=#F000F0FF>Cute</color> 타입 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "Skill : <color=#F000F0FF>Cute(100)</color>" + "\n다음 턴까지 <color=#F000F0FF>Cute</color> 타입 \n아이돌만 등장합니다. ";
                         break;
 
                     }
@@ -73,7 +73,7 @@ public class SkillSelector : MonoBehaviour {
                     if (game.skillOnCheck[i] == true)
                     {
                         gCanvas.skillButton[i].colors = condUsingCB;
-                        gCanvas.skillButtonText[i].text = "<color=#F000F0FF>Cute</color> 스킬 발동 중!\n" + "\n다음 턴까지 <color=#F000F0FF>Cute</color> 타입 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "<color=#F000F0FF>Cute</color> 스킬 발동 중!" + "\n다음 턴까지 <color=#F000F0FF>Cute</color> 타입 \n아이돌만 등장합니다. ";
                         break;
                     }
 
@@ -91,7 +91,7 @@ public class SkillSelector : MonoBehaviour {
                         {
                             gCanvas.skillButton[i].colors = condCanCB;
                         }
-                        gCanvas.skillButtonText[i].text = "Skill : <color=#2E9AFEFF>Cool(100)</color>\n" + "\n다음 턴까지 <color=#2E9AFEFF>Cool</color> 타입 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "Skill : <color=#2E9AFEFF>Cool(100)</color>" + "\n다음 턴까지 <color=#2E9AFEFF>Cool</color> 타입 \n아이돌만 등장합니다. ";
                         break;
 
                     }
@@ -99,7 +99,7 @@ public class SkillSelector : MonoBehaviour {
                     if (game.skillOnCheck[i] == true)
                     {
                         gCanvas.skillButton[i].colors = condUsingCB;
-                        gCanvas.skillButtonText[i].text = "<color=#2E9AFEFF>Cool</color> 스킬 발동 중!\n" + "\n다음 턴까지 <color=#2E9AFEFF>Cool</color> 타입 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "<color=#2E9AFEFF>Cool</color> 스킬 발동 중!" + "\n다음 턴까지 <color=#2E9AFEFF>Cool</color> 타입 \n아이돌만 등장합니다. ";
                         break;
                     }
 
@@ -117,7 +117,7 @@ public class SkillSelector : MonoBehaviour {
                         {
                             gCanvas.skillButton[i].colors = condCanCB;
                         }
-                        gCanvas.skillButtonText[i].text = "Skill : <color=#FF7E00FF>Passion(100)</color>\n" + "\n다음 턴까지 <color=#FF7E00FF>Passion</color> 타입 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "Skill : <color=#FF7E00FF>Passion(100)</color>" + "\n다음 턴까지 <color=#FF7E00FF>Passion</color> 타입 \n아이돌만 등장합니다. ";
                         break;
 
                     }
@@ -125,7 +125,7 @@ public class SkillSelector : MonoBehaviour {
                     if (game.skillOnCheck[i] == true)
                     {
                         gCanvas.skillButton[i].colors = condUsingCB;
-                        gCanvas.skillButtonText[i].text = "<color=#FF7E00FF>Passion</color> 스킬 발동 중!\n" + "\n다음 턴까지 <color=#FF7E00FF>Passion</color> 타입 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "<color=#FF7E00FF>Passion</color> 스킬 발동 중!" + "\n다음 턴까지 <color=#FF7E00FF>Passion</color> 타입 \n아이돌만 등장합니다. ";
                         break;
                     }
 
@@ -143,7 +143,7 @@ public class SkillSelector : MonoBehaviour {
                         {
                             gCanvas.skillButton[i].colors = condCanCB;
                         }
-                        gCanvas.skillButtonText[i].text = "Skill : Sixteen(300) \n" + "\n 다음 턴까지 16세 이하 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "Skill : Sixteen(300)" + "\n 다음 턴까지 16세 이하 \n아이돌만 등장합니다. ";
                         break;
 
                     }
@@ -151,7 +151,7 @@ public class SkillSelector : MonoBehaviour {
                     if (game.skillOnCheck[i] == true)
                     {
                         gCanvas.skillButton[i].colors = condUsingCB;
-                        gCanvas.skillButtonText[i].text = "Sixteen 스킬 발동 중!\n" + "\n 다음 턴까지 16세 이하 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "Sixteen 스킬 발동 중!" + "\n 다음 턴까지 16세 이하 \n아이돌만 등장합니다. ";
                         break;
                     }
 
@@ -169,7 +169,7 @@ public class SkillSelector : MonoBehaviour {
                         {
                             gCanvas.skillButton[i].colors = condCanCB;
                         }
-                        gCanvas.skillButtonText[i].text = "Skill : Seventeen(300)\n" + "\n 다음 턴까지 17세 이상 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "Skill : Seventeen(300)" + "\n 다음 턴까지 17세 이상 \n아이돌만 등장합니다. ";
                         break;
 
                     }
@@ -177,7 +177,7 @@ public class SkillSelector : MonoBehaviour {
                     if (game.skillOnCheck[i] == true)
                     {
                         gCanvas.skillButton[i].colors = condUsingCB;
-                        gCanvas.skillButtonText[i].text = "Seventeen 스킬 발동 중!\n" + "\n 다음 턴까지 17세 이상 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "Seventeen 스킬 발동 중!" + "\n 다음 턴까지 17세 이상 \n아이돌만 등장합니다. ";
                         break;
                     }
 

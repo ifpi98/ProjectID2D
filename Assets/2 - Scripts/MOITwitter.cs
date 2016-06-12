@@ -4,6 +4,8 @@ using System.Collections;
 
 public class MOITwitter : MonoBehaviour 
 {
+    EasyTween easyTweenPostTwitPopUp;
+
     public float USER_LOG_IN_X;
     public float USER_LOG_IN_Y;
     public float USER_LOG_IN_WIDTH;
@@ -30,6 +32,7 @@ public class MOITwitter : MonoBehaviour
     public float POST_TWEET_HEIGHT;
 
     public string stringForTwit;
+    public string twitterUserIdForCheck;
 
     // You need to register your game or application in Twitter to get cosumer key and secret.
     // Go to this page for registration: http://dev.twitter.com/apps/new
@@ -43,18 +46,20 @@ public class MOITwitter : MonoBehaviour
     const string PLAYER_PREFS_TWITTER_USER_SCREEN_NAME  = "TwitterUserScreenName";
     const string PLAYER_PREFS_TWITTER_USER_TOKEN        = "TwitterUserToken";
     const string PLAYER_PREFS_TWITTER_USER_TOKEN_SECRET = "TwitterUserTokenSecret";
+    
 
-    Twitter.RequestTokenResponse m_RequestTokenResponse;
-    Twitter.AccessTokenResponse m_AccessTokenResponse;
+    public Twitter.RequestTokenResponse m_RequestTokenResponse;
+    public Twitter.AccessTokenResponse m_AccessTokenResponse;
 
-    string m_PIN = "Please enter your PIN here.";
+    public string m_PIN = "Please enter your PIN here.";
     string m_Tweet = "Please enter your tweet here.";
 
 	// Use this for initialization
 	void Start() 
     {
         LoadTwitterUserInfo();
-	}
+        easyTweenPostTwitPopUp = GameObject.Find("PopUpButtonAnim").GetComponent<EasyTween>();
+    }
 	
 	// Update is called once per frame
 	void Update() 
@@ -70,34 +75,34 @@ public class MOITwitter : MonoBehaviour
                              Screen.width * USER_LOG_IN_WIDTH,
                              Screen.height * USER_LOG_IN_HEIGHT);
 
-        if (string.IsNullOrEmpty(CONSUMER_KEY) || string.IsNullOrEmpty(CONSUMER_SECRET))
-        {
-            string text = "You need to register your game or application first.\n Click this button, register and fill CONSUMER_KEY and CONSUMER_SECRET of Demo game object.";
-            //if (GUI.Button(rect, text))
-            //{
-            //    Application.OpenURL("http://dev.twitter.com/apps/new");
-            //}
-        }
-        else
-        {
-            string text = string.Empty;
+        //if (string.IsNullOrEmpty(CONSUMER_KEY) || string.IsNullOrEmpty(CONSUMER_SECRET))
+        //{
+        //    string text = "You need to register your game or application first.\n Click this button, register and fill CONSUMER_KEY and CONSUMER_SECRET of Demo game object.";
+        //    if (GUI.Button(rect, text))
+        //    {
+        //        Application.OpenURL("http://dev.twitter.com/apps/new");
+        //    }
+        //}
+        //else
+        //{
+        //    string text = string.Empty;
 
-            if (!string.IsNullOrEmpty(m_AccessTokenResponse.ScreenName))
-            {
-                text = m_AccessTokenResponse.ScreenName + "\nClick to register with a different Twitter account";
-            }
+        //    if (!string.IsNullOrEmpty(m_AccessTokenResponse.ScreenName))
+        //    {
+        //        text = m_AccessTokenResponse.ScreenName + "\nClick to register with a different Twitter account";
+        //    }
 
-            else
-            {
-                text = "You need to register your game or application first.";
-            }
+        //    else
+        //    {
+        //        text = "You need to register your game or application first.";
+        //    }
 
-            //if (GUI.Button(rect, text))
-            //{
-            //    StartCoroutine(Twitter.API.GetRequestToken(CONSUMER_KEY, CONSUMER_SECRET,
-            //                                               new Twitter.RequestTokenCallback(this.OnRequestTokenCallback)));
-            //}
-        }
+        //    if (GUI.Button(rect, text))
+        //    {
+        //        StartCoroutine(Twitter.API.GetRequestToken(CONSUMER_KEY, CONSUMER_SECRET,
+        //                                                   new Twitter.RequestTokenCallback(this.OnRequestTokenCallback)));
+        //    }
+        //}
 
         // PIN Input
         rect.x      = Screen.width * PIN_INPUT_X;
@@ -149,6 +154,7 @@ public class MOITwitter : MonoBehaviour
         m_AccessTokenResponse.ScreenName    = PlayerPrefs.GetString(PLAYER_PREFS_TWITTER_USER_SCREEN_NAME);
         m_AccessTokenResponse.Token         = PlayerPrefs.GetString(PLAYER_PREFS_TWITTER_USER_TOKEN);
         m_AccessTokenResponse.TokenSecret   = PlayerPrefs.GetString(PLAYER_PREFS_TWITTER_USER_TOKEN_SECRET);
+        twitterUserIdForCheck = m_AccessTokenResponse.UserId;
 
         if (!string.IsNullOrEmpty(m_AccessTokenResponse.Token) &&
             !string.IsNullOrEmpty(m_AccessTokenResponse.ScreenName) &&
@@ -164,7 +170,7 @@ public class MOITwitter : MonoBehaviour
         }
     }
 
-    void OnRequestTokenCallback(bool success, Twitter.RequestTokenResponse response)
+    public void OnRequestTokenCallback(bool success, Twitter.RequestTokenResponse response)
     {
         if (success)
         {
@@ -183,7 +189,7 @@ public class MOITwitter : MonoBehaviour
         }
     }
 
-    void OnAccessTokenCallback(bool success, Twitter.AccessTokenResponse response)
+    public void OnAccessTokenCallback(bool success, Twitter.AccessTokenResponse response)
     {
         if (success)
         {
@@ -195,6 +201,7 @@ public class MOITwitter : MonoBehaviour
             print(log);
   
             m_AccessTokenResponse = response;
+            twitterUserIdForCheck = response.UserId;
 
             PlayerPrefs.SetString(PLAYER_PREFS_TWITTER_USER_ID, response.UserId);
             PlayerPrefs.SetString(PLAYER_PREFS_TWITTER_USER_SCREEN_NAME, response.ScreenName);
@@ -213,8 +220,21 @@ public class MOITwitter : MonoBehaviour
     }
 
     public void PostMadeTweet()
-    {
+    {    
         StartCoroutine(Twitter.API.PostTweet(stringForTwit, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,new Twitter.PostTweetCallback(this.OnPostTweet)));
+    }
+
+    public void AuthTwitterFirst()
+    {        
+        StartCoroutine(Twitter.API.GetRequestToken(CONSUMER_KEY, CONSUMER_SECRET,new Twitter.RequestTokenCallback(this.OnRequestTokenCallback)));        
+        //easyTweenPostTwitPopUp.OpenCloseObjectAnimation();
+
+    }
+    
+    public void AuthTwitterPinEnter(string pinnumber)
+    {    
+        StartCoroutine(Twitter.API.GetAccessToken(CONSUMER_KEY, CONSUMER_SECRET, m_RequestTokenResponse.Token, pinnumber,
+                           new Twitter.AccessTokenCallback(this.OnAccessTokenCallback)));        
     }
 
 }

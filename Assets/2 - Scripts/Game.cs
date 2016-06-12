@@ -7,39 +7,46 @@ using System.Text;
 
 public class Game : MonoBehaviour
 {
-    public int basicRemainTurn = 5;
-
-    public int[] cardSlot;    
-    public int[] remainturncardslot;
-    public bool[] checkremainTurncardslot;
     bool firstcheck = false;
     public bool secondcheck = false;
     public bool thirdcheck = false;
+
     DataIni DI;
     Monster mon;
-    MOITwitter moiTwitter;    
-    int[,] unitArray;
-    public List<int> madeSlotList = new List<int>();
+    MOITwitter moiTwitter;
+    DataArrayJson dAJ;
+    EasyTween easyTweenMadeSlotPopUp;    
+
     int tempnum;
     int maxSkillPoint;
     bool skillcheck;
-    public float skillPoint;
-    public bool[] skillOnCheck;
-    int[] tempnumarray;
-    //public Texture tex1;
-    public int[] makecounthistory;
+    string charDearDegreeEncodedString1;
+    string unitDebutHistoryEncodedString1;
+
+    public int basicRemainTurn = 5;
     public int score;
     public int level;
     public int maxCombo;
     public int totalTurn;
-    public List<int> slotCardList;
     public int combocount = 0;
+    public float skillPoint;
+
+    int[] tempnumarray;
+    public int[] cardSlot;    
+    public int[] remainturncardslot;
+    public int[] makecounthistory;
     public int[] charDearDegree;
-    string charDearDegreeEncodedString1;
+    public bool[] checkremainTurncardslot;
+    public bool[] skillOnCheck;
     public bool[] unitDebutHistory;
-    string unitDebutHistoryEncodedString1;
-    DataArrayJson dAJ;
-    EasyTween easyTweenMadeSlotPopUp;    
+    int[,] unitArray;
+    
+    public List<int> madeSlotList = new List<int>();
+    public List<int> slotCardList;
+
+
+
+
 
     // Use this for initialization
     void Start()
@@ -48,111 +55,36 @@ public class Game : MonoBehaviour
         //Screen.SetResolution(960, 720, false);
         //Screen.SetResolution(1152, 648, false);
         
-
+        
         DI = GameObject.Find("DataObj").GetComponent<DataIni>();
         mon = GameObject.Find("GameObj").GetComponent<Monster>();
         dAJ = GameObject.Find("DataObj").GetComponent<DataArrayJson>();
         moiTwitter = GameObject.Find("TwitterObj").GetComponent<MOITwitter>();
         easyTweenMadeSlotPopUp = GameObject.Find("PopUpButtonAnim").GetComponent<EasyTween>();
-
+        
         checkExp();
 
         charDearDegree = new int[mon.charcount];        
         unitDebutHistory = new bool[mon.unitcount];
 
-        charDearDegreeEncodedString1 = DI.GetCharDearDegreeString();
+        ReadInIData();
 
-        if (charDearDegreeEncodedString1 != "")
-        {
-            JSONObject charDearJson = new JSONObject(charDearDegreeEncodedString1);
-            //Debug.Log("CharDear : " + charDearDegreeEncodedString1);        
-            dAJ.accessData(charDearJson);
-            JSONObject arr1 = charDearJson["DearDegree"];
-            //Debug.Log(arr1[1].n);
-
-            for (int i = 1; i < mon.charcount; i++)
-            {
-                try
-                {
-                    charDearDegree[i] = Convert.ToInt32(arr1[i].n);
-                }
-                catch
-                {
-                    Debug.Log("nullException??");                    
-                }
-            }
-        }
-
-        unitDebutHistoryEncodedString1 = DI.GetUnitDebutHistoryString();
-
-        if (unitDebutHistoryEncodedString1 != "")
-        {            
-            //Debug.Log("UnitDebut : " + unitDebutHistoryEncodedString1);
-
-            JSONObject unitDebutJson = new JSONObject(unitDebutHistoryEncodedString1);
-            dAJ.accessData(unitDebutJson);
-            JSONObject arr2 = unitDebutJson["DebutHistory"];
-            //Debug.Log(arr2[1].n);
-
-            for (int i = 1; i < mon.unitcount; i++)
-            {
-                try
-                {
-                    unitDebutHistory[i] = arr2[i].b;
-                }
-                catch
-                {
-                    Debug.Log("nullException??");
-                }
-                
-            }
-        }               
-        
-        score = DI.GetExp();
-        level = DI.GetLV();
         maxSkillPoint = level * 10 + 100;
         skillPoint = 0;
         skillOnCheck = new bool[5];
 
-        if (level == 0)
-        {
-            level = 1;
-        }
-        totalTurn = DI.GetTotalTurn();
-        if (DI.GetBasicRemainTurn() != 0)
-        {
-            basicRemainTurn = DI.GetBasicRemainTurn();
-        }
+        WriteGameData();
 
-        maxCombo = 0;
-        maxCombo = DI.GetMaxCombo();
-
-        remainturncardslot = new int[5];
-        makecounthistory = new int[6];
-
-        makecounthistory[2] = DI.GetMakeCountHistory2();
-        makecounthistory[3] = DI.GetMakeCountHistory3();
-        makecounthistory[4] = DI.GetMakeCountHistory4();
-        makecounthistory[5] = DI.GetMakeCountHistory5();        
+        PutCardInSlotAtFirst();
         
-        for (int i = 0; i < 5; i++)
-        {
-            remainturncardslot[i] = basicRemainTurn;
-        }
-        cardSlot = new int[5];
-                
-        unitArray = new int[mon.charcount, 5];
-        unitArray = mon.unitData3;
-        
-        checkremainTurncardslot = new bool[5];
+        secondcheck = true;
+        SlotCardMaKe();                
 
-        for (int i = 0; i < 5; i++)
-        {
-            checkremainTurncardslot[i] = true;
-        }
+    }
 
+    void PutCardInSlotAtFirst()
+    {
         tempnumarray = new int[5];
-        
 
         while (firstcheck == false)
         {
@@ -187,14 +119,104 @@ public class Game : MonoBehaviour
         {
             cardSlot[i] = tempnumarray[i];
         }
-
-        secondcheck = true;
-        SlotCardMaKe();
-                
-
     }
 
- 
+
+    void WriteGameData()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            remainturncardslot[i] = basicRemainTurn;
+        }
+        cardSlot = new int[5];
+
+        unitArray = new int[mon.charcount, 5];
+        unitArray = mon.unitData3;
+
+        checkremainTurncardslot = new bool[5];
+
+        for (int i = 0; i < 5; i++)
+        {
+            checkremainTurncardslot[i] = true;
+        }
+    }
+
+
+    void ReadInIData()
+    {
+        charDearDegreeEncodedString1 = DI.GetCharDearDegreeString();
+
+        if (charDearDegreeEncodedString1 != "")
+        {
+            JSONObject charDearJson = new JSONObject(charDearDegreeEncodedString1);
+            //Debug.Log("CharDear : " + charDearDegreeEncodedString1);        
+            dAJ.accessData(charDearJson);
+            JSONObject arr1 = charDearJson["DearDegree"];
+            //Debug.Log(arr1[1].n);
+
+            for (int i = 1; i < mon.charcount; i++)
+            {
+                try
+                {
+                    charDearDegree[i] = Convert.ToInt32(arr1[i].n);
+                }
+                catch
+                {
+                    Debug.Log("nullException??");
+                }
+            }
+        }
+
+        unitDebutHistoryEncodedString1 = DI.GetUnitDebutHistoryString();
+
+        if (unitDebutHistoryEncodedString1 != "")
+        {
+            //Debug.Log("UnitDebut : " + unitDebutHistoryEncodedString1);
+
+            JSONObject unitDebutJson = new JSONObject(unitDebutHistoryEncodedString1);
+            dAJ.accessData(unitDebutJson);
+            JSONObject arr2 = unitDebutJson["DebutHistory"];
+            //Debug.Log(arr2[1].n);
+
+            for (int i = 1; i < mon.unitcount; i++)
+            {
+                try
+                {
+                    unitDebutHistory[i] = arr2[i].b;
+                }
+                catch
+                {
+                    Debug.Log("nullException??");
+                }
+
+            }
+        }
+
+        score = DI.GetExp();
+        level = DI.GetLV();
+
+        if (level == 0)
+        {
+            level = 1;
+        }
+        totalTurn = DI.GetTotalTurn();
+        if (DI.GetBasicRemainTurn() != 0)
+        {
+            basicRemainTurn = DI.GetBasicRemainTurn();
+        }
+
+        maxCombo = 0;
+        maxCombo = DI.GetMaxCombo();
+
+        remainturncardslot = new int[5];
+        makecounthistory = new int[6];
+
+        makecounthistory[2] = DI.GetMakeCountHistory2();
+        makecounthistory[3] = DI.GetMakeCountHistory3();
+        makecounthistory[4] = DI.GetMakeCountHistory4();
+        makecounthistory[5] = DI.GetMakeCountHistory5();
+    }
+
 
 
     // Update is called once per frame
@@ -459,7 +481,7 @@ public class Game : MonoBehaviour
             }                        
             str.Append("의 " + unitcount + "인 유닛 '" + mon.unitData2[decideUnit, 1] + "'");
             str.Append("의 데뷔를 축하해 주세요. ");
-            str.Append("\nMaster Of Idol, 멤버들을 모아 유닛으로 데뷔시키는 것은 프로듀서, 바로 당신! #MOIDEBUT");            
+            str.Append("\nMaster Of Idol, 신데렐라 멤버들을 모아 유닛으로 데뷔시키는 것은 프로듀서, 바로 당신! #MOIDEBUT");            
 
             // 멤버 A, 멤버 B, 멤버 C, (멤버 D), (멤버 E)가 유닛 ‘XXXXXXXXXXXXXXX’로 데뷔(컴백)하였습니다. 
             
