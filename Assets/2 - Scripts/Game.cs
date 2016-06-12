@@ -17,6 +17,7 @@ public class Game : MonoBehaviour
     public bool thirdcheck = false;
     DataIni DI;
     Monster mon;
+    MOITwitter moiTwitter;    
     int[,] unitArray;
     public List<int> madeSlotList = new List<int>();
     int tempnum;
@@ -38,7 +39,7 @@ public class Game : MonoBehaviour
     public bool[] unitDebutHistory;
     string unitDebutHistoryEncodedString1;
     DataArrayJson dAJ;
-
+    EasyTween easyTweenMadeSlotPopUp;    
 
     // Use this for initialization
     void Start()
@@ -46,12 +47,13 @@ public class Game : MonoBehaviour
         //Screen.SetResolution(Screen.width* 16 / 9, Screen.width , false);
         //Screen.SetResolution(960, 720, false);
         //Screen.SetResolution(1152, 648, false);
-              
         
 
         DI = GameObject.Find("DataObj").GetComponent<DataIni>();
         mon = GameObject.Find("GameObj").GetComponent<Monster>();
         dAJ = GameObject.Find("DataObj").GetComponent<DataArrayJson>();
+        moiTwitter = GameObject.Find("TwitterObj").GetComponent<MOITwitter>();
+        easyTweenMadeSlotPopUp = GameObject.Find("PopUpButtonAnim").GetComponent<EasyTween>();
 
         checkExp();
 
@@ -442,8 +444,31 @@ public class Game : MonoBehaviour
 
         if (unitDebutHistory[decideUnit] == false)
         {
+            GameCanvasGui gCanvas = GameObject.Find("UIObj").GetComponent<GameCanvasGui>();
+            StringBuilder str = new StringBuilder();
+            int unitcount = Convert.ToInt16(mon.unitData2[decideUnit, 14]);
+
+            for (int i = 0; i < unitcount; i++)
+            {
+                str.Append(mon.charData2[Convert.ToInt16(mon.unitData2[decideUnit, i+4]), 8]);
+
+                if (i < unitcount - 1)
+                {
+                    str.Append(", ");
+                }
+            }                        
+            str.Append("의 " + unitcount + "인 유닛 '" + mon.unitData2[decideUnit, 1] + "'");
+            str.Append("의 데뷔를 축하해 주세요. ");
+            str.Append("\nMaster Of Idol, 멤버들을 모아 유닛으로 데뷔시키는 것은 프로듀서, 바로 당신! #MOIDEBUT");            
+
+            // 멤버 A, 멤버 B, 멤버 C, (멤버 D), (멤버 E)가 유닛 ‘XXXXXXXXXXXXXXX’로 데뷔(컴백)하였습니다. 
+            
             unitDebutHistory[decideUnit] = true;
-            Debug.Log("You just made them DO DEBUT : " + mon.unitData2[decideUnit, 1] + " Unit Number : " + decideUnit);            
+            moiTwitter.stringForTwit = str.ToString();
+            gCanvas.popUpButtonMadeText.text = moiTwitter.stringForTwit;
+            easyTweenMadeSlotPopUp.OpenCloseObjectAnimation();
+            Debug.Log("You just made them DO DEBUT : " + mon.unitData2[decideUnit, 1] + " Unit Number : " + decideUnit);
+
         }
         DI.SetUnitDebutHistoryString();
 

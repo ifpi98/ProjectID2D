@@ -10,7 +10,7 @@ public class MadeSlotSelector : MonoBehaviour {
     GameCanvasGui gCanvas;
     //ColorBlock defaultCB;
     ColorBlock selectedCB;
-    ColorBlock notYetDebutCB;
+    ColorBlock notYetDebutCB;    
 
     // Use this for initialization
     void Start () {
@@ -173,8 +173,9 @@ public class MadeSlotSelector : MonoBehaviour {
     }    
 
     public void MadeSlotDecide(int a)
-    {
-        game.PassTurnWithMake(game.madeSlotList[a]);        
+    {        
+        game.PassTurnWithMake(game.madeSlotList[a]);
+                
     }
     
 

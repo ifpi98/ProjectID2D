@@ -29,6 +29,8 @@ public class MOITwitter : MonoBehaviour
     public float POST_TWEET_WIDTH;
     public float POST_TWEET_HEIGHT;
 
+    public string stringForTwit;
+
     // You need to register your game or application in Twitter to get cosumer key and secret.
     // Go to this page for registration: http://dev.twitter.com/apps/new
     public string CONSUMER_KEY;
@@ -71,10 +73,10 @@ public class MOITwitter : MonoBehaviour
         if (string.IsNullOrEmpty(CONSUMER_KEY) || string.IsNullOrEmpty(CONSUMER_SECRET))
         {
             string text = "You need to register your game or application first.\n Click this button, register and fill CONSUMER_KEY and CONSUMER_SECRET of Demo game object.";
-            if (GUI.Button(rect, text))
-            {
-                Application.OpenURL("http://dev.twitter.com/apps/new");
-            }
+            //if (GUI.Button(rect, text))
+            //{
+            //    Application.OpenURL("http://dev.twitter.com/apps/new");
+            //}
         }
         else
         {
@@ -90,11 +92,11 @@ public class MOITwitter : MonoBehaviour
                 text = "You need to register your game or application first.";
             }
 
-            if (GUI.Button(rect, text))
-            {
-                StartCoroutine(Twitter.API.GetRequestToken(CONSUMER_KEY, CONSUMER_SECRET,
-                                                           new Twitter.RequestTokenCallback(this.OnRequestTokenCallback)));
-            }
+            //if (GUI.Button(rect, text))
+            //{
+            //    StartCoroutine(Twitter.API.GetRequestToken(CONSUMER_KEY, CONSUMER_SECRET,
+            //                                               new Twitter.RequestTokenCallback(this.OnRequestTokenCallback)));
+            //}
         }
 
         // PIN Input
@@ -103,7 +105,7 @@ public class MOITwitter : MonoBehaviour
         rect.width  = Screen.width * PIN_INPUT_WIDTH;
         rect.height = Screen.height * PIN_INPUT_HEIGHT;
 
-        m_PIN = GUI.TextField(rect, m_PIN);
+        //m_PIN = GUI.TextField(rect, m_PIN);
 
         // PIN Enter Button
         rect.x = Screen.width * PIN_ENTER_X;
@@ -111,11 +113,11 @@ public class MOITwitter : MonoBehaviour
         rect.width = Screen.width * PIN_ENTER_WIDTH;
         rect.height = Screen.height * PIN_ENTER_HEIGHT;
 
-        if (GUI.Button(rect, "Enter PIN"))
-        {
-            StartCoroutine(Twitter.API.GetAccessToken(CONSUMER_KEY, CONSUMER_SECRET, m_RequestTokenResponse.Token, m_PIN,
-                           new Twitter.AccessTokenCallback(this.OnAccessTokenCallback)));
-        }
+        //if (GUI.Button(rect, "Enter PIN"))
+        //{
+        //    StartCoroutine(Twitter.API.GetAccessToken(CONSUMER_KEY, CONSUMER_SECRET, m_RequestTokenResponse.Token, m_PIN,
+        //                   new Twitter.AccessTokenCallback(this.OnAccessTokenCallback)));
+        //}
 
         // Tweet Input
         rect.x = Screen.width * TWEET_INPUT_X;
@@ -123,7 +125,7 @@ public class MOITwitter : MonoBehaviour
         rect.width = Screen.width * TWEET_INPUT_WIDTH;
         rect.height = Screen.height * TWEET_INPUT_HEIGHT;
 
-        m_Tweet = GUI.TextField(rect, m_Tweet);
+        //m_Tweet = GUI.TextField(rect, m_Tweet);
 
         // Post Tweet Button
         rect.x = Screen.width * POST_TWEET_X;
@@ -131,11 +133,11 @@ public class MOITwitter : MonoBehaviour
         rect.width = Screen.width * POST_TWEET_WIDTH;
         rect.height = Screen.height * POST_TWEET_HEIGHT;
 
-        if (GUI.Button(rect, "Post Tweet"))
-        {
-            StartCoroutine(Twitter.API.PostTweet(m_Tweet, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
-                           new Twitter.PostTweetCallback(this.OnPostTweet)));
-        }
+        //if (GUI.Button(rect, "Post Tweet"))
+        //{
+        //    StartCoroutine(Twitter.API.PostTweet(m_Tweet, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,
+        //                   new Twitter.PostTweetCallback(this.OnPostTweet)));
+        //}
     }
 
 
@@ -209,4 +211,10 @@ public class MOITwitter : MonoBehaviour
     {
         print("OnPostTweet - " + (success ? "succedded." : "failed."));
     }
+
+    public void PostMadeTweet()
+    {
+        StartCoroutine(Twitter.API.PostTweet(stringForTwit, CONSUMER_KEY, CONSUMER_SECRET, m_AccessTokenResponse,new Twitter.PostTweetCallback(this.OnPostTweet)));
+    }
+
 }

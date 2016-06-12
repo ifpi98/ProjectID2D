@@ -37,7 +37,8 @@ public class GameCanvasGui : MonoBehaviour
     public Text pointDisplay;
     public Text maxCombo;
     public Text historyDisplay;
-        
+
+    public Text popUpButtonMadeText;
 
     // Use this for initialization
     void Start()
@@ -113,8 +114,9 @@ public class GameCanvasGui : MonoBehaviour
         RemainTurnText[3] = GameObject.Find("Remain Turn Text 3").GetComponent<Text>();
         RemainTurnText[4] = GameObject.Find("Remain Turn Text 4").GetComponent<Text>();
 
+        popUpButtonMadeText = GameObject.Find("PopUpButtonMadeText").GetComponent<Text>();
         //historyDisplay = GameObject.Find("Make History Text").GetComponent<Text>();
-        
+
     }
 
     void Update()
