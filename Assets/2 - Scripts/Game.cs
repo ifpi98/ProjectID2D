@@ -481,7 +481,7 @@ public class Game : MonoBehaviour
             }                        
             str.Append("의 " + unitcount + "인 유닛 '" + mon.unitData2[decideUnit, 1] + "'");
             str.Append("의 데뷔를 축하해 주세요. ");
-            str.Append("\nMaster Of Idol, 신데렐라 멤버들을 모아 유닛으로 데뷔시키는 것은 프로듀서, 바로 당신! #MOIDEBUT");            
+            str.Append("\nMaster Of Idol, 신데렐라 멤버들을 모아 유닛으로 데뷔시키는 것은 프로듀서, 바로 당신! \n#MOIDEBUT");            
 
             // 멤버 A, 멤버 B, 멤버 C, (멤버 D), (멤버 E)가 유닛 ‘XXXXXXXXXXXXXXX’로 데뷔(컴백)하였습니다. 
             
