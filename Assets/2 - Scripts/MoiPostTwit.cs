@@ -15,7 +15,7 @@ public class MoiPostTwit : MonoBehaviour {
 
         TwitterShareButton = GameObject.Find("TwitterShareButton").GetComponent<Button>();
         easyTweenPostTwitPopUp = GameObject.Find("PopUpButtonAnim").GetComponent<EasyTween>();
-        easyTweenTwitterAuthPopUp = GameObject.Find("PopUpButtonAnim1").GetComponent<EasyTween>();
+        easyTweenTwitterAuthPopUp = GameObject.Find("TwitterAuthAnim").GetComponent<EasyTween>();
         pinNumber = GameObject.Find("PinNumber").GetComponent<Text>();
         moiTwitter = GameObject.Find("TwitterObj").GetComponent<MOITwitter>();
     }
