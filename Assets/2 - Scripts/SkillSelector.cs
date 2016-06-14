@@ -73,7 +73,7 @@ public class SkillSelector : MonoBehaviour {
                     if (game.skillOnCheck[i] == true)
                     {
                         gCanvas.skillButton[i].colors = condUsingCB;
-                        gCanvas.skillButtonText[i].text = "<color=#F000F0FF>Cute</color> 스킬 발동 중!" + "\n다음 턴까지 <color=#F000F0FF>Cute</color> 타입 \n아이돌만 등장합니다. ";
+                        gCanvas.skillButtonText[i].text = "<color=#FF64C8FF>Cute</color> 스킬 발동 중!" + "\n다음 턴까지 <color=#FF64C8FF>Cute</color> 타입 \n아이돌만 등장합니다. ";
                         break;
                     }
 
@@ -199,7 +199,7 @@ public class SkillSelector : MonoBehaviour {
         switch (selectedSkill)
         {
             case 0:
-                if (game.skillOnCheck[0] != true)
+                if (game.skillOnCheck[0] != true && game.skillPoint >= 100)
                 {
                     game.skillPoint = game.skillPoint - 100;
                     game.skillOnCheck[0] = true;
@@ -209,7 +209,7 @@ public class SkillSelector : MonoBehaviour {
                 break;
 
             case 1:
-                if (game.skillOnCheck[1] != true)
+                if (game.skillOnCheck[1] != true && game.skillPoint >= 100)
                 {
                     game.skillPoint = game.skillPoint - 100;
                     game.skillOnCheck[0] = false;
@@ -219,7 +219,7 @@ public class SkillSelector : MonoBehaviour {
                 break;
 
             case 2:
-                if (game.skillOnCheck[2] != true)
+                if (game.skillOnCheck[2] != true && game.skillPoint >= 100)
                 {
                     game.skillPoint = game.skillPoint - 100;
                     game.skillOnCheck[0] = false;
@@ -229,7 +229,7 @@ public class SkillSelector : MonoBehaviour {
                 break;
 
             case 3:
-                if (game.skillOnCheck[3] != true)
+                if (game.skillOnCheck[3] != true && game.skillPoint >= 300)
                 {
                     game.skillPoint = game.skillPoint - 300;
                     game.skillOnCheck[3] = true;
@@ -238,7 +238,7 @@ public class SkillSelector : MonoBehaviour {
                 break;
 
             case 4:
-                if (game.skillOnCheck[4] != true)
+                if (game.skillOnCheck[4] != true && game.skillPoint >= 300)
                 {
                     game.skillPoint = game.skillPoint - 300;
                     game.skillOnCheck[3] = false;
