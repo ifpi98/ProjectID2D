@@ -43,7 +43,7 @@ public class ExpLvParser : MonoBehaviour
                 break;
             }
 
-            _expLvData[i] = sourceExpLv[i];
+            //_expLvData[i] = sourceExpLv[i];
 
             string source = sourceExpLv[i];
             _tempED = source.Split(',');
