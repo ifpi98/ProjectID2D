@@ -4,9 +4,9 @@ using System;
 using System.Text;
 using System.Collections;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+//#if UNITY_EDITOR
+//using UnityEditor;
+//#endif
 
 public class GameCanvasGui : MonoBehaviour
 {
@@ -18,8 +18,7 @@ public class GameCanvasGui : MonoBehaviour
     public GameObject[] skillButtonObject;
     
     string[] cardSlot;
-    string finishWord;
-    int requireLevelup;
+    string finishWord;    
 
     public Button[] mButton;
     public Text[] mButText;
@@ -30,6 +29,7 @@ public class GameCanvasGui : MonoBehaviour
 
     public Button[] skillButton;
     public Text[] skillButtonText;
+    public Text skillPointText;
 
     public Button nTurnButton;
     public Text nTurnButText;
@@ -39,6 +39,16 @@ public class GameCanvasGui : MonoBehaviour
     public Text historyDisplay;
 
     public Text popUpButtonMadeText;
+    //public Button madeSlotGetExpDPWriteBg;
+    //public Text madeSlotGetExpDPText;
+    //public Button madeSlotGetSpDPWriteBg;
+    //public Text madeSlotGetSpDPText;
+
+    public Button levelUpDPBg;
+    public Text levelUpDPBgText;
+    public Button levelUpInfoDPBg;
+    public Text levelUpInfoDPBgText;
+    
 
     // Use this for initialization
     void Start()
@@ -99,11 +109,12 @@ public class GameCanvasGui : MonoBehaviour
             skillButtonText[i] = skillButton[i].GetComponentInChildren<Text>();
         }
         
+        skillPointText = GameObject.Find("SkillPointText").GetComponent<Text>();
+
         nTurnButton = GameObject.Find("Next Turn Button").GetComponent<Button>();
         nTurnButText = nTurnButton.GetComponentInChildren<Text>();
 
-        pointDisplay = GameObject.Find("Point Text").GetComponent<Text>();
-        requireLevelup = Convert.ToInt32(mon.expLvData2[game.level + 1, 2]) - game.score;
+        pointDisplay = GameObject.Find("Point Text").GetComponent<Text>();        
         maxCombo = GameObject.Find("Combo Text").GetComponent<Text>();
 
         RemainTurnText = new Text[5];
@@ -115,9 +126,19 @@ public class GameCanvasGui : MonoBehaviour
         RemainTurnText[4] = GameObject.Find("Remain Turn Text 4").GetComponent<Text>();
 
         popUpButtonMadeText = GameObject.Find("PopUpButtonMadeText").GetComponent<Text>();
-        //historyDisplay = GameObject.Find("Make History Text").GetComponent<Text>();
+        //madeSlotGetExpDPWriteBg = GameObject.Find("MadeSlotGetExpDPWriteBg").GetComponent<Button>();
+        //madeSlotGetExpDPText = madeSlotGetExpDPWriteBg.GetComponentInChildren<Text>();
+        //madeSlotGetSpDPWriteBg = GameObject.Find("MadeSlotGetSpDPWriteBg").GetComponent<Button>();
+        //madeSlotGetSpDPText = madeSlotGetSpDPWriteBg.GetComponentInChildren<Text>();
 
-    }
+        levelUpDPBg = GameObject.Find("LevelUpDPBg").GetComponent<Button>();
+        levelUpDPBgText = levelUpDPBg.GetComponentInChildren<Text>();
+        levelUpInfoDPBg = GameObject.Find("LevelUpInfoDPBg").GetComponent<Button>();
+        levelUpInfoDPBgText = levelUpInfoDPBg.GetComponentInChildren<Text>();
+    
+    //historyDisplay = GameObject.Find("Make History Text").GetComponent<Text>();
+
+}
 
     void Update()
     {
@@ -135,7 +156,8 @@ public class GameCanvasGui : MonoBehaviour
             mButText[i].text = cardSlot[i];
         }
 
-        pointDisplay.text = "SP : " + Convert.ToInt32(game.skillPoint) + "\n Score : " + game.score + " (" + requireLevelup + ") " + "\n Level : " + game.level + "\n MaxCombo : " + game.maxCombo + "\n TotalTurn : " + game.totalTurn;
+        pointDisplay.text = "Score : " + game.score + " (" + game.requireLevelup + ") " + "\n Level : " + game.level + "\n TotalTurn : " + game.totalTurn;
+        skillPointText.text = "SP : " + Convert.ToInt32(game.skillPoint);
 
         for (int i = 0; i < 5; i++)
         {
@@ -167,6 +189,25 @@ public class GameCanvasGui : MonoBehaviour
         {
             finishWord = "";
         }
+
+        if (game.level < 5)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                skillButton[i].gameObject.SetActive(false);
+                skillPointText.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                skillButton[i].gameObject.SetActive(true);
+                skillPointText.gameObject.SetActive(true);
+            }
+        }
+
+
 
         //historyDisplay.text = "Duo : " + game.makecounthistory[2] + "\nTrio : " + game.makecounthistory[3] +"\nQuartet : " + game.makecounthistory[4] + "\nQuintet : " + game.makecounthistory[5];
 
