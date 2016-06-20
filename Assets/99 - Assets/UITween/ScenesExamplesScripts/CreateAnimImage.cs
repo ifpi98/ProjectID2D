@@ -71,6 +71,7 @@ public class CreateAnimImage : MonoBehaviour {
 		{
 			// Creates Instance
 			GameObject createInstance = Instantiate(CreateInstance) as GameObject;
+            createInstance.name = "MadeSlotList" + i;
 			// Changes the Parent, Assing to scroll List
 			createInstance.transform.SetParent(RootRect, false);
 			EasyTween easy = createInstance.GetComponent<EasyTween>();

@@ -21,7 +21,7 @@ public class Game : MonoBehaviour
     int tempnum;
     int maxSkillPoint;
     int sumDearDegree;
-    int getExpWhenMadeSlot;
+    int getExpWhenMadeSlot;    
     bool skillcheck;
     bool levelUpCheck;
     string charDearDegreeEncodedString1;
@@ -34,6 +34,7 @@ public class Game : MonoBehaviour
     public int totalTurn;
     public int combocount = 0;
     public int requireLevelup;
+    public int madeSlotCount;
     public float skillPoint;
 
     int[] tempnumarray;
@@ -81,6 +82,7 @@ public class Game : MonoBehaviour
         skillOnCheck = new bool[5];
 
         WriteGameData();
+        CheckMadeSlotCount();
 
         PutCardInSlotAtFirst();
 
@@ -88,6 +90,20 @@ public class Game : MonoBehaviour
         secondcheck = true;
         SlotCardMaKe();                
 
+    }
+
+    void CheckMadeSlotCount()
+    {
+        madeSlotCount = 0;
+
+        for (int i = 0; i < mon.unitcount; i++)
+        {
+            if (unitDebutHistory[i] == true)
+            {
+                madeSlotCount = madeSlotCount + 1;
+            }
+        }
+        
     }
 
 
@@ -370,6 +386,9 @@ public class Game : MonoBehaviour
         // 멤버 A, 멤버 B, 멤버 C, (멤버 D), (멤버 E)가 유닛 ‘XXXXXXXXXXXXXXX’로 데뷔(컴백)하였습니다. 
 
         unitDebutHistory[decideUnit2] = true;
+        DI.SetUnitDebutHistoryString();
+        CheckMadeSlotCount();
+        //gCanvas.madeSlotCountText.text = Convert.ToString(madeSlotCount);            
         moiTwitter.stringForTwit = str.ToString();
         gCanvas.popUpButtonMadeText.text = moiTwitter.stringForTwit;
 
@@ -384,7 +403,7 @@ public class Game : MonoBehaviour
         //str3.Append(unitcount * 10);
 
         //gCanvas.madeSlotGetSpDPText.text = str3.ToString();
-
+                
         easyTweenMadeSlotPopUp.OpenCloseObjectAnimation();
         Debug.Log("You just made them DO DEBUT : " + mon.unitData2[decideUnit2, 1] + " Unit Number : " + decideUnit2);
     }
@@ -401,8 +420,6 @@ public class Game : MonoBehaviour
 
         Debug.Log("YOU MADE : " + mon.unitData2[decideUnit, 1] + " Unit Number : " + decideUnit);
         
-        DI.SetUnitDebutHistoryString();
-
         List<int> findMember = new List<int>();
         List<int> findMemberplace = new List<int>();
         bool[] checkMakeUnitMemberplace = new bool[5];

@@ -13,12 +13,13 @@ public class GameCanvasGui : MonoBehaviour
     Monster mon;
     Game game;
     DataIni DI;
-    
+
     public GameObject[] madeSlot;
     public GameObject[] skillButtonObject;
-    
+
     string[] cardSlot;
-    string finishWord;    
+    string finishWord;
+    int[] madeSlotNumber;
 
     public Button[] mButton;
     public Text[] mButText;
@@ -48,7 +49,13 @@ public class GameCanvasGui : MonoBehaviour
     public Text levelUpDPBgText;
     public Button levelUpInfoDPBg;
     public Text levelUpInfoDPBgText;
-    
+
+    public Button madeSlotHistoryPopUp;
+    public Text madeSlotCountText;
+    public Button madeSlotInfoPopUp_CheckButtAfter;
+    public CreateAnimImage createMadeSlotHistoryList;
+
+
 
     // Use this for initialization
     void Start()
@@ -57,8 +64,8 @@ public class GameCanvasGui : MonoBehaviour
         game = GameObject.Find("GameObj").GetComponent<Game>();
         DI = GameObject.Find("DataObj").GetComponent<DataIni>();
 
-        madeSlot = new GameObject[6]; 
-                        
+        madeSlot = new GameObject[6];
+
         madeSlot[0] = GameObject.Find("Made Slot Button 0");
         madeSlot[1] = GameObject.Find("Made Slot Button 1");
         madeSlot[2] = GameObject.Find("Made Slot Button 2");
@@ -80,11 +87,11 @@ public class GameCanvasGui : MonoBehaviour
         mButton = new Button[5];
         mButText = new Text[5];
 
-        mButton[0] = GameObject.Find("Member Button 0").GetComponent<Button>();        
-        mButton[1] = GameObject.Find("Member Button 1").GetComponent<Button>();        
-        mButton[2] = GameObject.Find("Member Button 2").GetComponent<Button>();        
-        mButton[3] = GameObject.Find("Member Button 3").GetComponent<Button>();        
-        mButton[4] = GameObject.Find("Member Button 4").GetComponent<Button>();        
+        mButton[0] = GameObject.Find("Member Button 0").GetComponent<Button>();
+        mButton[1] = GameObject.Find("Member Button 1").GetComponent<Button>();
+        mButton[2] = GameObject.Find("Member Button 2").GetComponent<Button>();
+        mButton[3] = GameObject.Find("Member Button 3").GetComponent<Button>();
+        mButton[4] = GameObject.Find("Member Button 4").GetComponent<Button>();
 
         for (int i = 0; i < 5; i++)
         {
@@ -108,17 +115,17 @@ public class GameCanvasGui : MonoBehaviour
             skillButton[i] = skillButtonObject[i].GetComponent<Button>();
             skillButtonText[i] = skillButton[i].GetComponentInChildren<Text>();
         }
-        
+
         skillPointText = GameObject.Find("SkillPointText").GetComponent<Text>();
 
         nTurnButton = GameObject.Find("Next Turn Button").GetComponent<Button>();
         nTurnButText = nTurnButton.GetComponentInChildren<Text>();
 
-        pointDisplay = GameObject.Find("Point Text").GetComponent<Text>();        
+        pointDisplay = GameObject.Find("Point Text").GetComponent<Text>();
         maxCombo = GameObject.Find("Combo Text").GetComponent<Text>();
 
         RemainTurnText = new Text[5];
-        
+
         RemainTurnText[0] = GameObject.Find("Remain Turn Text 0").GetComponent<Text>();
         RemainTurnText[1] = GameObject.Find("Remain Turn Text 1").GetComponent<Text>();
         RemainTurnText[2] = GameObject.Find("Remain Turn Text 2").GetComponent<Text>();
@@ -135,16 +142,110 @@ public class GameCanvasGui : MonoBehaviour
         levelUpDPBgText = levelUpDPBg.GetComponentInChildren<Text>();
         levelUpInfoDPBg = GameObject.Find("LevelUpInfoDPBg").GetComponent<Button>();
         levelUpInfoDPBgText = levelUpInfoDPBg.GetComponentInChildren<Text>();
-    
-    //historyDisplay = GameObject.Find("Make History Text").GetComponent<Text>();
 
-}
+        madeSlotHistoryPopUp = GameObject.Find("MadeSlotInfoPopUp_CheckButt").GetComponent<Button>();
+        madeSlotCountText = madeSlotHistoryPopUp.GetComponentInChildren<Text>();
+        madeSlotInfoPopUp_CheckButtAfter = GameObject.Find("MadeSlotInfoPopUp_CheckButtAfter").GetComponent<Button>();
+        madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
+
+        createMadeSlotHistoryList = GameObject.Find("HistroyListCreateAnimImage").GetComponent<CreateAnimImage>();
+
+        //historyDisplay = GameObject.Find("Make History Text").GetComponent<Text>();
+
+    }
+
+    public void ButtonChanger()
+    {
+        createMadeSlotHistoryList.HowManyButtons = game.madeSlotCount;
+        createMadeSlotHistoryList.CreateButtons();
+        MakeListMadeSlot();
+        WriteMadeSlot();
+        madeSlotHistoryPopUp.gameObject.SetActive(false);
+        madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(true);
+    }
+
+    void WriteMadeSlot()
+    {
+        for (int i = 0; i < game.madeSlotCount; i++)
+        {
+            string slotname = "MadeSlotList" + i;
+            GameObject writeGO;
+            writeGO = GameObject.Find(slotname);            
+
+            StringBuilder str = new StringBuilder();            
+            int unitcount = Convert.ToInt16(mon.unitData2[madeSlotNumber[i], 14]);
+
+            str.Append("유닛명 : '" + mon.unitData2[madeSlotNumber[i], 1] + "' (" + madeSlotNumber[i] + ")"  );
+            str.Append("\n멤버 : ");
+
+            for (int y = 0; y < unitcount; y++)
+            {
+                str.Append(mon.charData2[Convert.ToInt16(mon.unitData2[madeSlotNumber[i], y + 4]), 1]);
+
+                if (y < unitcount - 1)
+                {
+                    str.Append(", ");
+                }
+            }            
+
+            writeGO.GetComponentInChildren<Text>().text = str.ToString();
+            //DestroyImmediate(writeGO);
+        }
+
+    }
+
+
+
+
+
+    void MakeListMadeSlot()
+    {
+        int confirmCount = 0;        
+        madeSlotNumber = new int[game.madeSlotCount];
+
+        while (confirmCount < game.madeSlotCount)
+        {
+            for (int i = 0; i < mon.unitcount; i++)
+            {
+                if (game.unitDebutHistory[i] == true)
+                {
+                    madeSlotNumber[confirmCount] = i;
+                    confirmCount = confirmCount + 1;
+                    //Debug.Log(i);
+                } 
+            }
+        }
+    }
+
+
+    public void ButtonChanger2()
+    {
+        madeSlotHistoryPopUp.gameObject.SetActive(true);
+        madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
+
+        for (int i = 0; i < game.madeSlotCount; i++)
+        {
+            string slotname = "MadeSlotList" + i;
+            GameObject destoryGO;
+            destoryGO = GameObject.Find(slotname);
+            DestroyImmediate(destoryGO);
+        }
+    }
 
     void Update()
     {
 
-        TextRefresh();      
-        
+        TextRefresh();
+
+        if (game.madeSlotCount == 0)
+        {
+            madeSlotHistoryPopUp.gameObject.SetActive(false);
+        }
+        else
+        {
+            madeSlotHistoryPopUp.gameObject.SetActive(true);
+        }
+
     }
 
     void TextRefresh()
