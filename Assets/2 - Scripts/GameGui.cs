@@ -552,6 +552,7 @@ public class GameGui : MonoBehaviour {
             PlayerPrefs.DeleteKey("TwitterUserTokenSecret");
             
             Debug.Log("Game Data Reset" + game.score);
+            Application.LoadLevel(Application.loadedLevel);
         }
 
         //GUI.color = oldcolor;
