@@ -1,0 +1,5 @@
+id,cardRank,maxDearDegree,drawRate
+0,N,60,0
+1,R,150,90
+2,SR,300,9
+3,SSR,600,1
