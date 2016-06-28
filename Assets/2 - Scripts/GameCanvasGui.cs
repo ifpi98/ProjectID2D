@@ -17,9 +17,12 @@ public class GameCanvasGui : MonoBehaviour
     public GameObject[] madeSlot;
     public GameObject[] skillButtonObject;
 
+    bool checkButtonAppear;
     string[] cardSlot;
     string finishWord;
     int[] madeSlotNumber;
+    int[] charDegreeNumber;
+
 
     public Button[] mButton;
     public Text[] mButText;
@@ -158,6 +161,8 @@ public class GameCanvasGui : MonoBehaviour
         CharDegreeInfoPopUp_CheckButtAfter = GameObject.Find("CharDegreeInfoPopUp_CheckButtAfter").GetComponent<Button>();
         CharDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
+        createCharDegreeList = GameObject.Find("CharDegreeListCreateAnimImage").GetComponent<CreateAnimImage>();
+
     }
     
     void WriteMadeSlot()
@@ -189,7 +194,39 @@ public class GameCanvasGui : MonoBehaviour
         }
 
     }
-    
+
+    void WriteCharDegreeList()
+    {
+        for (int i = 0; i < game.countCharThatHaveDegree; i++)
+        {
+            string slotname = "CharDegreeList" + i;
+            GameObject writeGO;
+            writeGO = GameObject.Find(slotname);
+
+            StringBuilder str = new StringBuilder();
+            //int unitcount = Convert.ToInt16(mon.unitData2[madeSlotNumber[i], 14]);
+
+            str.Append("이름 : " + mon.charData2[charDegreeNumber[i], 1]);
+            str.Append("\n친애도 : " + game.charDearDegree[charDegreeNumber[i]]);                
+            str.Append("\n카드 등급 : " + mon.cardRankData2[game.charCardRank[charDegreeNumber[i]] + 1, 1]);
+            str.Append(" (최대 친애도 : " + mon.cardRankData2[game.charCardRank[charDegreeNumber[i]] + 1, 2] + ")");
+            //str.Append("\n멤버 : ");
+
+            //for (int y = 0; y < unitcount; y++)
+            //{
+            //    str.Append(mon.charData2[Convert.ToInt16(mon.unitData2[madeSlotNumber[i], y + 4]), 1]);
+
+            //    if (y < unitcount - 1)
+            //    {
+            //        str.Append(", ");
+            //    }
+            //}
+
+            writeGO.GetComponentInChildren<Text>().text = str.ToString();
+            //DestroyImmediate(writeGO);
+        }
+
+    }
 
     void MakeListMadeSlot()
     {
@@ -206,6 +243,25 @@ public class GameCanvasGui : MonoBehaviour
                     confirmCount = confirmCount + 1;
                     //Debug.Log(i);
                 } 
+            }
+        }
+    }
+
+    void MakeListCharDegree()
+    {
+        int confirmCount = 0;
+        charDegreeNumber = new int[game.countCharThatHaveDegree];
+
+        while (confirmCount < game.countCharThatHaveDegree)
+        {
+            for (int i = 0; i < mon.charcount; i++)
+            {
+                if (game.charDearDegree[i] > 0)
+                {
+                    charDegreeNumber[confirmCount] = i;
+                    confirmCount = confirmCount + 1;
+                    //Debug.Log(i);
+                }
             }
         }
     }
@@ -239,10 +295,10 @@ public class GameCanvasGui : MonoBehaviour
 
     public void ButtonChanger3()
     {
-        //createMadeSlotHistoryList.HowManyButtons = game.madeSlotCount;
-        //createMadeSlotHistoryList.CreateButtons();
-        //MakeListMadeSlot();
-        //WriteMadeSlot();
+        createCharDegreeList.HowManyButtons = game.countCharThatHaveDegree;
+        createCharDegreeList.CreateButtons2();
+        MakeListCharDegree();
+        WriteCharDegreeList();
         CharDegreeInfoPopUp.gameObject.SetActive(false);
         madeSlotHistoryPopUp.gameObject.SetActive(false);
         CharDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(true);
@@ -255,13 +311,13 @@ public class GameCanvasGui : MonoBehaviour
         madeSlotHistoryPopUp.gameObject.SetActive(true);
         CharDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
-        //for (int i = 0; i < game.madeSlotCount; i++)
-        //{
-        //    string slotname = "MadeSlotList" + i;
-        //    GameObject destoryGO;
-        //    destoryGO = GameObject.Find(slotname);
-        //    DestroyImmediate(destoryGO);
-        //}
+        for (int i = 0; i < game.countCharThatHaveDegree; i++)
+        {
+            string slotname = "CharDegreeList" + i;
+            GameObject destoryGO;
+            destoryGO = GameObject.Find(slotname);
+            DestroyImmediate(destoryGO);
+        }
     }
 
 
@@ -276,10 +332,15 @@ public class GameCanvasGui : MonoBehaviour
             madeSlotHistoryPopUp.gameObject.SetActive(false);
             CharDegreeInfoPopUp.gameObject.SetActive(false);
         }
-        else
+        else if (checkButtonAppear == false)
         {
             madeSlotHistoryPopUp.gameObject.SetActive(true);
             CharDegreeInfoPopUp.gameObject.SetActive(true);
+            checkButtonAppear = true;
+        }
+        else
+        {
+            // do nothing!
         }
 
     }

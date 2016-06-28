@@ -36,6 +36,7 @@ public class Game : MonoBehaviour
     public int combocount = 0;
     public int requireLevelup;
     public int madeSlotCount;
+    public int countCharThatHaveDegree;
     public float skillPoint;
 
     int[] tempnumarray;
@@ -86,6 +87,7 @@ public class Game : MonoBehaviour
 
         WriteGameData();
         CheckMadeSlotCount();
+        CheckCharDegreeList();
 
         PutCardInSlotAtFirst();
 
@@ -107,6 +109,20 @@ public class Game : MonoBehaviour
             }
         }
         
+    }
+
+    void CheckCharDegreeList()
+    {
+        countCharThatHaveDegree = 0;
+
+        for (int i = 0; i < mon.charcount; i++)
+        {
+            if (charDearDegree[i] > 0)
+            {
+                countCharThatHaveDegree = countCharThatHaveDegree + 1;
+            }
+        }
+
     }
 
 
@@ -392,6 +408,7 @@ public class Game : MonoBehaviour
         unitDebutHistory[decideUnit2] = true;
         DI.SetUnitDebutHistoryString();
         CheckMadeSlotCount();
+        CheckCharDegreeList();
         //gCanvas.madeSlotCountText.text = Convert.ToString(madeSlotCount);            
         moiTwitter.stringForTwit = str.ToString();
         gCanvas.popUpButtonMadeText.text = moiTwitter.stringForTwit;

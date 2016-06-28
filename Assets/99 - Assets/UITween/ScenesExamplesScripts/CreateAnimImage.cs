@@ -61,7 +61,13 @@ public class CreateAnimImage : MonoBehaviour {
 		AdaptCanvas();
 	}
 
-	private void CreatePanels()
+    public void CreateButtons2()
+    {
+        CreatePanels2();
+        AdaptCanvas();
+    }
+
+    private void CreatePanels()
 	{
 		Vector3 InstancePosition = EndAnim;
 
@@ -92,7 +98,38 @@ public class CreateAnimImage : MonoBehaviour {
 		}
 	}
 
-	private void AdaptCanvas()
+    private void CreatePanels2()
+    {
+        Vector3 InstancePosition = EndAnim;
+
+        totalWidth = 0f;
+
+        for (int i = 0; i < HowManyButtons; i++)
+        {
+            // Creates Instance
+            GameObject createInstance = Instantiate(CreateInstance) as GameObject;
+            createInstance.name = "CharDegreeList" + i;
+            // Changes the Parent, Assing to scroll List
+            createInstance.transform.SetParent(RootRect, false);
+            EasyTween easy = createInstance.GetComponent<EasyTween>();
+            // Add Tween To List
+            Created.Add(easy);
+            // Final Position
+            StartAnim.y = InstancePosition.y;
+            // Pass the positions to the Tween system
+            easy.SetAnimationPosition(StartAnim, InstancePosition, EnterAnim, ExitAnim);
+            // Intro fade
+            easy.SetFade();
+            // Execute Animation
+            easy.OpenCloseObjectAnimation();
+            // Increases the Y offset
+            InstancePosition.y += Offset;
+
+            totalWidth += Offset;
+        }
+    }
+
+    private void AdaptCanvas()
 	{
 		// Vertical Dynamic Adapter
 		if (InitialCanvasScrollSize.x < Mathf.Abs(totalWidth) )

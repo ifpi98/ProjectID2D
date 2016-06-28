@@ -11839,7 +11839,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1274894273}
+      - m_Target: {fileID: 624279511}
         m_MethodName: OpenCloseObjectAnimation
         m_Mode: 1
         m_Arguments:
@@ -11851,7 +11851,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 680693587}
-        m_MethodName: ButtonChanger2
+        m_MethodName: ButtonChanger4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13297,6 +13297,7 @@ MonoBehaviour:
   combocount: 0
   requireLevelup: 0
   madeSlotCount: 0
+  countCharThatHaveDegree: 0
   skillPoint: 0
   cardSlot: 
   remainturncardslot: 
@@ -14292,6 +14293,7 @@ Transform:
   - {fileID: 963685112}
   - {fileID: 1051594968}
   - {fileID: 1357107781}
+  - {fileID: 1595160588}
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!1 &1587297205
@@ -14574,6 +14576,92 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1593943633}
+--- !u!1 &1595160587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1595160588}
+  - 114: {fileID: 1595160589}
+  m_Layer: 0
+  m_Name: CharDegreeListCreateAnimImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1595160588
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1595160587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1572826883}
+  m_RootOrder: 11
+--- !u!114 &1595160589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1595160587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8f88879fa80564c97ca8a7e8071307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createImageOtherReference:
+  - {fileID: 0}
+  CreateInstance: {fileID: 100000, guid: 850c22a4a19cb1f4a8de97482927e650, type: 2}
+  HowManyButtons: 100
+  StartAnim: {x: -200, y: -77, z: 0}
+  EndAnim: {x: 0, y: -77, z: 0}
+  Offset: -153
+  EnterAnim:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: -0.006291561
+      inSlope: 2.0941534
+      outSlope: 0.9187146
+      tangentMode: 1
+    - time: 0.6634269
+      value: 1.1676084
+      inSlope: 0.009671883
+      outSlope: 0.009671883
+      tangentMode: 0
+    - time: 0.9984004
+      value: 0.9995612
+      inSlope: -0.320673
+      outSlope: -20.051817
+      tangentMode: 17
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ExitAnim:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RootRect: {fileID: 1606222999}
+  RootCanvas: {fileID: 1758632947}
 --- !u!1 &1601819012
 GameObject:
   m_ObjectHideFlags: 0
