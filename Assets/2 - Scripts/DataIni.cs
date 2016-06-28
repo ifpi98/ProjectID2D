@@ -89,6 +89,22 @@ public class DataIni : MonoBehaviour {
         pIDIni.Save("ProjectID");
     }
 
+    public void SetCharCardRankString()
+    {
+        dAJ.MakeObjCharCardRank();
+        pIDIni.SetString("CharCardRankString", dAJ.cardRankEncodedString1);
+        //Debug.Log("SETTING");
+
+        pIDIni.Save("ProjectID");
+    }
+
+    public string GetCharCardRankString()
+    {
+        string CharCardRankString = pIDIni.GetString("CharCardRankString");
+        return CharCardRankString;
+    }
+    
+
     public string GetCharDearDegreeString()
     {
         string charDearDegreeString = pIDIni.GetString("CharDearDegreeString");

@@ -24,8 +24,9 @@ public class Game : MonoBehaviour
     int getExpWhenMadeSlot;    
     bool skillcheck;
     bool levelUpCheck;
-    string charDearDegreeEncodedString1;
+    string charDearDegreeEncodedString1;    
     string unitDebutHistoryEncodedString1;
+    string charCardRankEncodedString1;
 
     public int basicRemainTurn = 5;
     public int score;
@@ -42,6 +43,7 @@ public class Game : MonoBehaviour
     public int[] remainturncardslot;
     public int[] makecounthistory;
     public int[] charDearDegree;
+    public int[] charCardRank;
     public bool[] checkremainTurncardslot;
     public bool[] skillOnCheck;
     public bool[] unitDebutHistory;
@@ -72,7 +74,8 @@ public class Game : MonoBehaviour
 
         checkExp();
 
-        charDearDegree = new int[mon.charcount];        
+        charDearDegree = new int[mon.charcount];
+        charCardRank = new int[mon.charcount];
         unitDebutHistory = new bool[mon.unitcount];
 
         ReadInIData();
@@ -166,6 +169,7 @@ public class Game : MonoBehaviour
                 if (firstcheck == true)
                 {
                     DI.SetExpLvMC();
+                    DI.SetCharCardRankString();
                     //DI.SetCharDearDegreeString();
                     //DI.SetUnitDebutHistoryString();
                 }
@@ -430,15 +434,16 @@ public class Game : MonoBehaviour
             if (mon.unitData3[decideUnit-1, i] != 0)
             {
                 findMember.Add(mon.unitData3[decideUnit-1, i]);
-                if (charDearDegree[(mon.unitData3[decideUnit - 1, i])] <= 600)
+                int tempa = mon.unitData3[decideUnit - 1, i];
+                if (charDearDegree[(mon.unitData3[decideUnit - 1, i])] < Convert.ToInt32(mon.cardRankData2[charCardRank[tempa] + 1, 2]))
                 {
+                    Debug.Log(mon.cardRankData2[charCardRank[tempa] + 1, 2]);
                     charDearDegree[(mon.unitData3[decideUnit - 1, i])] = charDearDegree[(mon.unitData3[decideUnit - 1, i])] + 1;
                 }
                 else
                 {
-                    charDearDegree[(mon.unitData3[decideUnit - 1, i])] = 600;
+                    charDearDegree[(mon.unitData3[decideUnit - 1, i])] = Convert.ToInt32(mon.cardRankData2[charCardRank[tempa] + 1, 2]);
                 }
-                
                 //Debug.Log(findMember[i]);                
             }
             else
@@ -637,7 +642,7 @@ public class Game : MonoBehaviour
             remainturncardslot[i] = basicRemainTurn;
         }
         cardSlot = new int[5];
-
+                
         unitArray = new int[mon.charcount, 5];
         unitArray = mon.unitData3;
 
@@ -699,6 +704,32 @@ public class Game : MonoBehaviour
 
             }
         }
+
+        charCardRankEncodedString1 = DI.GetCharCardRankString();
+
+        if (charCardRankEncodedString1 != "")
+        {
+            //Debug.Log("UnitDebut : " + unitDebutHistoryEncodedString1);
+
+            JSONObject cardRankJson = new JSONObject(charCardRankEncodedString1);
+            dAJ.accessData(cardRankJson);
+            JSONObject arr3 = cardRankJson["CharCardRank"];
+            //Debug.Log(arr2[1].n);
+
+            for (int i = 1; i < mon.charcount; i++)
+            {
+                try
+                {
+                    charCardRank[i] = Convert.ToInt32(arr3[i].n);
+                }
+                catch
+                {
+                    Debug.Log("nullException??");
+                }
+
+            }
+        }
+        
 
         score = DI.GetExp();
         level = DI.GetLV();

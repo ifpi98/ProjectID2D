@@ -7,8 +7,11 @@ public class DataArrayJson : MonoBehaviour {
     public JSONObject charDearDegreeArray = new JSONObject(JSONObject.Type.ARRAY);
     public JSONObject unitDebutHistoryObj = new JSONObject(JSONObject.Type.OBJECT);
     public JSONObject unitDebutHistoryArray = new JSONObject(JSONObject.Type.ARRAY);
+    public JSONObject charCardRankObj = new JSONObject(JSONObject.Type.OBJECT);
+    public JSONObject charCardRankArray = new JSONObject(JSONObject.Type.ARRAY);
     public string dearDegreeEncodedString1;
     public string debutHistoryEncodedString1;
+    public string cardRankEncodedString1;
     Monster mon;
     Game game;
     bool latestartcheck;
@@ -31,6 +34,7 @@ public class DataArrayJson : MonoBehaviour {
 
             MakeObjCharDearDegree();
             MakeObjUnitDebutHistory();
+            MakeObjCharCardRank();
             latestartcheck = true;
         }
 
@@ -82,8 +86,28 @@ public class DataArrayJson : MonoBehaviour {
         //sampleJson1 = new JSONObject(debutHistoryEncodedString1);
         //accessData(sampleJson1);     
     }
-
     
+    public void MakeObjCharCardRank()
+    {
+        if (!charCardRankObj.HasField("CharCardRank"))
+        {
+            charCardRankObj.AddField("CharCardRank", charCardRankArray);
+        }
+
+        charCardRankArray.Clear();
+
+        for (int i = 0; i < mon.charcount; i++)
+        {
+            charCardRankArray.Add(game.charCardRank[i]);
+        }
+
+        cardRankEncodedString1 = charCardRankObj.Print();
+        //Debug.Log(debutHistoryEncodedString1);
+
+        //sampleJson1 = new JSONObject(debutHistoryEncodedString1);
+        //accessData(sampleJson1);     
+    }
+
 
 
     public void accessData(JSONObject obj)

@@ -9,13 +9,15 @@ public class Monster : MonoBehaviour
     public string[,] charData2 = new string[200,15];
     public string[,] expLvData2 = new string[200, 15];
     public string[,] locData2 = new string[400, 15];
+    public string[,] cardRankData2 = new string[200, 15];
     public int[,] unitData3 = new int[300, 5];
     public int[] charAge;
     public int charcount;
     public int unitcount;
     public int expLvcount;
     public int loccount;
-
+    public int cardRankcount;
+    
     // Use this for initialization
     void Start()
     {
@@ -25,6 +27,7 @@ public class Monster : MonoBehaviour
         SetUnitData();
         SetExpLvData();
         SetLocData();
+        SetCardRankData();
 
     }
 
@@ -43,6 +46,16 @@ public class Monster : MonoBehaviour
         
         //Debug.Log(charData2[1, 1]);
         //Debug.Log(charcount);
+    }
+
+    void SetCardRankData()
+    {
+        CardRankParser CardRank1 = GameObject.Find("DataObj").GetComponent<CardRankParser>();
+        cardRankData2 = CardRank1._tempCRD2;
+        cardRankcount = CardRank1._cardRankData.Length;
+        //Debug.Log("CRD1by1 : " + cardRankData2[1, 1]);
+        //Debug.Log("CRCOUNT : " + cardRankcount);
+
     }
 
     void SetUnitData()
