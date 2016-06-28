@@ -55,7 +55,9 @@ public class GameCanvasGui : MonoBehaviour
     public Button madeSlotInfoPopUp_CheckButtAfter;
     public CreateAnimImage createMadeSlotHistoryList;
 
-
+    public Button CharDegreeInfoPopUp;
+    public Button CharDegreeInfoPopUp_CheckButtAfter;
+    public CreateAnimImage createCharDegreeList;
 
     // Use this for initialization
     void Start()
@@ -152,18 +154,12 @@ public class GameCanvasGui : MonoBehaviour
 
         //historyDisplay = GameObject.Find("Make History Text").GetComponent<Text>();
 
-    }
+        CharDegreeInfoPopUp = GameObject.Find("CharDegreeInfoPopUp_CheckButt").GetComponent<Button>();
+        CharDegreeInfoPopUp_CheckButtAfter = GameObject.Find("CharDegreeInfoPopUp_CheckButtAfter").GetComponent<Button>();
+        CharDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
-    public void ButtonChanger()
-    {
-        createMadeSlotHistoryList.HowManyButtons = game.madeSlotCount;
-        createMadeSlotHistoryList.CreateButtons();
-        MakeListMadeSlot();
-        WriteMadeSlot();
-        madeSlotHistoryPopUp.gameObject.SetActive(false);
-        madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(true);
     }
-
+    
     void WriteMadeSlot()
     {
         for (int i = 0; i < game.madeSlotCount; i++)
@@ -193,10 +189,7 @@ public class GameCanvasGui : MonoBehaviour
         }
 
     }
-
-
-
-
+    
 
     void MakeListMadeSlot()
     {
@@ -217,10 +210,22 @@ public class GameCanvasGui : MonoBehaviour
         }
     }
 
+    public void ButtonChanger()
+    {
+        createMadeSlotHistoryList.HowManyButtons = game.madeSlotCount;
+        createMadeSlotHistoryList.CreateButtons();
+        MakeListMadeSlot();
+        WriteMadeSlot();
+        madeSlotHistoryPopUp.gameObject.SetActive(false);
+        CharDegreeInfoPopUp.gameObject.SetActive(false);
+        madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(true);
+    }
+
 
     public void ButtonChanger2()
     {
         madeSlotHistoryPopUp.gameObject.SetActive(true);
+        CharDegreeInfoPopUp.gameObject.SetActive(true);
         madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
         for (int i = 0; i < game.madeSlotCount; i++)
@@ -232,6 +237,35 @@ public class GameCanvasGui : MonoBehaviour
         }
     }
 
+    public void ButtonChanger3()
+    {
+        //createMadeSlotHistoryList.HowManyButtons = game.madeSlotCount;
+        //createMadeSlotHistoryList.CreateButtons();
+        //MakeListMadeSlot();
+        //WriteMadeSlot();
+        CharDegreeInfoPopUp.gameObject.SetActive(false);
+        madeSlotHistoryPopUp.gameObject.SetActive(false);
+        CharDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(true);
+    }
+
+
+    public void ButtonChanger4()
+    {
+        CharDegreeInfoPopUp.gameObject.SetActive(true);
+        madeSlotHistoryPopUp.gameObject.SetActive(true);
+        CharDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
+
+        //for (int i = 0; i < game.madeSlotCount; i++)
+        //{
+        //    string slotname = "MadeSlotList" + i;
+        //    GameObject destoryGO;
+        //    destoryGO = GameObject.Find(slotname);
+        //    DestroyImmediate(destoryGO);
+        //}
+    }
+
+
+
     void Update()
     {
 
@@ -240,10 +274,12 @@ public class GameCanvasGui : MonoBehaviour
         if (game.madeSlotCount == 0)
         {
             madeSlotHistoryPopUp.gameObject.SetActive(false);
+            CharDegreeInfoPopUp.gameObject.SetActive(false);
         }
         else
         {
             madeSlotHistoryPopUp.gameObject.SetActive(true);
+            CharDegreeInfoPopUp.gameObject.SetActive(true);
         }
 
     }
