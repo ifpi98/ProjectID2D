@@ -37,6 +37,8 @@ public class Game : MonoBehaviour
     public int requireLevelup;
     public int madeSlotCount;
     public int countCharThatHaveDegree;
+    public int pointCanDrawCard;
+    public int countDrawCardwithoutSSR;
     public float skillPoint;
 
     int[] tempnumarray;
@@ -505,6 +507,8 @@ public class Game : MonoBehaviour
                 score = score + getExpWhenMadeSlot + sumDearDegree;
                 makecounthistory[3] = makecounthistory[3] + 1;
                 skillPoint = skillPoint + findMemberplace.Count * 10;
+                pointCanDrawCard = pointCanDrawCard + 1;
+                DI.SetDrawCardPoint();
                 DI.SetMakeCountHistory();
                 DI.SetCharDearDegreeString();
                 break;
@@ -514,6 +518,8 @@ public class Game : MonoBehaviour
                 score = score + getExpWhenMadeSlot + sumDearDegree;
                 makecounthistory[4] = makecounthistory[4] + 1;
                 skillPoint = skillPoint + findMemberplace.Count * 10;
+                pointCanDrawCard = pointCanDrawCard + 2;
+                DI.SetDrawCardPoint();
                 DI.SetMakeCountHistory();
                 DI.SetCharDearDegreeString();
                 Debug.LogWarning("wow!" + decideUnit);
@@ -524,6 +530,8 @@ public class Game : MonoBehaviour
                 score = score + getExpWhenMadeSlot + sumDearDegree;
                 makecounthistory[5] = makecounthistory[5] + 1;
                 skillPoint = skillPoint + findMemberplace.Count * 10;
+                pointCanDrawCard = pointCanDrawCard + 4;
+                DI.SetDrawCardPoint();
                 DI.SetMakeCountHistory();
                 DI.SetCharDearDegreeString();
                 Debug.LogWarning("wow!" + decideUnit);
@@ -750,6 +758,8 @@ public class Game : MonoBehaviour
 
         score = DI.GetExp();
         level = DI.GetLV();
+        countDrawCardwithoutSSR = DI.GetCountDrawCardwithoutSSR();
+        pointCanDrawCard = DI.GetPointCanDrawCard();
 
         if (level == 0)
         {

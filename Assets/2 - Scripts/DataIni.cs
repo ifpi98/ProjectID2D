@@ -44,6 +44,14 @@ public class DataIni : MonoBehaviour {
         pIDIni.Save("ProjectID");
     }
 
+    public void SetDrawCardPoint()
+    {
+        pIDIni.SetInt("CountDrawCardwithoutSSR", game.countDrawCardwithoutSSR);
+        pIDIni.SetInt("PointCanDrawCard", game.pointCanDrawCard);
+
+        pIDIni.Save("ProjectID");
+    }
+
     public void DataReset()
     {
         //pIDIni.SetInt("Exp", 0);
@@ -111,6 +119,18 @@ public class DataIni : MonoBehaviour {
         return charDearDegreeString;
     }
 
+    public int GetCountDrawCardwithoutSSR()
+    {
+        int privatecountDrawCardwithoutSSR = pIDIni.GetInt("CountDrawCardwithoutSSR");
+        return privatecountDrawCardwithoutSSR;
+    }
+
+    public int GetPointCanDrawCard()
+    {
+        int privatecountPointCanDrawCard = pIDIni.GetInt("PointCanDrawCard");
+        return privatecountPointCanDrawCard;
+    }
+    
     public string GetUnitDebutHistoryString()
     {
         string unitDebutHistoryString = pIDIni.GetString("UnitDebutHistoryString");

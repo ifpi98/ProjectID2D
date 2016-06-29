@@ -58,9 +58,13 @@ public class GameCanvasGui : MonoBehaviour
     public Button madeSlotInfoPopUp_CheckButtAfter;
     public CreateAnimImage createMadeSlotHistoryList;
 
-    public Button CharDegreeInfoPopUp;
-    public Button CharDegreeInfoPopUp_CheckButtAfter;
+    public Button charDegreeInfoPopUp;
+    public Button charDegreeInfoPopUp_CheckButtAfter;
     public CreateAnimImage createCharDegreeList;
+
+    public Button drawCardPopUp;
+
+
 
     // Use this for initialization
     void Start()
@@ -157,11 +161,13 @@ public class GameCanvasGui : MonoBehaviour
 
         //historyDisplay = GameObject.Find("Make History Text").GetComponent<Text>();
 
-        CharDegreeInfoPopUp = GameObject.Find("CharDegreeInfoPopUp_CheckButt").GetComponent<Button>();
-        CharDegreeInfoPopUp_CheckButtAfter = GameObject.Find("CharDegreeInfoPopUp_CheckButtAfter").GetComponent<Button>();
-        CharDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
+        charDegreeInfoPopUp = GameObject.Find("CharDegreeInfoPopUp_CheckButt").GetComponent<Button>();
+        charDegreeInfoPopUp_CheckButtAfter = GameObject.Find("CharDegreeInfoPopUp_CheckButtAfter").GetComponent<Button>();
+        charDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
         createCharDegreeList = GameObject.Find("CharDegreeListCreateAnimImage").GetComponent<CreateAnimImage>();
+
+        drawCardPopUp = GameObject.Find("DrawCardPopUp_CheckButt").GetComponent<Button>(); 
 
     }
     
@@ -273,7 +279,7 @@ public class GameCanvasGui : MonoBehaviour
         MakeListMadeSlot();
         WriteMadeSlot();
         madeSlotHistoryPopUp.gameObject.SetActive(false);
-        CharDegreeInfoPopUp.gameObject.SetActive(false);
+        charDegreeInfoPopUp.gameObject.SetActive(false);
         madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(true);
     }
 
@@ -281,7 +287,7 @@ public class GameCanvasGui : MonoBehaviour
     public void ButtonChanger2()
     {
         madeSlotHistoryPopUp.gameObject.SetActive(true);
-        CharDegreeInfoPopUp.gameObject.SetActive(true);
+        charDegreeInfoPopUp.gameObject.SetActive(true);
         madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
         for (int i = 0; i < game.madeSlotCount; i++)
@@ -299,17 +305,17 @@ public class GameCanvasGui : MonoBehaviour
         createCharDegreeList.CreateButtons2();
         MakeListCharDegree();
         WriteCharDegreeList();
-        CharDegreeInfoPopUp.gameObject.SetActive(false);
+        charDegreeInfoPopUp.gameObject.SetActive(false);
         madeSlotHistoryPopUp.gameObject.SetActive(false);
-        CharDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(true);
+        charDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(true);
     }
 
 
     public void ButtonChanger4()
     {
-        CharDegreeInfoPopUp.gameObject.SetActive(true);
+        charDegreeInfoPopUp.gameObject.SetActive(true);
         madeSlotHistoryPopUp.gameObject.SetActive(true);
-        CharDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
+        charDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
         for (int i = 0; i < game.countCharThatHaveDegree; i++)
         {
@@ -330,17 +336,26 @@ public class GameCanvasGui : MonoBehaviour
         if (game.madeSlotCount == 0)
         {
             madeSlotHistoryPopUp.gameObject.SetActive(false);
-            CharDegreeInfoPopUp.gameObject.SetActive(false);
+            charDegreeInfoPopUp.gameObject.SetActive(false);
         }
         else if (checkButtonAppear == false)
         {
             madeSlotHistoryPopUp.gameObject.SetActive(true);
-            CharDegreeInfoPopUp.gameObject.SetActive(true);
+            charDegreeInfoPopUp.gameObject.SetActive(true);
             checkButtonAppear = true;
         }
         else
         {
             // do nothing!
+        }
+
+        if (game.pointCanDrawCard == 0)
+        {
+            drawCardPopUp.gameObject.SetActive(false);
+        }
+        else
+        {
+            drawCardPopUp.gameObject.SetActive(true);
         }
 
     }
@@ -354,7 +369,7 @@ public class GameCanvasGui : MonoBehaviour
             mButText[i].text = cardSlot[i];
         }
 
-        pointDisplay.text = "Score : " + game.score + " (" + game.requireLevelup + ") " + "\n Level : " + game.level + "\n TotalTurn : " + game.totalTurn;
+        pointDisplay.text = "Score : " + game.score + " (" + game.requireLevelup + ") " + "\n Level : " + game.level + "\n CardCredit : " + game.pointCanDrawCard;
         skillPointText.text = "SP : " + Convert.ToInt32(game.skillPoint);
 
         for (int i = 0; i < 5; i++)
