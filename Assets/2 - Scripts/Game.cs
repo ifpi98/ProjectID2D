@@ -18,6 +18,7 @@ public class Game : MonoBehaviour
     EasyTween easyTweenMadeSlotPopUp;
     EasyTween easyTweenLevelUpInfoPopUp;
 
+
     int tempnum;
     int maxSkillPoint;
     int sumDearDegree;
@@ -73,6 +74,7 @@ public class Game : MonoBehaviour
         moiTwitter = GameObject.Find("TwitterObj").GetComponent<MOITwitter>();
         easyTweenMadeSlotPopUp = GameObject.Find("PopUpButtonAnim").GetComponent<EasyTween>();
         easyTweenLevelUpInfoPopUp = GameObject.Find("LevelUpInfoAnim").GetComponent<EasyTween>();
+        
         
 
         checkExp();
@@ -389,6 +391,8 @@ public class Game : MonoBehaviour
     void UnitDebut(int decideUnit2)
     {
         GameCanvasGui gCanvas = GameObject.Find("UIObj").GetComponent<GameCanvasGui>();
+        pointCanDrawCard = pointCanDrawCard + 1;
+
         StringBuilder str = new StringBuilder();
         int unitcount = Convert.ToInt16(mon.unitData2[decideUnit2, 14]);
 
@@ -456,7 +460,7 @@ public class Game : MonoBehaviour
                 int tempa = mon.unitData3[decideUnit - 1, i];
                 if (charDearDegree[(mon.unitData3[decideUnit - 1, i])] < Convert.ToInt32(mon.cardRankData2[charCardRank[tempa] + 1, 2]))
                 {
-                    Debug.Log(mon.cardRankData2[charCardRank[tempa] + 1, 2]);
+                    //Debug.Log(mon.cardRankData2[charCardRank[tempa] + 1, 2]);
                     charDearDegree[(mon.unitData3[decideUnit - 1, i])] = charDearDegree[(mon.unitData3[decideUnit - 1, i])] + 1;
                 }
                 else

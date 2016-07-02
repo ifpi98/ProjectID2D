@@ -64,7 +64,11 @@ public class GameCanvasGui : MonoBehaviour
 
     public Button drawCardPopUp;
     public Button drawCardPopUp_CheckButtAfter;
+    Button drawCardResultDP2Bg;
+    Text drawCardResultDP2BgText;
 
+    EasyTween easyTweenDrawCardResultPopUp;
+    EasyTween easyTweenNotifyNoCreditPopUp;
 
     // Use this for initialization
     void Start()
@@ -168,8 +172,14 @@ public class GameCanvasGui : MonoBehaviour
         createCharDegreeList = GameObject.Find("CharDegreeListCreateAnimImage").GetComponent<CreateAnimImage>();
 
         drawCardPopUp = GameObject.Find("DrawCardPopUp_CheckButt").GetComponent<Button>();
+        drawCardResultDP2Bg = GameObject.Find("DrawCardResultDP2Bg").GetComponent<Button>();
+        drawCardResultDP2BgText = drawCardResultDP2Bg.GetComponentInChildren<Text>();
+
         //drawCardPopUp_CheckButtAfter = GameObject.Find("DrawCardPopUp_CheckButtAfter").GetComponent<Button>();
         //drawCardPopUp_CheckButtAfter.gameObject.SetActive(false);
+
+        easyTweenDrawCardResultPopUp = GameObject.Find("DrawCardResultPopUpAnim").GetComponent<EasyTween>();
+        easyTweenNotifyNoCreditPopUp = GameObject.Find("NotifyNoCreditPopUpAnim").GetComponent<EasyTween>();
     }
     
     void WriteMadeSlot()
@@ -213,9 +223,21 @@ public class GameCanvasGui : MonoBehaviour
             StringBuilder str = new StringBuilder();
             //int unitcount = Convert.ToInt16(mon.unitData2[madeSlotNumber[i], 14]);
 
+            int tempCardRank = game.charCardRank[charDegreeNumber[i]];
+
             str.Append("이름 : " + mon.charData2[charDegreeNumber[i], 1]);
-            str.Append("\n친애도 : " + game.charDearDegree[charDegreeNumber[i]]);                
-            str.Append("\n카드 등급 : " + mon.cardRankData2[game.charCardRank[charDegreeNumber[i]] + 1, 1]);
+            str.Append("\n친애도 : " + game.charDearDegree[charDegreeNumber[i]]);
+
+            if (tempCardRank == 0)
+            {
+                str.Append("\n카드 정보 : [ " + mon.charData2[charDegreeNumber[i], 1]);
+            }
+            else
+            {
+                str.Append("\n카드 정보 : [ " + mon.charData2[charDegreeNumber[i], 8 + tempCardRank]);
+            }
+            
+            str.Append(" (" + mon.cardRankData2[tempCardRank + 1, 1] + ") ]");        
             str.Append(" (최대 친애도 : " + mon.cardRankData2[game.charCardRank[charDegreeNumber[i]] + 1, 2] + ")");
             //str.Append("\n멤버 : ");
 
@@ -427,8 +449,110 @@ public class GameCanvasGui : MonoBehaviour
 
     }
 
+    public void CheckCardCredit()
+    {
+        if (game.pointCanDrawCard == 0)
+        {
+            easyTweenNotifyNoCreditPopUp.OpenCloseObjectAnimation();
+        }
+        else
+        {
+            DrawCard();
+            easyTweenDrawCardResultPopUp.OpenCloseObjectAnimation();            
+        }
+                
+    }
 
-    
+    void DrawCard()
+    {
+        int randomNumber = 0;
+        int tempCardRank = 1;
+        bool level101Check = true;
+
+        while (level101Check)
+        {
+            randomNumber = UnityEngine.Random.Range(1, mon.charcount);
+            if (Convert.ToInt16(mon.charData2[randomNumber, 2]) > 100)
+            {
+                //do nothing!
+            }
+            else
+            {
+                level101Check = false;
+            }
+            //Debug.Log(mon.charData2[randomNumber, 2]);
+        }
+
+        tempCardRank = DecideCardRank();        
+
+        StringBuilder str = new StringBuilder();
+
+        str.Append("축하합니다.\n");
+        str.Append("\n");
+        str.Append(mon.charData2[randomNumber, 1]);
+        str.Append("의 아티스트 샷을 촬영하였습니다.\n");        
+        str.Append("\n카드 정보 : [ " + mon.charData2[randomNumber, 8 + tempCardRank]);
+        str.Append(" (" + mon.cardRankData2[tempCardRank+1,1] + ") ]");
+
+        //Debug.Log(randomNumber);
+        drawCardResultDP2BgText.text = Convert.ToString(str);
+
+        if (game.charCardRank[randomNumber] < tempCardRank)
+        {
+            game.charCardRank[randomNumber] = tempCardRank;
+            DI.SetCharCardRankString();
+        }
+        else
+        {
+            // do nothing
+        }              
+
+        game.pointCanDrawCard = game.pointCanDrawCard - 1;
+        DI.SetDrawCardPoint();
+        
+
+    }
+
+    int DecideCardRank()
+    {
+        int cardRank = 1;
+
+        if (game.countDrawCardwithoutSSR == 99)
+        {
+            cardRank = 3;
+            game.countDrawCardwithoutSSR = 0;
+            Debug.Log("You got SSR Card...");      
+        }
+        else
+        {
+            int randNumber = UnityEngine.Random.Range(0, 100);
+
+            if (randNumber == 0)
+            {
+                cardRank = 3;
+                game.countDrawCardwithoutSSR = 0;
+                Debug.Log("You got SSR Card. Wow. Lucky!");
+            }
+            else if (randNumber < 10)
+            {
+                cardRank = 2;
+                game.countDrawCardwithoutSSR = game.countDrawCardwithoutSSR + 1;
+            }
+            else
+            {
+                cardRank = 1;
+                game.countDrawCardwithoutSSR = game.countDrawCardwithoutSSR + 1;
+            }
+
+            if (randNumber == 100)
+            {
+                Debug.Log("why 100?");
+            }
+        }
+
+        return cardRank;
+        
+    }
 
 }
 
