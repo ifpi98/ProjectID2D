@@ -63,7 +63,7 @@ public class GameCanvasGui : MonoBehaviour
     public CreateAnimImage createCharDegreeList;
 
     public Button drawCardPopUp;
-
+    public Button drawCardPopUp_CheckButtAfter;
 
 
     // Use this for initialization
@@ -167,8 +167,9 @@ public class GameCanvasGui : MonoBehaviour
 
         createCharDegreeList = GameObject.Find("CharDegreeListCreateAnimImage").GetComponent<CreateAnimImage>();
 
-        drawCardPopUp = GameObject.Find("DrawCardPopUp_CheckButt").GetComponent<Button>(); 
-
+        drawCardPopUp = GameObject.Find("DrawCardPopUp_CheckButt").GetComponent<Button>();
+        //drawCardPopUp_CheckButtAfter = GameObject.Find("DrawCardPopUp_CheckButtAfter").GetComponent<Button>();
+        //drawCardPopUp_CheckButtAfter.gameObject.SetActive(false);
     }
     
     void WriteMadeSlot()
