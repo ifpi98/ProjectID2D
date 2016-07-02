@@ -16,6 +16,7 @@ public class GameCanvasGui : MonoBehaviour
 
     public GameObject[] madeSlot;
     public GameObject[] skillButtonObject;
+    public GameObject ssrEffect;
 
     bool checkButtonAppear;
     string[] cardSlot;
@@ -521,6 +522,28 @@ public class GameCanvasGui : MonoBehaviour
         {
             cardRank = 3;
             game.countDrawCardwithoutSSR = 0;
+
+            GameObject tempGO1;
+            GameObject tempGO2;
+            GameObject tempGO3;
+            GameObject tempGO4;
+            GameObject tempGO5;
+            GameObject tempGO6;
+
+            tempGO1 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
+            tempGO2 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
+            tempGO3 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
+            tempGO4 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
+            tempGO5 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
+            tempGO6 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
+
+            Destroy(tempGO1, 5);
+            Destroy(tempGO2, 5);
+            Destroy(tempGO3, 5);
+            Destroy(tempGO4, 5);
+            Destroy(tempGO5, 5);
+            Destroy(tempGO6, 5);
+
             Debug.Log("You got SSR Card...");      
         }
         else
@@ -531,6 +554,26 @@ public class GameCanvasGui : MonoBehaviour
             {
                 cardRank = 3;
                 game.countDrawCardwithoutSSR = 0;
+                GameObject tempGO1;
+                GameObject tempGO2;
+                GameObject tempGO3;
+                GameObject tempGO4;
+                GameObject tempGO5;
+                GameObject tempGO6;
+
+                tempGO1 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
+                tempGO2 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
+                tempGO3 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
+                tempGO4 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
+                tempGO5 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
+                tempGO6 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
+
+                Destroy(tempGO1, 5);
+                Destroy(tempGO2, 5);
+                Destroy(tempGO3, 5);
+                Destroy(tempGO4, 5);
+                Destroy(tempGO5, 5);
+                Destroy(tempGO6, 5);
                 Debug.Log("You got SSR Card. Wow. Lucky!");
             }
             else if (randNumber < 10)
