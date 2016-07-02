@@ -4246,7 +4246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96558833, g: 1, b: 0.9338235, a: 1}
+  m_Color: {r: 1, g: 0.19607843, b: 0.39215687, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -17490,7 +17490,7 @@ MonoBehaviour:
   combocount: 0
   requireLevelup: 0
   madeSlotCount: 0
-  countCharThatHaveDegree: 0
+  countForMakingCharDegreeList: 0
   pointCanDrawCard: 0
   countDrawCardwithoutSSR: 0
   skillPoint: 0

@@ -215,7 +215,7 @@ public class GameCanvasGui : MonoBehaviour
 
     void WriteCharDegreeList()
     {
-        for (int i = 0; i < game.countCharThatHaveDegree; i++)
+        for (int i = 0; i < game.countForMakingCharDegreeList; i++)
         {
             string slotname = "CharDegreeList" + i;
             GameObject writeGO;
@@ -280,13 +280,13 @@ public class GameCanvasGui : MonoBehaviour
     void MakeListCharDegree()
     {
         int confirmCount = 0;
-        charDegreeNumber = new int[game.countCharThatHaveDegree];
+        charDegreeNumber = new int[game.countForMakingCharDegreeList];
 
-        while (confirmCount < game.countCharThatHaveDegree)
+        while (confirmCount < game.countForMakingCharDegreeList)
         {
             for (int i = 0; i < mon.charcount; i++)
             {
-                if (game.charDearDegree[i] > 0)
+                if (game.charDearDegree[i] > 0 || game.charCardRank[i] > 0)
                 {
                     charDegreeNumber[confirmCount] = i;
                     confirmCount = confirmCount + 1;
@@ -325,7 +325,7 @@ public class GameCanvasGui : MonoBehaviour
 
     public void ButtonChanger3()
     {
-        createCharDegreeList.HowManyButtons = game.countCharThatHaveDegree;
+        createCharDegreeList.HowManyButtons = game.countForMakingCharDegreeList;
         createCharDegreeList.CreateButtons2();
         MakeListCharDegree();
         WriteCharDegreeList();
@@ -341,7 +341,7 @@ public class GameCanvasGui : MonoBehaviour
         madeSlotHistoryPopUp.gameObject.SetActive(true);
         charDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
-        for (int i = 0; i < game.countCharThatHaveDegree; i++)
+        for (int i = 0; i < game.countForMakingCharDegreeList; i++)
         {
             string slotname = "CharDegreeList" + i;
             GameObject destoryGO;
@@ -488,8 +488,7 @@ public class GameCanvasGui : MonoBehaviour
 
         StringBuilder str = new StringBuilder();
 
-        str.Append("축하합니다.\n");
-        str.Append("\n");
+        str.Append("축하합니다.\n");        
         str.Append(mon.charData2[randomNumber, 1]);
         str.Append("의 아티스트 샷을 촬영하였습니다.\n");        
         str.Append("\n카드 정보 : [ " + mon.charData2[randomNumber, 8 + tempCardRank]);
@@ -509,6 +508,7 @@ public class GameCanvasGui : MonoBehaviour
         }              
 
         game.pointCanDrawCard = game.pointCanDrawCard - 1;
+        game.CheckCharDegreeList();
         DI.SetDrawCardPoint();
         
 

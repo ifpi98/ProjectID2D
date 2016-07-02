@@ -37,7 +37,8 @@ public class Game : MonoBehaviour
     public int combocount = 0;
     public int requireLevelup;
     public int madeSlotCount;
-    public int countCharThatHaveDegree;
+    //public int countCharThatHaveDegree;
+    public int countForMakingCharDegreeList;
     public int pointCanDrawCard;
     public int countDrawCardwithoutSSR;
     public float skillPoint;
@@ -115,15 +116,25 @@ public class Game : MonoBehaviour
         
     }
 
-    void CheckCharDegreeList()
+    public void CheckCharDegreeList()
     {
-        countCharThatHaveDegree = 0;
+        //countCharThatHaveDegree = 0;
+
+        //for (int i = 0; i < mon.charcount; i++)
+        //{
+        //    if (charDearDegree[i] > 0)
+        //    {
+        //        countCharThatHaveDegree = countCharThatHaveDegree + 1;
+        //    }
+        //}
+
+        countForMakingCharDegreeList = 0;
 
         for (int i = 0; i < mon.charcount; i++)
         {
-            if (charDearDegree[i] > 0)
+            if (charCardRank[i] > 0 || charDearDegree[i] > 0)
             {
-                countCharThatHaveDegree = countCharThatHaveDegree + 1;
+                countForMakingCharDegreeList = countForMakingCharDegreeList + 1;
             }
         }
 

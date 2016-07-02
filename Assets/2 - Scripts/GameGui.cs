@@ -544,6 +544,9 @@ public class GameGui : MonoBehaviour {
             game.makecounthistory[5] = DI.GetMakeCountHistory5();
             game.checkExp();
             game.charDearDegree = new int[mon.charcount];
+            game.charCardRank = new int[mon.charcount];
+            game.pointCanDrawCard = 0;
+            game.countDrawCardwithoutSSR = 0;
             game.unitDebutHistory = new bool[mon.unitcount];
             //PlayerPrefs.DeleteAll();            
             PlayerPrefs.DeleteKey("TwitterUserID");
