@@ -501,7 +501,7 @@ public class GameCanvasGui : MonoBehaviour
 
         if (tempCharDrawCardRank < tempCardRank)
         {
-            tempCharDrawCardRank = tempCardRank;
+            game.charCardRank[randomNumber] = tempCardRank;
             DI.SetCharCardRankString();
         }
         else if (tempCharDrawCardRank > 0)
