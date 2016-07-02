@@ -497,15 +497,28 @@ public class GameCanvasGui : MonoBehaviour
         //Debug.Log(randomNumber);
         drawCardResultDP2BgText.text = Convert.ToString(str);
 
-        if (game.charCardRank[randomNumber] < tempCardRank)
+        int tempCharDrawCardRank = game.charCardRank[randomNumber];
+
+        if (tempCharDrawCardRank < tempCardRank)
         {
-            game.charCardRank[randomNumber] = tempCardRank;
+            tempCharDrawCardRank = tempCardRank;
             DI.SetCharCardRankString();
+        }
+        else if (tempCharDrawCardRank > 0)
+        {
+            if (game.charDearDegree[randomNumber] + 10 < Convert.ToInt16(mon.cardRankData2[tempCharDrawCardRank + 1, 2]))
+            {
+                game.charDearDegree[randomNumber] = game.charDearDegree[randomNumber] + 10;
+            }
+            else
+            {
+                game.charDearDegree[randomNumber] = Convert.ToInt16(mon.cardRankData2[tempCharDrawCardRank + 1, 2]);
+            }
         }
         else
         {
-            // do nothing
-        }              
+            //do nothing!
+        }            
 
         game.pointCanDrawCard = game.pointCanDrawCard - 1;
         game.CheckCharDegreeList();
