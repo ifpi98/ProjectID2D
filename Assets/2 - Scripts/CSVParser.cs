@@ -59,7 +59,7 @@ public class CSVParser
 				continue;
 			}
 
-			string keyValue = stringList[0];
+			//string keyValue = stringList[0];
 			if( ParseData( stringList, lineCount ) == false )
 			{
 				Debug.LogError( "Parsing fail : " + stringList.ToString() );

@@ -21,7 +21,7 @@ public class GameGui : MonoBehaviour {
     
         void OnGUI()
     {
-        var oldcolor = GUI.color;
+        //var oldcolor = GUI.color;
         //cardSlot0 = mon.charData2[game.cardSlot[0], 1] + "\n(" + mon.charData2[game.cardSlot[0], 3] + ")";
         //cardSlot1 = mon.charData2[game.cardSlot[1], 1] + "\n(" + mon.charData2[game.cardSlot[1], 3] + ")";
         //cardSlot2 = mon.charData2[game.cardSlot[2], 1] + "\n(" + mon.charData2[game.cardSlot[2], 3] + ")";

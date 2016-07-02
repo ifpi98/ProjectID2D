@@ -4,7 +4,7 @@ using System.Collections;
 public class DataIni : MonoBehaviour {
 
     IniFile pIDIni;
-    Monster mon;
+    //Monster mon;
     Game game;
     DataArrayJson dAJ;
     bool latestartcheck;
@@ -23,7 +23,7 @@ public class DataIni : MonoBehaviour {
 
         if (latestartcheck == false)
         {
-            mon = GameObject.Find("GameObj").GetComponent<Monster>();
+            //mon = GameObject.Find("GameObj").GetComponent<Monster>();
             game = GameObject.Find("GameObj").GetComponent<Game>();
             dAJ = GameObject.Find("DataObj").GetComponent<DataArrayJson>();
             //Debug.Log(game.score);

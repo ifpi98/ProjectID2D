@@ -4,7 +4,7 @@ using System.Collections;
 
 public class MoiPostTwit : MonoBehaviour {
 
-    Button TwitterShareButton;
+    //Button TwitterShareButton;
     EasyTween easyTweenPostTwitPopUp;
     EasyTween easyTweenTwitterAuthPopUp;
     Text pinNumber;
@@ -13,7 +13,7 @@ public class MoiPostTwit : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        TwitterShareButton = GameObject.Find("TwitterShareButton").GetComponent<Button>();
+        //TwitterShareButton = GameObject.Find("TwitterShareButton").GetComponent<Button>();
         easyTweenPostTwitPopUp = GameObject.Find("PopUpButtonAnim").GetComponent<EasyTween>();
         easyTweenTwitterAuthPopUp = GameObject.Find("TwitterAuthAnim").GetComponent<EasyTween>();
         pinNumber = GameObject.Find("PinNumber").GetComponent<Text>();

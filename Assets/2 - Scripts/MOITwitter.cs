@@ -4,7 +4,7 @@ using System.Collections;
 
 public class MOITwitter : MonoBehaviour 
 {
-    EasyTween easyTweenPostTwitPopUp;
+    //EasyTween easyTweenPostTwitPopUp;
 
     public float USER_LOG_IN_X;
     public float USER_LOG_IN_Y;
@@ -52,13 +52,13 @@ public class MOITwitter : MonoBehaviour
     public Twitter.AccessTokenResponse m_AccessTokenResponse;
 
     public string m_PIN = "Please enter your PIN here.";
-    string m_Tweet = "Please enter your tweet here.";
+    //string m_Tweet = "Please enter your tweet here.";
 
 	// Use this for initialization
 	void Start() 
     {
         LoadTwitterUserInfo();
-        easyTweenPostTwitPopUp = GameObject.Find("PopUpButtonAnim").GetComponent<EasyTween>();
+        //easyTweenPostTwitPopUp = GameObject.Find("PopUpButtonAnim").GetComponent<EasyTween>();
     }
 	
 	// Update is called once per frame
