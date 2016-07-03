@@ -41,6 +41,8 @@ public class Game : MonoBehaviour
     public int countForMakingCharDegreeList;
     public int pointCanDrawCard;
     public int countDrawCardwithoutSSR;
+    public int availableChar;
+    public int availableUnit;
     public float skillPoint;
 
     int[] tempnumarray;
@@ -56,8 +58,8 @@ public class Game : MonoBehaviour
     
     public List<int> madeSlotList = new List<int>();
     public List<int> slotCardList;
-
-
+    public List<int> availableCharList;
+    public List<int> availableUnitList;   
 
 
 
@@ -75,16 +77,14 @@ public class Game : MonoBehaviour
         moiTwitter = GameObject.Find("TwitterObj").GetComponent<MOITwitter>();
         easyTweenMadeSlotPopUp = GameObject.Find("PopUpButtonAnim").GetComponent<EasyTween>();
         easyTweenLevelUpInfoPopUp = GameObject.Find("LevelUpInfoAnim").GetComponent<EasyTween>();
-        
-        
-
+    
         checkExp();
 
         charDearDegree = new int[mon.charcount];
         charCardRank = new int[mon.charcount];
         unitDebutHistory = new bool[mon.unitcount];
 
-        ReadInIData();
+        ReadInIData();        
 
         maxSkillPoint = level * 10 + 100;
         skillPoint = 0;
@@ -95,12 +95,71 @@ public class Game : MonoBehaviour
         CheckCharDegreeList();
 
         PutCardInSlotAtFirst();
+        AvailableChar();
 
         levelUpCheck = false;
         secondcheck = true;
         SlotCardMaKe();                
 
     }
+
+
+    void AvailableChar()
+    {
+        availableChar = 0;
+        availableCharList = new List<int>();
+
+        for (int i = 1; i < mon.charcount; i++)
+        {
+            if (Convert.ToInt32(mon.charData2[i, 2]) > 100)
+            {
+                // do nothing
+            }
+            else
+            {
+                availableChar = availableChar + 1;
+                availableCharList.Add(i);
+            }
+        }
+
+        //Debug.Log("available Character : " + availableChar);
+        //Debug.Log("available Character : " + availableCharList[availableCharList.Count-1]);
+        
+                
+        List<int> tempUnitList = new List<int>();
+        
+        for (int i = 0; i < mon.unitcount - 1; i++)
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                if (unitArray[i, y] == 0)
+                {
+                    break;
+                }
+
+                tempUnitList.Add(unitArray[i, y]);
+            }
+            
+            bool isSubset = !tempUnitList.Except(availableCharList).Any();
+
+            if (isSubset)
+            {
+                availableUnit = availableUnit + 1;            
+            }
+            else
+            {
+                //Debug.Log(i);
+            }
+
+            tempUnitList.Clear();                
+                
+        }
+
+        //Debug.Log(availableUnit);
+
+
+    }
+    
 
     void CheckMadeSlotCount()
     {

@@ -58,10 +58,16 @@ public class GameCanvasGui : MonoBehaviour
     public Text madeSlotCountText;
     public Button madeSlotInfoPopUp_CheckButtAfter;
     public CreateAnimImage createMadeSlotHistoryList;
+    public Button madeSlotAvailableUnit;
+    public Text madeSlotAvailableUnitText;
+    
 
     public Button charDegreeInfoPopUp;
     public Button charDegreeInfoPopUp_CheckButtAfter;
     public CreateAnimImage createCharDegreeList;
+    public Button charDegreeAvailableChar;
+    public Text charDegreeAvailableCharText;
+    
 
     public Button drawCardPopUp;
     public Button drawCardPopUp_CheckButtAfter;
@@ -161,6 +167,8 @@ public class GameCanvasGui : MonoBehaviour
         madeSlotCountText = madeSlotHistoryPopUp.GetComponentInChildren<Text>();
         madeSlotInfoPopUp_CheckButtAfter = GameObject.Find("MadeSlotInfoPopUp_CheckButtAfter").GetComponent<Button>();
         madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
+        madeSlotAvailableUnit = GameObject.Find("MadeSlotAvailableUnit").GetComponent<Button>();
+        madeSlotAvailableUnitText = madeSlotAvailableUnit.GetComponentInChildren<Text>();        
 
         createMadeSlotHistoryList = GameObject.Find("HistroyListCreateAnimImage").GetComponent<CreateAnimImage>();
 
@@ -169,6 +177,8 @@ public class GameCanvasGui : MonoBehaviour
         charDegreeInfoPopUp = GameObject.Find("CharDegreeInfoPopUp_CheckButt").GetComponent<Button>();
         charDegreeInfoPopUp_CheckButtAfter = GameObject.Find("CharDegreeInfoPopUp_CheckButtAfter").GetComponent<Button>();
         charDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
+        charDegreeAvailableChar = GameObject.Find("CharDegreeAvailableChar").GetComponent<Button>();
+        charDegreeAvailableCharText = charDegreeAvailableChar.GetComponentInChildren<Text>();
 
         createCharDegreeList = GameObject.Find("CharDegreeListCreateAnimImage").GetComponent<CreateAnimImage>();
 
@@ -208,6 +218,7 @@ public class GameCanvasGui : MonoBehaviour
             }            
 
             writeGO.GetComponentInChildren<Text>().text = str.ToString();
+            madeSlotAvailableUnitText.text = game.madeSlotCount + " / " + game.availableUnit;
             //DestroyImmediate(writeGO);
         }
 
@@ -253,6 +264,7 @@ public class GameCanvasGui : MonoBehaviour
             //}
 
             writeGO.GetComponentInChildren<Text>().text = str.ToString();
+            charDegreeAvailableCharText.text = game.countForMakingCharDegreeList + " / " + game.availableChar; 
             //DestroyImmediate(writeGO);
         }
 
