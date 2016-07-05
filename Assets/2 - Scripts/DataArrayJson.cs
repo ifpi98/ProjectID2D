@@ -117,7 +117,7 @@ public class DataArrayJson : MonoBehaviour {
             case JSONObject.Type.OBJECT:
                 for (int i = 0; i < obj.list.Count; i++)
                 {
-                    string key = (string)obj.keys[i];
+                    string objectkey = (string)obj.keys[i];
                     JSONObject sampleJson1 = (JSONObject)obj.list[i];
                     //Debug.Log(key);
                     accessData(sampleJson1);
