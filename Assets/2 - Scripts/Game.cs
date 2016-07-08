@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -18,7 +19,6 @@ public class Game : MonoBehaviour
     EasyTween easyTweenMadeSlotPopUp;
     EasyTween easyTweenLevelUpInfoPopUp;
 
-
     int tempnum;
     int maxSkillPoint;
     int sumDearDegree;
@@ -28,6 +28,11 @@ public class Game : MonoBehaviour
     string charDearDegreeEncodedString1;    
     string unitDebutHistoryEncodedString1;
     string charCardRankEncodedString1;
+    float madeSlotScrollbarVerticalValue;
+    GameObject madeSlotViewPort;
+    Scrollbar madeSlotScrollbarVertical;
+    
+
 
     public int basicRemainTurn = 5;
     public int score;
@@ -77,7 +82,10 @@ public class Game : MonoBehaviour
         moiTwitter = GameObject.Find("TwitterObj").GetComponent<MOITwitter>();
         easyTweenMadeSlotPopUp = GameObject.Find("PopUpButtonAnim").GetComponent<EasyTween>();
         easyTweenLevelUpInfoPopUp = GameObject.Find("LevelUpInfoAnim").GetComponent<EasyTween>();
-    
+        madeSlotViewPort = GameObject.Find("MadeSlotViewPort");
+        madeSlotScrollbarVertical = GameObject.Find("MadeSlotScrollbarVertical").GetComponent<Scrollbar>();
+        madeSlotScrollbarVerticalValue = madeSlotScrollbarVertical.value;
+
         checkExp();
 
         charDearDegree = new int[mon.charcount];
@@ -412,7 +420,7 @@ public class Game : MonoBehaviour
 
     void SlotCardMaKe()
     {
-        
+        GameCanvasGui gCanvas = GameObject.Find("UIObj").GetComponent<GameCanvasGui>();
         slotCardList = new List<int>();
         List<int> tempUnitList = new List<int>();
         //Debug.Log("initialize");
@@ -450,6 +458,8 @@ public class Game : MonoBehaviour
             }
 
             tempUnitList.Clear();
+            madeSlotViewPort.transform.position = new Vector2(madeSlotViewPort.transform.position.x, -285);
+            madeSlotScrollbarVertical.value = madeSlotScrollbarVerticalValue;
 
             //Debug.Log("END");
 

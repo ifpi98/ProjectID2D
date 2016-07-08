@@ -444,11 +444,11 @@ public class GameGui : MonoBehaviour {
 
         //}
 
-        if (game.madeSlotList.Count > 6 && game.thirdcheck == false)
+        if (game.madeSlotList.Count > 8 && game.thirdcheck == false)
         {
             game.thirdcheck = true;
             Debug.Log(game.madeSlotList.Count);
-            for (int i = 6; i < game.madeSlotList.Count; i++)
+            for (int i = 8; i < game.madeSlotList.Count; i++)
             {
                 Debug.Log(mon.unitData2[game.madeSlotList[i], 1]);
             }

@@ -32,10 +32,10 @@ public class MadeSlotSelector : MonoBehaviour {
         notYetDebutCB.colorMultiplier = 1;
         notYetDebutCB.fadeDuration = 0.1f;
         
-        for (int i = 0; i < 6; i++)
-        {
-            gCanvas.madeSlotButton[0].colors = selectedCB;
-        }
+        //for (int i = 0; i < 6; i++)
+        //{
+        //    gCanvas.madeSlotButton[0].colors = selectedCB;
+        //}
         
 
     }
@@ -53,89 +53,105 @@ public class MadeSlotSelector : MonoBehaviour {
             madeSlotText(i);
         }
 
-        switch (game.madeSlotList.Count)
+        for (int i = 0; i < game.madeSlotList.Count; i++)
         {
-            case 0:
-                //Debug.LogWarning("Logical Error! Check!");
-                gCanvas.madeSlot[0].SetActive(false);
-                gCanvas.madeSlot[1].SetActive(false);
-                gCanvas.madeSlot[2].SetActive(false);
-                gCanvas.madeSlot[3].SetActive(false);
-                gCanvas.madeSlot[4].SetActive(false);
-                gCanvas.madeSlot[5].SetActive(false);
-                break;
-
-            case 1:
-
-                gCanvas.madeSlot[0].SetActive(true);
-                gCanvas.madeSlot[1].SetActive(false);
-                gCanvas.madeSlot[2].SetActive(false);
-                gCanvas.madeSlot[3].SetActive(false);
-                gCanvas.madeSlot[4].SetActive(false);
-                gCanvas.madeSlot[5].SetActive(false);
-                break;
-
-            case 2:
-
-                gCanvas.madeSlot[0].SetActive(true);
-                gCanvas.madeSlot[1].SetActive(true);
-                gCanvas.madeSlot[2].SetActive(false);
-                gCanvas.madeSlot[3].SetActive(false);
-                gCanvas.madeSlot[4].SetActive(false);
-                gCanvas.madeSlot[5].SetActive(false);
-                break;
-
-            case 3:
-
-                gCanvas.madeSlot[0].SetActive(true);
-                gCanvas.madeSlot[1].SetActive(true);
-                gCanvas.madeSlot[2].SetActive(true);
-                gCanvas.madeSlot[3].SetActive(false);
-                gCanvas.madeSlot[4].SetActive(false);
-                gCanvas.madeSlot[5].SetActive(false);
-                break;
-
-            case 4:
-
-                gCanvas.madeSlot[0].SetActive(true);
-                gCanvas.madeSlot[1].SetActive(true);
-                gCanvas.madeSlot[2].SetActive(true);
-                gCanvas.madeSlot[3].SetActive(true);
-                gCanvas.madeSlot[4].SetActive(false);
-                gCanvas.madeSlot[5].SetActive(false);
-                break;
-                
-            case 5:
-
-                gCanvas.madeSlot[0].SetActive(true);
-                gCanvas.madeSlot[1].SetActive(true);
-                gCanvas.madeSlot[2].SetActive(true);
-                gCanvas.madeSlot[3].SetActive(true);
-                gCanvas.madeSlot[4].SetActive(true);
-                gCanvas.madeSlot[5].SetActive(false);
-                break;
-
-            case 6:
-
-                gCanvas.madeSlot[0].SetActive(true);
-                gCanvas.madeSlot[1].SetActive(true);
-                gCanvas.madeSlot[2].SetActive(true);
-                gCanvas.madeSlot[3].SetActive(true);
-                gCanvas.madeSlot[4].SetActive(true);
-                gCanvas.madeSlot[5].SetActive(true);
-                break;
-
-            default:
-                Debug.LogWarning("There are Seven or More MADESLOT! Check it!");
-                gCanvas.madeSlot[0].SetActive(true);
-                gCanvas.madeSlot[1].SetActive(true);
-                gCanvas.madeSlot[2].SetActive(true);
-                gCanvas.madeSlot[3].SetActive(true);
-                gCanvas.madeSlot[4].SetActive(true);
-                gCanvas.madeSlot[5].SetActive(true);
-                break;
-
+            gCanvas.madeSlot[i].SetActive(true);
         }
+
+        for (int i = game.madeSlotList.Count; i < 8; i++)
+        {
+            gCanvas.madeSlot[i].SetActive(false);
+        }
+
+        if (game.madeSlotList.Count > 8)
+        {
+            Debug.LogWarning("There are Nine or More MADESLOT! Check it!");
+        }
+        
+        
+        //switch (game.madeSlotList.Count)
+        //{
+        //    case 0:
+        //        //Debug.LogWarning("Logical Error! Check!");         
+        //        gCanvas.madeSlot[0].SetActive(false);
+        //        gCanvas.madeSlot[1].SetActive(false);
+        //        gCanvas.madeSlot[2].SetActive(false);
+        //        gCanvas.madeSlot[3].SetActive(false);
+        //        gCanvas.madeSlot[4].SetActive(false);
+        //        gCanvas.madeSlot[5].SetActive(false);
+        //        break;
+
+        //    case 1:
+
+        //        gCanvas.madeSlot[0].SetActive(true);
+        //        gCanvas.madeSlot[1].SetActive(false);
+        //        gCanvas.madeSlot[2].SetActive(false);
+        //        gCanvas.madeSlot[3].SetActive(false);
+        //        gCanvas.madeSlot[4].SetActive(false);
+        //        gCanvas.madeSlot[5].SetActive(false);
+        //        break;
+
+        //    case 2:
+
+        //        gCanvas.madeSlot[0].SetActive(true);
+        //        gCanvas.madeSlot[1].SetActive(true);
+        //        gCanvas.madeSlot[2].SetActive(false);
+        //        gCanvas.madeSlot[3].SetActive(false);
+        //        gCanvas.madeSlot[4].SetActive(false);
+        //        gCanvas.madeSlot[5].SetActive(false);
+        //        break;
+
+        //    case 3:
+
+        //        gCanvas.madeSlot[0].SetActive(true);
+        //        gCanvas.madeSlot[1].SetActive(true);
+        //        gCanvas.madeSlot[2].SetActive(true);
+        //        gCanvas.madeSlot[3].SetActive(false);
+        //        gCanvas.madeSlot[4].SetActive(false);
+        //        gCanvas.madeSlot[5].SetActive(false);
+        //        break;
+
+        //    case 4:
+
+        //        gCanvas.madeSlot[0].SetActive(true);
+        //        gCanvas.madeSlot[1].SetActive(true);
+        //        gCanvas.madeSlot[2].SetActive(true);
+        //        gCanvas.madeSlot[3].SetActive(true);
+        //        gCanvas.madeSlot[4].SetActive(false);
+        //        gCanvas.madeSlot[5].SetActive(false);
+        //        break;
+                
+        //    case 5:
+
+        //        gCanvas.madeSlot[0].SetActive(true);
+        //        gCanvas.madeSlot[1].SetActive(true);
+        //        gCanvas.madeSlot[2].SetActive(true);
+        //        gCanvas.madeSlot[3].SetActive(true);
+        //        gCanvas.madeSlot[4].SetActive(true);
+        //        gCanvas.madeSlot[5].SetActive(false);
+        //        break;
+
+        //    case 6:
+
+        //        gCanvas.madeSlot[0].SetActive(true);
+        //        gCanvas.madeSlot[1].SetActive(true);
+        //        gCanvas.madeSlot[2].SetActive(true);
+        //        gCanvas.madeSlot[3].SetActive(true);
+        //        gCanvas.madeSlot[4].SetActive(true);
+        //        gCanvas.madeSlot[5].SetActive(true);
+        //        break;
+
+        //    default:
+        //        Debug.LogWarning("There are Seven or More MADESLOT! Check it!");
+        //        gCanvas.madeSlot[0].SetActive(true);
+        //        gCanvas.madeSlot[1].SetActive(true);
+        //        gCanvas.madeSlot[2].SetActive(true);
+        //        gCanvas.madeSlot[3].SetActive(true);
+        //        gCanvas.madeSlot[4].SetActive(true);
+        //        gCanvas.madeSlot[5].SetActive(true);
+        //        break;
+
+        //}
         
 
     }

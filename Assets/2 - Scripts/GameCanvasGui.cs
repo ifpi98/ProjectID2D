@@ -30,7 +30,7 @@ public class GameCanvasGui : MonoBehaviour
     public Text[] RemainTurnText;
 
     public Button[] madeSlotButton;
-    public Text[] madeSlotButtonText;
+    public Text[] madeSlotButtonText;    
 
     public Button[] skillButton;
     public Text[] skillButtonText;
@@ -84,7 +84,7 @@ public class GameCanvasGui : MonoBehaviour
         game = GameObject.Find("GameObj").GetComponent<Game>();
         DI = GameObject.Find("DataObj").GetComponent<DataIni>();
 
-        madeSlot = new GameObject[6];
+        madeSlot = new GameObject[8];
 
         madeSlot[0] = GameObject.Find("Made Slot Button 0");
         madeSlot[1] = GameObject.Find("Made Slot Button 1");
@@ -92,6 +92,8 @@ public class GameCanvasGui : MonoBehaviour
         madeSlot[3] = GameObject.Find("Made Slot Button 3");
         madeSlot[4] = GameObject.Find("Made Slot Button 4");
         madeSlot[5] = GameObject.Find("Made Slot Button 5");
+        madeSlot[6] = GameObject.Find("Made Slot Button 6");
+        madeSlot[7] = GameObject.Find("Made Slot Button 7");
 
         skillButtonObject = new GameObject[5];
 
@@ -118,10 +120,10 @@ public class GameCanvasGui : MonoBehaviour
             mButText[i] = mButton[i].GetComponentInChildren<Text>();
         }
 
-        madeSlotButton = new Button[6];
-        madeSlotButtonText = new Text[6];
+        madeSlotButton = new Button[8];
+        madeSlotButtonText = new Text[8];
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 8; i++)
         {
             madeSlotButton[i] = madeSlot[i].GetComponent<Button>();
             madeSlotButtonText[i] = madeSlotButton[i].GetComponentInChildren<Text>();
