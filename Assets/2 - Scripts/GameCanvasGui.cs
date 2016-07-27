@@ -74,6 +74,8 @@ public class GameCanvasGui : MonoBehaviour
     Button drawCardResultDP2Bg;
     Text drawCardResultDP2BgText;
 
+    public Button settingPopUp_CheckButt;    
+
     EasyTween easyTweenDrawCardResultPopUp;
     EasyTween easyTweenNotifyNoCreditPopUp;
 
@@ -187,6 +189,8 @@ public class GameCanvasGui : MonoBehaviour
         drawCardPopUp = GameObject.Find("DrawCardPopUp_CheckButt").GetComponent<Button>();
         drawCardResultDP2Bg = GameObject.Find("DrawCardResultDP2Bg").GetComponent<Button>();
         drawCardResultDP2BgText = drawCardResultDP2Bg.GetComponentInChildren<Text>();
+
+        settingPopUp_CheckButt = GameObject.Find("SettingPopUp_CheckButt").GetComponent<Button>();
 
         //drawCardPopUp_CheckButtAfter = GameObject.Find("DrawCardPopUp_CheckButtAfter").GetComponent<Button>();
         //drawCardPopUp_CheckButtAfter.gameObject.SetActive(false);
@@ -328,6 +332,7 @@ public class GameCanvasGui : MonoBehaviour
         WriteMadeSlot();
         madeSlotHistoryPopUp.gameObject.SetActive(false);
         charDegreeInfoPopUp.gameObject.SetActive(false);
+        settingPopUp_CheckButt.gameObject.SetActive(false);
         madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(true);
     }
 
@@ -336,6 +341,7 @@ public class GameCanvasGui : MonoBehaviour
     {
         madeSlotHistoryPopUp.gameObject.SetActive(true);
         charDegreeInfoPopUp.gameObject.SetActive(true);
+        settingPopUp_CheckButt.gameObject.SetActive(true);
         madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
         for (int i = 0; i < game.madeSlotCount; i++)
@@ -355,6 +361,7 @@ public class GameCanvasGui : MonoBehaviour
         WriteCharDegreeList();
         charDegreeInfoPopUp.gameObject.SetActive(false);
         madeSlotHistoryPopUp.gameObject.SetActive(false);
+        settingPopUp_CheckButt.gameObject.SetActive(false);
         charDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(true);
     }
 
@@ -363,6 +370,7 @@ public class GameCanvasGui : MonoBehaviour
     {
         charDegreeInfoPopUp.gameObject.SetActive(true);
         madeSlotHistoryPopUp.gameObject.SetActive(true);
+        settingPopUp_CheckButt.gameObject.SetActive(true);
         charDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
         for (int i = 0; i < game.countForMakingCharDegreeList; i++)
