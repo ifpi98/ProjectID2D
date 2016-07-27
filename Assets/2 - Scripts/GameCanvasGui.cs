@@ -242,6 +242,16 @@ public class GameCanvasGui : MonoBehaviour
             str.Append("이름 : " + mon.charData2[charDegreeNumber[i], 1]);
             str.Append("\n친애도 : " + game.charDearDegree[charDegreeNumber[i]]);
 
+            if (Convert.ToInt16(mon.charData2[charDegreeNumber[i], 2]) == 0)
+            {
+                str.Append("                            오디션 출현 레벨 : 1");
+            }
+            else
+            {
+                str.Append("                            오디션 출현 레벨 : " + mon.charData2[charDegreeNumber[i], 2]);
+            }
+            
+
             if (tempCardRank == 0)
             {
                 str.Append("\n카드 정보 : [ " + mon.charData2[charDegreeNumber[i], 1]);
@@ -408,7 +418,7 @@ public class GameCanvasGui : MonoBehaviour
         }
 
         pointDisplay.text = "Score : " + game.score + " (" + game.requireLevelup + ") " + "\n Level : " + game.level + "\n CardCredit : " + game.pointCanDrawCard;
-        skillPointText.text = "SP : " + Convert.ToInt32(game.skillPoint);
+        skillPointText.text = "Skill Point : " + Convert.ToInt32(game.skillPoint);
 
         for (int i = 0; i < 5; i++)
         {
