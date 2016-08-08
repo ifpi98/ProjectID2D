@@ -472,6 +472,7 @@ public class Game : MonoBehaviour
     {
         GameCanvasGui gCanvas = GameObject.Find("UIObj").GetComponent<GameCanvasGui>();
         pointCanDrawCard = pointCanDrawCard + 1;
+        DI.SetDrawCardPoint();
 
         StringBuilder str = new StringBuilder();
         int unitcount = Convert.ToInt16(mon.unitData2[decideUnit2, 14]);

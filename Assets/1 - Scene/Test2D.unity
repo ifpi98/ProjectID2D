@@ -712,11 +712,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 035be2424b33b8145845a641aab04421, type: 3}
-    m_FontSize: 20
+    m_FontSize: 17
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 20
+    m_MaxSize: 17
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -752,7 +752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &61904375
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3787,7 +3787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &252650045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15843,7 +15843,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCD2C\uC601 \uACB0\uACFC\uBB3C \uBCF4\uAE30 - Test"
+  m_Text: "\uCD2C\uC601 \uACB0\uACFC\uBB3C \uBCF4\uAE30 - \uC5F0\uC18D\uCD2C\uC601"
 --- !u!222 &952859304
 CanvasRenderer:
   m_ObjectHideFlags: 0
