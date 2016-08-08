@@ -72,11 +72,14 @@ public class GameCanvasGui : MonoBehaviour
     public Button drawCardPopUp;
     public Button drawCardPopUp_CheckButtAfter;
     Button drawCardResultDP2Bg;
+    Button drawCardResultDP2Bg10;
     Text drawCardResultDP2BgText;
+    Text drawCardResultDP2Bg10Text;
 
     public Button settingPopUp_CheckButt;    
 
     EasyTween easyTweenDrawCardResultPopUp;
+    EasyTween easyTweenDrawCardResultPopUp10;
     EasyTween easyTweenNotifyNoCreditPopUp;
 
     // Use this for initialization
@@ -188,7 +191,9 @@ public class GameCanvasGui : MonoBehaviour
 
         drawCardPopUp = GameObject.Find("DrawCardPopUp_CheckButt").GetComponent<Button>();
         drawCardResultDP2Bg = GameObject.Find("DrawCardResultDP2Bg").GetComponent<Button>();
+        drawCardResultDP2Bg10 = GameObject.Find("DrawCardResultDP2Bg10").GetComponent<Button>();
         drawCardResultDP2BgText = drawCardResultDP2Bg.GetComponentInChildren<Text>();
+        drawCardResultDP2Bg10Text = drawCardResultDP2Bg10.GetComponentInChildren<Text>();
 
         settingPopUp_CheckButt = GameObject.Find("SettingPopUp_CheckButt").GetComponent<Button>();
 
@@ -196,6 +201,7 @@ public class GameCanvasGui : MonoBehaviour
         //drawCardPopUp_CheckButtAfter.gameObject.SetActive(false);
 
         easyTweenDrawCardResultPopUp = GameObject.Find("DrawCardResultPopUpAnim").GetComponent<EasyTween>();
+        easyTweenDrawCardResultPopUp10 = GameObject.Find("DrawCardResultPopUp10Anim").GetComponent<EasyTween>();
         easyTweenNotifyNoCreditPopUp = GameObject.Find("NotifyNoCreditPopUpAnim").GetComponent<EasyTween>();
     }
     
@@ -496,6 +502,133 @@ public class GameCanvasGui : MonoBehaviour
                 
     }
 
+    public void CheckCardCredit10()
+    {
+        if (game.pointCanDrawCard < 10)
+        {
+            easyTweenNotifyNoCreditPopUp.OpenCloseObjectAnimation();
+        }
+        else
+        {
+            DrawCard10();
+            easyTweenDrawCardResultPopUp10.OpenCloseObjectAnimation();
+        }
+    }
+
+    void DrawCard10()
+    {
+        int[] drawCardArray = new int[10];
+        int[] drawCardRankArray = new int[10];
+
+        for (int i = 0; i < 10; i++)
+        {
+            drawCardArray[i] = DrawCardJust();
+            //Debug.Log(drawCardArray[i]);
+            drawCardRankArray[i] = DecideCardRank();
+            //Debug.Log(drawCardRankArray[i]);
+        }
+
+        bool isThereSCARD = false;
+
+        for (int i = 0; i < 10; i++)
+        {            
+
+            if (drawCardRankArray[i] > 1)
+            {
+                isThereSCARD = true;
+                break;
+            }            
+        }
+
+        if (isThereSCARD != true)
+        {
+            int tempnum;
+            tempnum = UnityEngine.Random.Range(0, 10);
+            drawCardRankArray[tempnum] = 2;
+            Debug.Log(tempnum + "There is no SCard!!!!");
+        }
+
+        StringBuilder str = new StringBuilder();
+                
+        str.Append("축하합니다.\n");
+        str.Append("신데렐라 소녀들의 아티스트 샷을 촬영하였습니다.\n");
+
+        for (int i = 0; i < 10; i++)
+        {
+            int y = i + 1;
+            if (i < 9)
+            {
+                str.Append("\n사진 정보" + y + "   : [ " + mon.charData2[drawCardArray[i], 1] + " - " + mon.charData2[drawCardArray[i], 8 + drawCardRankArray[i]]);
+                str.Append(" (" + mon.cardRankData2[drawCardRankArray[i] + 1, 1] + ") ]");
+            }
+            else
+            {
+                str.Append("\n사진 정보" + y + " : [ " + mon.charData2[drawCardArray[i], 1] + " - " + mon.charData2[drawCardArray[i], 8 + drawCardRankArray[i]]);
+                str.Append(" (" + mon.cardRankData2[drawCardRankArray[i] + 1, 1] + ") ]");
+            }
+
+        }
+  
+        drawCardResultDP2Bg10Text.text = Convert.ToString(str);
+
+
+        for (int i = 0; i < 10; i++)
+        {
+            int tempCharDrawCardRank = game.charCardRank[drawCardArray[i]];
+
+            if (tempCharDrawCardRank < drawCardRankArray[i])
+            {
+                game.charCardRank[drawCardArray[i]] = drawCardRankArray[i];
+                DI.SetCharCardRankString();
+            }
+            else if (tempCharDrawCardRank > 0)
+            {
+                if (game.charDearDegree[drawCardArray[i]] + 10 < Convert.ToInt16(mon.cardRankData2[tempCharDrawCardRank + 1, 2]))
+                {
+                    game.charDearDegree[drawCardArray[i]] = game.charDearDegree[drawCardArray[i]] + 10;
+                }
+                else
+                {
+                    game.charDearDegree[drawCardArray[i]] = Convert.ToInt16(mon.cardRankData2[tempCharDrawCardRank + 1, 2]);
+                }
+            }
+            else
+            {
+                //do nothing!
+            }
+        }        
+
+        game.pointCanDrawCard = game.pointCanDrawCard - 10;
+        game.CheckCharDegreeList();
+        DI.SetCharDearDegreeString();
+        DI.SetDrawCardPoint();
+
+
+    }
+
+    int DrawCardJust()
+    {
+        int randomNumber = 0;
+        bool level101Check = true;
+
+        while (level101Check)
+        {
+            randomNumber = UnityEngine.Random.Range(1, mon.charcount);
+            if (Convert.ToInt16(mon.charData2[randomNumber, 2]) > 100)
+            {
+                //do nothing!
+            }
+            else
+            {
+                level101Check = false;
+            }
+            //Debug.Log(mon.charData2[randomNumber, 2]);
+        }
+
+        return randomNumber;
+    }
+    
+    
     void DrawCard()
     {
         int randomNumber = 0;
@@ -523,7 +656,7 @@ public class GameCanvasGui : MonoBehaviour
         str.Append("축하합니다.\n");        
         str.Append(mon.charData2[randomNumber, 1]);
         str.Append("의 아티스트 샷을 촬영하였습니다.\n");        
-        str.Append("\n카드 정보 : [ " + mon.charData2[randomNumber, 8 + tempCardRank]);
+        str.Append("\n사진 정보 : [ " + mon.charData2[randomNumber, 8 + tempCardRank]);
         str.Append(" (" + mon.cardRankData2[tempCardRank+1,1] + ") ]");
 
         //Debug.Log(randomNumber);
@@ -554,6 +687,7 @@ public class GameCanvasGui : MonoBehaviour
 
         game.pointCanDrawCard = game.pointCanDrawCard - 1;
         game.CheckCharDegreeList();
+        DI.SetCharDearDegreeString();
         DI.SetDrawCardPoint();
         
 
