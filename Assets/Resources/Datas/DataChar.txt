@@ -78,3 +78,4 @@ iD,charactername,appearLevel,charType,age,voiceactor,resource,icon,firstname,ran
 77,아이바 유미,23,Passion,18,키무라 쥬리,,,유미,플라워 부케,폭신한 꽃소녀,마음 한 다발
 78,후지모토 리나,36,Cute,18,카네코 마유미,,,리나,러블리 갸루,러블리☆라이더,러블리 하트(NY)
 79,시오미 슈코,56,Cool,18,루 팅,,,슈코,시오미 슈코,괴이한 교토 소녀,야경의 새벽바람
+80,무카이 타쿠미,57,Passion,18,하라 유코,,,타쿠미,여장부,경파소녀,권화상등
