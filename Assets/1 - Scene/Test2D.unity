@@ -16925,6 +16925,8 @@ MonoBehaviour:
   - {fileID: 0}
   unitPrefab: {fileID: 11408932, guid: 5c4248d67309da24590093dfa4e82c6a, type: 2}
   unitObjects: []
+  maxUnits: 230
+  lastCount: 0
   HowManyButtons: 100
   StartAnim: {x: -200, y: -77, z: 0}
   EndAnim: {x: 0, y: -77, z: 0}
@@ -23164,6 +23166,8 @@ MonoBehaviour:
   - {fileID: 0}
   unitPrefab: {fileID: 0}
   unitObjects: []
+  maxUnits: 0
+  lastCount: 0
   HowManyButtons: 100
   StartAnim: {x: -200, y: -77, z: 0}
   EndAnim: {x: 0, y: -77, z: 0}

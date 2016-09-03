@@ -9,6 +9,9 @@ public class CreateAnimImage : MonoBehaviour {
 
 	public Unit unitPrefab;
     public List<Unit> unitObjects;
+    public int maxUnits;
+    public int lastCount = 0;
+    Vector3 InstancePosition;
 
     public int HowManyButtons;
 
@@ -27,12 +30,12 @@ public class CreateAnimImage : MonoBehaviour {
 
 	private Vector2 InitialCanvasScrollSize;
 	private float totalWidth = 0f;
-    private Vector3 InstancePosition;
 
     void Start()
 	{
 		InitialCanvasScrollSize = new Vector2(RootRect.rect.height, RootRect.rect.width);
-        unitObjects = new List<Unit>();
+        unitObjects = new List<Unit>(maxUnits);
+        CreatePanels(maxUnits);
         InstancePosition = EndAnim;
     }
 
@@ -61,7 +64,7 @@ public class CreateAnimImage : MonoBehaviour {
 
 	public void CreateButtons()
 	{
-		CreatePanels();
+        UpdatePanels();
 		AdaptCanvas();
 	}
 
@@ -71,35 +74,45 @@ public class CreateAnimImage : MonoBehaviour {
         AdaptCanvas();
     }
 
-    private void CreatePanels()
+    private void CreatePanels(int count)
 	{
-        if (HowManyButtons > unitObjects.Count)
+        for (int i = 0; i < count; i++)
         {
-            for (int i = unitObjects.Count; i < HowManyButtons; i++)
-            {
-                var unit = Instantiate<Unit>(unitPrefab);
-                unitObjects.Add(unit);
-
-                // Changes the Parent, Assing to scroll List
-                unit.transform.SetParent(RootRect, false);
-                EasyTween easy = unit.GetComponent<EasyTween>();
-                // Add Tween To List
-                Created.Add(easy);
-                // Final Position
-                StartAnim.y = InstancePosition.y;
-                // Pass the positions to the Tween system
-                easy.SetAnimationPosition(StartAnim, InstancePosition, EnterAnim, ExitAnim);
-                // Intro fade
-                easy.SetFade();
-                // Execute Animation
-                easy.OpenCloseObjectAnimation();
-                // Increases the Y offset
-                InstancePosition.y += Offset;
-
-                totalWidth += Offset;
-            }
+            var unit = Instantiate<Unit>(unitPrefab);
+            unit.gameObject.SetActive(false);
+            unitObjects.Add(unit);
         }
 	}
+
+    public void UpdatePanels()
+    {
+
+        Profiler.BeginSample("UpdatePanels");
+        for (int i = lastCount; i < HowManyButtons; i++)
+        {
+            unitObjects[i].gameObject.SetActive(true);
+
+            // Changes the Parent, Assing to scroll List
+            unitObjects[i].transform.SetParent(RootRect, false);
+            EasyTween easy = unitObjects[i].GetComponent<EasyTween>();
+            // Add Tween To List
+            Created.Add(easy);
+            // Final Position
+            StartAnim.y = InstancePosition.y;
+            // Pass the positions to the Tween system
+            easy.SetAnimationPosition(StartAnim, InstancePosition, EnterAnim, ExitAnim);
+            // Intro fade
+            easy.SetFade();
+            // Execute Animation
+            easy.OpenCloseObjectAnimation();
+            // Increases the Y offset
+            InstancePosition.y += Offset;
+
+            totalWidth += Offset;
+        }
+        lastCount = HowManyButtons;
+        Profiler.EndSample();
+    }
 
     public void Set(string[] strArr)
     {
@@ -117,7 +130,7 @@ public class CreateAnimImage : MonoBehaviour {
 
     private void CreatePanels2()
     {
-        Vector3 InstancePosition = EndAnim;
+        Vector3 InstancePosition2 = EndAnim;
 
         totalWidth = 0f;
 
@@ -132,15 +145,15 @@ public class CreateAnimImage : MonoBehaviour {
             // Add Tween To List
             Created.Add(easy);
             // Final Position
-            StartAnim.y = InstancePosition.y;
+            StartAnim.y = InstancePosition2.y;
             // Pass the positions to the Tween system
-            easy.SetAnimationPosition(StartAnim, InstancePosition, EnterAnim, ExitAnim);
+            easy.SetAnimationPosition(StartAnim, InstancePosition2, EnterAnim, ExitAnim);
             // Intro fade
             easy.SetFade();
             // Execute Animation
             easy.OpenCloseObjectAnimation();
             // Increases the Y offset
-            InstancePosition.y += Offset;
+            InstancePosition2.y += Offset;
 
             totalWidth += Offset;
         }
