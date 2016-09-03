@@ -7,9 +7,10 @@ public class CreateAnimImage : MonoBehaviour {
 
 	public CreateAnimImage[] createImageOtherReference;
 
-	public GameObject CreateInstance;
+	public Unit unitPrefab;
+    public List<Unit> unitObjects;
 
-	public int HowManyButtons;
+    public int HowManyButtons;
 
 	public Vector3 StartAnim;
 	public Vector3 EndAnim;
@@ -26,11 +27,14 @@ public class CreateAnimImage : MonoBehaviour {
 
 	private Vector2 InitialCanvasScrollSize;
 	private float totalWidth = 0f;
+    private Vector3 InstancePosition;
 
-	void Start()
+    void Start()
 	{
 		InitialCanvasScrollSize = new Vector2(RootRect.rect.height, RootRect.rect.width);
-	}
+        unitObjects = new List<Unit>();
+        InstancePosition = EndAnim;
+    }
 
 	public void CallBack()
 	{
@@ -69,34 +73,47 @@ public class CreateAnimImage : MonoBehaviour {
 
     private void CreatePanels()
 	{
-		Vector3 InstancePosition = EndAnim;
+        if (HowManyButtons > unitObjects.Count)
+        {
+            for (int i = unitObjects.Count; i < HowManyButtons; i++)
+            {
+                var unit = Instantiate<Unit>(unitPrefab);
+                unitObjects.Add(unit);
 
-		totalWidth = 0f;
+                // Changes the Parent, Assing to scroll List
+                unit.transform.SetParent(RootRect, false);
+                EasyTween easy = unit.GetComponent<EasyTween>();
+                // Add Tween To List
+                Created.Add(easy);
+                // Final Position
+                StartAnim.y = InstancePosition.y;
+                // Pass the positions to the Tween system
+                easy.SetAnimationPosition(StartAnim, InstancePosition, EnterAnim, ExitAnim);
+                // Intro fade
+                easy.SetFade();
+                // Execute Animation
+                easy.OpenCloseObjectAnimation();
+                // Increases the Y offset
+                InstancePosition.y += Offset;
 
-		for (int i = 0; i < HowManyButtons; i++)
-		{
-			// Creates Instance
-			GameObject createInstance = Instantiate(CreateInstance) as GameObject;
-            createInstance.name = "MadeSlotList" + i;
-			// Changes the Parent, Assing to scroll List
-			createInstance.transform.SetParent(RootRect, false);
-			EasyTween easy = createInstance.GetComponent<EasyTween>();
-			// Add Tween To List
-			Created.Add(easy);
-			// Final Position
-			StartAnim.y = InstancePosition.y;
-			// Pass the positions to the Tween system
-			easy.SetAnimationPosition(StartAnim, InstancePosition , EnterAnim, ExitAnim);
-			// Intro fade
-			easy.SetFade();
-			// Execute Animation
-			easy.OpenCloseObjectAnimation();
-			// Increases the Y offset
-			InstancePosition.y += Offset;
-
-			totalWidth += Offset;
-		}
+                totalWidth += Offset;
+            }
+        }
 	}
+
+    public void Set(string[] strArr)
+    {
+        for (int i = 0; i < strArr.Length; i++)
+        {
+            unitObjects[i].Label.text = strArr[i];
+            Color color = unitObjects[i].GetComponent<Image>().color;
+            color.a = 1;
+            unitObjects[i].GetComponent<Image>().color = color;
+            color = unitObjects[i].Label.color;
+            color.a = 1;
+            unitObjects[i].Label.color = color;
+        }
+    }
 
     private void CreatePanels2()
     {
@@ -107,11 +124,11 @@ public class CreateAnimImage : MonoBehaviour {
         for (int i = 0; i < HowManyButtons; i++)
         {
             // Creates Instance
-            GameObject createInstance = Instantiate(CreateInstance) as GameObject;
-            createInstance.name = "CharDegreeList" + i;
+            GameObject unit = Instantiate(unitPrefab.gameObject) as GameObject;
+            unit.name = "CharDegreeList" + i;
             // Changes the Parent, Assing to scroll List
-            createInstance.transform.SetParent(RootRect, false);
-            EasyTween easy = createInstance.GetComponent<EasyTween>();
+            unit.transform.SetParent(RootRect, false);
+            EasyTween easy = unit.GetComponent<EasyTween>();
             // Add Tween To List
             Created.Add(easy);
             // Final Position

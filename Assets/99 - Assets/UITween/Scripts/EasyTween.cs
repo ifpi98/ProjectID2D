@@ -159,10 +159,10 @@ public class EasyTween : MonoBehaviour
         {
             if (gameObject && !rectTransform.gameObject == gameObject)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
 			
-            DestroyImmediate(rectTransform.gameObject);
+            //DestroyImmediate(rectTransform.gameObject);
         }
     }
 

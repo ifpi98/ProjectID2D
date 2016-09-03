@@ -82,6 +82,8 @@ public class GameCanvasGui : MonoBehaviour
     EasyTween easyTweenDrawCardResultPopUp10;
     EasyTween easyTweenNotifyNoCreditPopUp;
 
+    private CreateAnimImage createAnimImage;
+
     // Use this for initialization
     void Start()
     {
@@ -203,15 +205,19 @@ public class GameCanvasGui : MonoBehaviour
         easyTweenDrawCardResultPopUp = GameObject.Find("DrawCardResultPopUpAnim").GetComponent<EasyTween>();
         easyTweenDrawCardResultPopUp10 = GameObject.Find("DrawCardResultPopUp10Anim").GetComponent<EasyTween>();
         easyTweenNotifyNoCreditPopUp = GameObject.Find("NotifyNoCreditPopUpAnim").GetComponent<EasyTween>();
+
+        createAnimImage = FindObjectOfType<CreateAnimImage>();
     }
     
     void WriteMadeSlot()
     {
+        string[] strArr = new string[game.madeSlotCount];
+
         for (int i = 0; i < game.madeSlotCount; i++)
         {
-            string slotname = "MadeSlotList" + i;
-            GameObject writeGO;
-            writeGO = GameObject.Find(slotname);            
+            //string slotname = "MadeSlotList" + i;
+            //GameObject writeGO;
+            //writeGO = GameObject.Find(slotname);            
 
             StringBuilder str = new StringBuilder();            
             int unitcount = Convert.ToInt16(mon.unitData2[madeSlotNumber[i], 14]);
@@ -227,12 +233,17 @@ public class GameCanvasGui : MonoBehaviour
                 {
                     str.Append(", ");
                 }
-            }            
+            }
 
-            writeGO.GetComponentInChildren<Text>().text = str.ToString();
-            madeSlotAvailableUnitText.text = game.madeSlotCount + " / " + game.availableUnit;
+            strArr[i] = str.ToString();
+
+            //writeGO.GetComponentInChildren<Text>().text = str.ToString();
+            
             //DestroyImmediate(writeGO);
         }
+
+        createAnimImage.Set(strArr);
+        madeSlotAvailableUnitText.text = game.madeSlotCount + " / " + game.availableUnit;
 
     }
 
@@ -350,13 +361,13 @@ public class GameCanvasGui : MonoBehaviour
         settingPopUp_CheckButt.gameObject.SetActive(true);
         madeSlotInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
-        for (int i = 0; i < game.madeSlotCount; i++)
-        {
-            string slotname = "MadeSlotList" + i;
-            GameObject destoryGO;
-            destoryGO = GameObject.Find(slotname);
-            DestroyImmediate(destoryGO);
-        }
+        //for (int i = 0; i < game.madeSlotCount; i++)
+        //{
+        //    string slotname = "MadeSlotList" + i;
+        //    GameObject destoryGO;
+        //    destoryGO = GameObject.Find(slotname);
+        //    DestroyImmediate(destoryGO);
+        //}
     }
 
     public void ButtonChanger3()

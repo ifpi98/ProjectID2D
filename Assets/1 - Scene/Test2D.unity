@@ -14547,7 +14547,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1666906843}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.4385965
+  m_Size: 0.43859655
   m_NumberOfSteps: 9
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16923,7 +16923,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createImageOtherReference:
   - {fileID: 0}
-  CreateInstance: {fileID: 100000, guid: 5c4248d67309da24590093dfa4e82c6a, type: 2}
+  unitPrefab: {fileID: 11408932, guid: 5c4248d67309da24590093dfa4e82c6a, type: 2}
+  unitObjects: []
   HowManyButtons: 100
   StartAnim: {x: -200, y: -77, z: 0}
   EndAnim: {x: 0, y: -77, z: 0}
@@ -23161,7 +23162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createImageOtherReference:
   - {fileID: 0}
-  CreateInstance: {fileID: 100000, guid: 850c22a4a19cb1f4a8de97482927e650, type: 2}
+  unitPrefab: {fileID: 0}
+  unitObjects: []
   HowManyButtons: 100
   StartAnim: {x: -200, y: -77, z: 0}
   EndAnim: {x: 0, y: -77, z: 0}

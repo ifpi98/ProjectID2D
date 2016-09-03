@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11485916}
+  - 114: {fileID: 11408932}
   m_Layer: 5
   m_Name: NewImageIns
   m_TagString: Untagged
@@ -52,20 +53,25 @@ MonoBehaviour:
   rectTransform: {fileID: 22400000}
   animationParts:
     PositionPropetiesAnim:
-      positionEnabled: 0
+      positionEnabled: 1
       TweenCurveEnterPos:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0
-          inSlope: 2
-          outSlope: 2
+          value: -0.006291561
+          inSlope: 2.0941534
+          outSlope: 0.9187146
+          tangentMode: 1
+        - time: 0.6634269
+          value: 1.1676084
+          inSlope: 0.009671883
+          outSlope: 0.009671883
           tangentMode: 0
-        - time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
+        - time: 0.9984004
+          value: 0.9995612
+          inSlope: -0.320673
+          outSlope: -20.051817
+          tangentMode: 17
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -85,10 +91,10 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      StartPos: {x: -222, y: -52, z: 0}
-      EndPos: {x: 0, y: -52, z: 0}
-      StartWorldPos: {x: 0, y: 0, z: 0}
-      EndWorldPos: {x: 0, y: 0, z: 0}
+      StartPos: {x: -200, y: -11246, z: 0}
+      EndPos: {x: 0, y: -11246, z: 0}
+      StartWorldPos: {x: -210, y: -11096, z: 0}
+      EndWorldPos: {x: -10, y: -11096, z: 0}
     ScalePropetiesAnim:
       scaleEnabled: 0
       TweenCurveEnterScale:
@@ -122,7 +128,7 @@ MonoBehaviour:
       StartRot: {x: 0, y: 0, z: 0}
       EndRot: {x: 0, y: 0, z: 0}
     FadePropetiesAnim:
-      fadeInOutEnabled: 0
+      fadeInOutEnabled: 1
       fadeOverride: 0
       startFade: 0
       endFade: 1
@@ -130,7 +136,7 @@ MonoBehaviour:
     SaveState: 0
     AtomicAnimation: 0
     ObjectState: 1
-    EndState: 1
+    EndState: 2
     CallCallback: 0
     IntroEvents:
       m_PersistentCalls:
@@ -256,6 +262,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Clickable Button !!
+--- !u!114 &11408932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644d9c1a18bd80646939a45741890090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: {fileID: 11400012}
 --- !u!114 &11485916
 MonoBehaviour:
   m_ObjectHideFlags: 1
