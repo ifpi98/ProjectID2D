@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class CreateAnimImage : MonoBehaviour {
 
-	public CreateAnimImage[] createImageOtherReference;
+    Game game;
+    public CreateAnimImage[] createImageOtherReference;
 
 	public Unit unitPrefab;
     public List<Unit> unitObjects;
@@ -33,7 +34,9 @@ public class CreateAnimImage : MonoBehaviour {
 
     void Start()
 	{
-		InitialCanvasScrollSize = new Vector2(RootRect.rect.height, RootRect.rect.width);
+        game = GameObject.Find("GameObj").GetComponent<Game>();
+        InitialCanvasScrollSize = new Vector2(RootRect.rect.height, RootRect.rect.width);
+        maxUnits = game.availableUnit;
         unitObjects = new List<Unit>(maxUnits);
         CreatePanels(maxUnits);
         InstancePosition = EndAnim;
@@ -86,8 +89,7 @@ public class CreateAnimImage : MonoBehaviour {
 
     public void UpdatePanels()
     {
-
-        Profiler.BeginSample("UpdatePanels");
+                
         for (int i = lastCount; i < HowManyButtons; i++)
         {
             unitObjects[i].gameObject.SetActive(true);
@@ -110,8 +112,7 @@ public class CreateAnimImage : MonoBehaviour {
 
             totalWidth += Offset;
         }
-        lastCount = HowManyButtons;
-        Profiler.EndSample();
+        lastCount = HowManyButtons;        
     }
 
     public void Set(string[] strArr)
