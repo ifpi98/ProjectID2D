@@ -14546,8 +14546,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1666906844}
   m_HandleRect: {fileID: 1666906843}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.43859646
+  m_Value: 1
+  m_Size: 0.43859655
   m_NumberOfSteps: 9
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16926,8 +16926,13 @@ MonoBehaviour:
   unitPrefab: {fileID: 11408932, guid: 5c4248d67309da24590093dfa4e82c6a, type: 2}
   unitObjects: []
   maxUnits: 230
-  lastCount: 0
+  lastUnitCount: 0
+  charUnitPrefab: {fileID: 11480632, guid: 850c22a4a19cb1f4a8de97482927e650, type: 2}
+  charUnitObjects: []
+  maxCharUnits: 0
+  lastCharCount: 0
   HowManyButtons: 100
+  HowManyButtons2: 0
   StartAnim: {x: -200, y: -77, z: 0}
   EndAnim: {x: 0, y: -77, z: 0}
   Offset: -153
@@ -23164,11 +23169,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createImageOtherReference:
   - {fileID: 0}
-  unitPrefab: {fileID: 11418884, guid: 850c22a4a19cb1f4a8de97482927e650, type: 2}
+  unitPrefab: {fileID: 11408932, guid: 5c4248d67309da24590093dfa4e82c6a, type: 2}
   unitObjects: []
   maxUnits: 100
-  lastCount: 0
+  lastUnitCount: 0
+  charUnitPrefab: {fileID: 11480632, guid: 850c22a4a19cb1f4a8de97482927e650, type: 2}
+  charUnitObjects: []
+  maxCharUnits: 0
+  lastCharCount: 0
   HowManyButtons: 100
+  HowManyButtons2: 0
   StartAnim: {x: -200, y: -77, z: 0}
   EndAnim: {x: 0, y: -77, z: 0}
   Offset: -153
