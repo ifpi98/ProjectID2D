@@ -82,7 +82,8 @@ public class GameCanvasGui : MonoBehaviour
     EasyTween easyTweenDrawCardResultPopUp10;
     EasyTween easyTweenNotifyNoCreditPopUp;
 
-    private CreateAnimImage createAnimImage;
+    //private CreateAnimImage createAnimImage0;
+    //private CreateAnimImage createAnimImage1;
 
     // Use this for initialization
     void Start()
@@ -206,7 +207,8 @@ public class GameCanvasGui : MonoBehaviour
         easyTweenDrawCardResultPopUp10 = GameObject.Find("DrawCardResultPopUp10Anim").GetComponent<EasyTween>();
         easyTweenNotifyNoCreditPopUp = GameObject.Find("NotifyNoCreditPopUpAnim").GetComponent<EasyTween>();
 
-        createAnimImage = FindObjectOfType<CreateAnimImage>();
+        //createAnimImage0 = FindObjectOfType<CreateAnimImage>();
+        //createAnimImage1 = FindObjectOfType<CreateAnimImage>();
     }
     
     void WriteMadeSlot()
@@ -242,18 +244,20 @@ public class GameCanvasGui : MonoBehaviour
             //DestroyImmediate(writeGO);
         }
 
-        createAnimImage.Set(strArr);
+        createMadeSlotHistoryList.Set(strArr);
         madeSlotAvailableUnitText.text = game.madeSlotCount + " / " + game.availableUnit;
 
     }
 
     void WriteCharDegreeList()
     {
+        string[] strArr = new string[game.countForMakingCharDegreeList];
+
         for (int i = 0; i < game.countForMakingCharDegreeList; i++)
         {
-            string slotname = "CharDegreeList" + i;
-            GameObject writeGO;
-            writeGO = GameObject.Find(slotname);
+            //string slotname = "CharDegreeList" + i;
+            //GameObject writeGO;
+            //writeGO = GameObject.Find(slotname);
 
             StringBuilder str = new StringBuilder();
             //int unitcount = Convert.ToInt16(mon.unitData2[madeSlotNumber[i], 14]);
@@ -296,11 +300,14 @@ public class GameCanvasGui : MonoBehaviour
             //    }
             //}
 
-            writeGO.GetComponentInChildren<Text>().text = str.ToString();
-            charDegreeAvailableCharText.text = game.countForMakingCharDegreeList + " / " + game.availableChar; 
+            strArr[i] = str.ToString();
+            //writeGO.GetComponentInChildren<Text>().text = str.ToString();
+            //charDegreeAvailableCharText.text = game.countForMakingCharDegreeList + " / " + game.availableChar; 
             //DestroyImmediate(writeGO);
         }
 
+        createCharDegreeList.Set2(strArr);
+        charDegreeAvailableCharText.text = game.countForMakingCharDegreeList + " / " + game.availableChar;
     }
 
     void MakeListMadeSlot()
@@ -372,7 +379,7 @@ public class GameCanvasGui : MonoBehaviour
 
     public void ButtonChanger3()
     {
-        createCharDegreeList.HowManyButtons = game.countForMakingCharDegreeList;
+        createCharDegreeList.HowManyButtons2 = game.countForMakingCharDegreeList;
         createCharDegreeList.CreateButtons2();
         MakeListCharDegree();
         WriteCharDegreeList();
@@ -390,13 +397,13 @@ public class GameCanvasGui : MonoBehaviour
         settingPopUp_CheckButt.gameObject.SetActive(true);
         charDegreeInfoPopUp_CheckButtAfter.gameObject.SetActive(false);
 
-        for (int i = 0; i < game.countForMakingCharDegreeList; i++)
-        {
-            string slotname = "CharDegreeList" + i;
-            GameObject destoryGO;
-            destoryGO = GameObject.Find(slotname);
-            DestroyImmediate(destoryGO);
-        }
+        //for (int i = 0; i < game.countForMakingCharDegreeList; i++)
+        //{
+        //    string slotname = "CharDegreeList" + i;
+        //    GameObject destoryGO;
+        //    destoryGO = GameObject.Find(slotname);
+        //    DestroyImmediate(destoryGO);
+        //}
     }
 
 

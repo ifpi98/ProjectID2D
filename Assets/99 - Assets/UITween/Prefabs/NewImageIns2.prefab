@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11485916}
-  - 114: {fileID: 11418884}
+  - 114: {fileID: 11480632}
   m_Layer: 5
   m_Name: NewImageIns2
   m_TagString: Untagged
@@ -257,7 +257,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Clickable Button !!
---- !u!114 &11418884
+--- !u!114 &11480632
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644d9c1a18bd80646939a45741890090, type: 3}
+  m_Script: {fileID: 11500000, guid: 5578917960865104e9cb5f05943168bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Label: {fileID: 11400012}

@@ -11,12 +11,19 @@ public class CreateAnimImage : MonoBehaviour {
 	public Unit unitPrefab;
     public List<Unit> unitObjects;
     public int maxUnits;
-    public int lastCount = 0;
+    public int lastUnitCount = 0;
     Vector3 InstancePosition;
 
+    public Unit2 charUnitPrefab;
+    public List<Unit2> charUnitObjects;
+    public int maxCharUnits;
+    public int lastCharCount = 0;
+    Vector3 InstancePosition2;
+    
     public int HowManyButtons;
+    public int HowManyButtons2;
 
-	public Vector3 StartAnim;
+    public Vector3 StartAnim;
 	public Vector3 EndAnim;
 
 	public float Offset;
@@ -37,9 +44,13 @@ public class CreateAnimImage : MonoBehaviour {
         game = GameObject.Find("GameObj").GetComponent<Game>();
         InitialCanvasScrollSize = new Vector2(RootRect.rect.height, RootRect.rect.width);
         maxUnits = game.availableUnit;
+        maxCharUnits = game.availableChar;
         unitObjects = new List<Unit>(maxUnits);
+        charUnitObjects = new List<Unit2>(maxCharUnits);
         CreatePanels(maxUnits);
+        CreatePanels2(maxCharUnits);
         InstancePosition = EndAnim;
+        InstancePosition2 = EndAnim;
     }
 
 	public void CallBack()
@@ -73,7 +84,7 @@ public class CreateAnimImage : MonoBehaviour {
 
     public void CreateButtons2()
     {
-        CreatePanels2();
+        UpdatePanels2();
         AdaptCanvas();
     }
 
@@ -87,10 +98,20 @@ public class CreateAnimImage : MonoBehaviour {
         }
 	}
 
+    private void CreatePanels2(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            var unit = Instantiate<Unit2>(charUnitPrefab);
+            unit.gameObject.SetActive(false);
+            charUnitObjects.Add(unit);
+        }
+    }
+
     public void UpdatePanels()
     {
                 
-        for (int i = lastCount; i < HowManyButtons; i++)
+        for (int i = lastUnitCount; i < HowManyButtons; i++)
         {
             unitObjects[i].gameObject.SetActive(true);
 
@@ -112,7 +133,7 @@ public class CreateAnimImage : MonoBehaviour {
 
             totalWidth += Offset;
         }
-        lastCount = HowManyButtons;        
+        lastUnitCount = HowManyButtons;        
     }
 
     public void Set(string[] strArr)
@@ -129,20 +150,22 @@ public class CreateAnimImage : MonoBehaviour {
         }
     }
 
-    private void CreatePanels2()
+    private void UpdatePanels2()
     {
-        Vector3 InstancePosition2 = EndAnim;
+        //Vector3 InstancePosition2 = EndAnim;
 
-        totalWidth = 0f;
+        //totalWidth = 0f;
 
-        for (int i = 0; i < HowManyButtons; i++)
+        for (int i = lastCharCount; i < HowManyButtons2; i++)
         {
+            charUnitObjects[i].gameObject.SetActive(true);
+
             // Creates Instance
-            GameObject unit = Instantiate(unitPrefab.gameObject) as GameObject;
-            unit.name = "CharDegreeList" + i;
+            //GameObject unit = Instantiate(unitPrefab.gameObject) as GameObject;
+            //unit.name = "CharDegreeList" + i;
             // Changes the Parent, Assing to scroll List
-            unit.transform.SetParent(RootRect, false);
-            EasyTween easy = unit.GetComponent<EasyTween>();
+            charUnitObjects[i].transform.SetParent(RootRect, false);
+            EasyTween easy = charUnitObjects[i].GetComponent<EasyTween>();
             // Add Tween To List
             Created.Add(easy);
             // Final Position
@@ -158,8 +181,23 @@ public class CreateAnimImage : MonoBehaviour {
 
             totalWidth += Offset;
         }
-    }
 
+        lastCharCount = HowManyButtons2;
+    }
+    
+    public void Set2(string[] strArr)
+    {
+        for (int i = 0; i < strArr.Length; i++)
+        {
+            charUnitObjects[i].Label.text = strArr[i];
+            Color color = charUnitObjects[i].GetComponent<Image>().color;
+            color.a = 1;
+            charUnitObjects[i].GetComponent<Image>().color = color;
+            color = charUnitObjects[i].Label.color;
+            color.a = 1;
+            charUnitObjects[i].Label.color = color;
+        }
+    }
     private void AdaptCanvas()
 	{
 		// Vertical Dynamic Adapter
