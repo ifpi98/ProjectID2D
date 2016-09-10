@@ -244,8 +244,8 @@ id,unitName,unitType,themeSongRes,member0,member1,member2,member3,member4,#membe
 243,매시브 라이더즈,special,,80,21,52,,,무카이 타쿠미,키무라 나츠키,키타미 유즈,,,3
 244,겁 많은 얼룩 다람쥐 & 날뛰는 사자,special,,24,80,,,,모리쿠보 노노,무카이 타쿠미,,,,2
 245,뇌무상등,special,,80,28,52,,,무카이 타쿠미,카타기리 사나에,키타미 유즈,,,3
-246,BEYOND THE STARLIGHT [음악방송] From SS,special,BEYOND THE STARLIGHT,29,10,5,27,49,카와시마 미즈키,오가타 치에리,죠가사키 리카,호죠 카렌,오오츠키 유이,5
-247,BEYOND THE STARLIGHT [라이브] From SS,special,BEYOND THE STARLIGHT,26,11,1,4,12,카미야 나오,마에카와 미쿠,시마무라 우즈키,죠가사키 미카,타다 리이나,5
+246,BEYOND THE STARLIGHT[음악방송] From SS,special,BEYOND THE STARLIGHT,29,10,5,27,49,카와시마 미즈키,오가타 치에리,죠가사키 리카,호죠 카렌,오오츠키 유이,5
+247,BEYOND THE STARLIGHT[라이브] From SS,special,BEYOND THE STARLIGHT,26,11,1,4,12,카미야 나오,마에카와 미쿠,시마무라 우즈키,죠가사키 미카,타다 리이나,5
 248,Near to You From SS,special,Near to You,71,35,28,75,76,사쿠라이 모모카,나카노 유카,카타기리 사나에,이치하라 니나,타치바나 아리스,5
 249,진리를 가르치는 자,special,,81,47,,,,미야모토 프레데리카,타카하시 레이코,,,,2
 250,템프테이션 아이즈,special,,81,79,,,,미야모토 프레데리카,시오미 슈코,,,,2
@@ -253,3 +253,6 @@ id,unitName,unitType,themeSongRes,member0,member1,member2,member3,member4,#membe
 252,신춘 모드 '16,special,,81,32,,,,미야모토 프레데리카,타카모리 아이코,,,,2
 253,FrenchKisS,special,,81,73,,,,미야모토 프레데리카,하야미 카나데,,,,2
 254,트리니티 보이스,special,,81,73,18,,,미야모토 프레데리카,하야미 카나데,히메카와 유키,,,3
+255,걸즈 앤 판쳐[옆 동네] 오아라이 고교,special,,27,5,,,,호죠 카렌,죠가사키 리카,,,,2
+256,걸즈 앤 판쳐[옆 동네] 타 참전 고교,special,,15,72,10,11,,아나스타샤,타카가키 카에데,오가타 치에리,마에카와 미쿠,,4
+257,걸즈 앤 판쳐[옆 동네] 대학 선발팀,special,,17,73,,,,코시미즈 사치코,하야미 카나데,,,,2
