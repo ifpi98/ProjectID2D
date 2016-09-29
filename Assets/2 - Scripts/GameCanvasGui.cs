@@ -449,7 +449,7 @@ public class GameCanvasGui : MonoBehaviour
             mButText[i].text = cardSlot[i];
         }
 
-        pointDisplay.text = "Score : " + game.score + " (" + game.requireLevelup + ") " + "\n Level : " + game.level + "\n CardCredit : " + game.pointCanDrawCard;
+        pointDisplay.text = "Score : " + game.score + " (" + game.requireLevelup + ") " + "\n Level : " + game.level + "\n 데뷰 가능 유닛수 :" + game.availableUnitNowCount + "\n CardCredit : " + game.pointCanDrawCard;
         skillPointText.text = "Skill Point : " + Convert.ToInt32(game.skillPoint);
 
         for (int i = 0; i < 5; i++)

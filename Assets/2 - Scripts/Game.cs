@@ -22,7 +22,8 @@ public class Game : MonoBehaviour
     int tempnum;
     int maxSkillPoint;
     int sumDearDegree;
-    int getExpWhenMadeSlot;    
+    int getExpWhenMadeSlot;
+    int availableUnitNow = 0;
     bool skillcheck;
     bool levelUpCheck;
     string charDearDegreeEncodedString1;    
@@ -48,6 +49,7 @@ public class Game : MonoBehaviour
     public int countDrawCardwithoutSSR;
     public int availableChar;
     public int availableUnit;
+    public int availableUnitNowCount = 0;
     public float skillPoint;
 
     int[] tempnumarray;
@@ -104,6 +106,7 @@ public class Game : MonoBehaviour
 
         PutCardInSlotAtFirst();
         AvailableChar();
+        AvailableCharNow(level);
 
         levelUpCheck = false;
         secondcheck = true;
@@ -167,7 +170,80 @@ public class Game : MonoBehaviour
 
 
     }
-    
+
+    void AvailableCharNow(int producerLevel)
+    {
+        int availableCharNow = 0;
+        availableUnitNowCount = 0;
+        List<int> availableCharNowList = new List<int>();
+
+        for (int i = 1; i < mon.charcount; i++)
+        {
+            if (Convert.ToInt32(mon.charData2[i, 2]) > producerLevel)
+            {
+                // do nothing
+            }
+            else
+            {
+                availableCharNow = availableCharNow + 1;
+                availableCharNowList.Add(i);
+                //Debug.Log("Char Number:" + i);
+            }
+        }
+
+        //Debug.Log("available Character : " + availableChar);
+        //Debug.Log("available Character : " + availableCharList[availableCharList.Count-1]);
+
+
+        List<int> tempUnitList = new List<int>();
+        List<int> tempUnitList2 = new List<int>();
+
+        for (int i = 0; i < mon.unitcount - 1; i++)
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                if (unitArray[i, y] == 0)
+                {
+                    break;
+                }
+
+                tempUnitList.Add(unitArray[i, y]);
+            }
+
+            bool isSubset = !tempUnitList.Except(availableCharNowList).Any();
+
+            if (isSubset)
+            {
+                availableUnitNow = availableUnitNow + 1;
+                tempUnitList2.Add(i);
+                //Debug.Log("Unit Number:" + (i + 1));
+            }
+            else
+            {
+                //Debug.Log(i);
+            }
+
+            tempUnitList.Clear();
+
+        }
+
+        for (int i = 0; i < tempUnitList2.Count; i++)
+        {
+            if (!unitDebutHistory[tempUnitList2[i] + 1])
+            {
+                availableUnitNowCount = availableUnitNowCount + 1;
+            }
+            else
+            {
+                //Debug.Log(tempUnitList2[i]);
+            }
+                 
+        }
+
+        //Debug.Log("Level: " + level + " availableUnitNow: " + availableUnitNow);
+        //Debug.Log("Level: " + level + " availableUnitNowCount: " + availableUnitNowCount);
+
+    }
 
     void CheckMadeSlotCount()
     {
@@ -217,7 +293,8 @@ public class Game : MonoBehaviour
             LevelUpInfoData();
             levelUpCheck = false;
             easyTweenLevelUpInfoPopUp.OpenCloseObjectAnimation();
-            
+            AvailableCharNow(level);
+
         }
                
         if (secondcheck == false && thirdcheck == false)
@@ -225,7 +302,7 @@ public class Game : MonoBehaviour
             PassTurnWithoutMake(checkremainTurncardslot[0], checkremainTurncardslot[1],checkremainTurncardslot[2],
                 checkremainTurncardslot[3],checkremainTurncardslot[4]);
             SlotCardMaKe();
-            checkExp();
+            checkExp();            
             secondcheck = true;
         }
                 
@@ -579,8 +656,15 @@ public class Game : MonoBehaviour
 
             case 2:                
                 sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]];
-                getExpWhenMadeSlot = Convert.ToInt32(50 * (1 + 0.1f * (combocount - 1)));
-                score = score + getExpWhenMadeSlot + sumDearDegree;
+                getExpWhenMadeSlot = Convert.ToInt32(50 * (1 + 0.1f * (combocount - 1)));                
+                if (availableUnitNowCount == 0)
+                {
+                    score = score + (getExpWhenMadeSlot + sumDearDegree) * 2;                    
+                }
+                else
+                {
+                    score = score + getExpWhenMadeSlot + sumDearDegree;
+                }
                 makecounthistory[2] = makecounthistory[2] + 1;
                 skillPoint = skillPoint + findMemberplace.Count * 10;                
                 DI.SetMakeCountHistory();
@@ -589,7 +673,14 @@ public class Game : MonoBehaviour
             case 3:                
                 sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]] + charDearDegree[findMember[2]];
                 getExpWhenMadeSlot = Convert.ToInt32(200 * (1 + 0.1f * (combocount - 1)));
-                score = score + getExpWhenMadeSlot + sumDearDegree;
+                if (availableUnitNowCount == 0)
+                {
+                    score = score + (getExpWhenMadeSlot + sumDearDegree) * 2;
+                }
+                else
+                {
+                    score = score + getExpWhenMadeSlot + sumDearDegree;
+                }
                 makecounthistory[3] = makecounthistory[3] + 1;
                 skillPoint = skillPoint + findMemberplace.Count * 10;
                 pointCanDrawCard = pointCanDrawCard + 1;
@@ -600,7 +691,14 @@ public class Game : MonoBehaviour
             case 4:                
                 sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]] + charDearDegree[findMember[2]] + charDearDegree[findMember[3]];
                 getExpWhenMadeSlot = Convert.ToInt32(900 * (1 + 0.1f * (combocount - 1)));
-                score = score + getExpWhenMadeSlot + sumDearDegree;
+                if (availableUnitNowCount == 0)
+                {
+                    score = score + (getExpWhenMadeSlot + sumDearDegree) * 2;
+                }
+                else
+                {
+                    score = score + getExpWhenMadeSlot + sumDearDegree;
+                }
                 makecounthistory[4] = makecounthistory[4] + 1;
                 skillPoint = skillPoint + findMemberplace.Count * 10;
                 pointCanDrawCard = pointCanDrawCard + 2;
@@ -612,7 +710,14 @@ public class Game : MonoBehaviour
             case 5:                
                 sumDearDegree = charDearDegree[findMember[0]] + charDearDegree[findMember[1]] + charDearDegree[findMember[2]] + charDearDegree[findMember[3]] + charDearDegree[findMember[4]];
                 getExpWhenMadeSlot = Convert.ToInt32(1600 * (1 + 0.1f * (combocount - 1)));
-                score = score + getExpWhenMadeSlot + sumDearDegree;
+                if (availableUnitNowCount == 0)
+                {
+                    score = score + (getExpWhenMadeSlot + sumDearDegree) * 2;
+                }
+                else
+                {
+                    score = score + getExpWhenMadeSlot + sumDearDegree;
+                }
                 makecounthistory[5] = makecounthistory[5] + 1;
                 skillPoint = skillPoint + findMemberplace.Count * 10;
                 pointCanDrawCard = pointCanDrawCard + 4;
@@ -626,6 +731,7 @@ public class Game : MonoBehaviour
         if (unitDebutHistory[decideUnit] == false)
         {
             UnitDebut(decideUnit);
+            AvailableCharNow(level);
         }
 
 
