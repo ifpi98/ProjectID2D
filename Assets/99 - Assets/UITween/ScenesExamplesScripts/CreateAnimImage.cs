@@ -92,7 +92,7 @@ public class CreateAnimImage : MonoBehaviour {
 	{
         for (int i = 0; i < count; i++)
         {
-            var unit = Instantiate<Unit>(unitPrefab);
+            var unit = Instantiate<Unit>(unitPrefab);            
             unit.gameObject.SetActive(false);
             unitObjects.Add(unit);
         }
@@ -136,11 +136,12 @@ public class CreateAnimImage : MonoBehaviour {
         lastUnitCount = HowManyButtons;        
     }
 
-    public void Set(string[] strArr)
+    public void Set(string[] strArr, int[] intArr)
     {
         for (int i = 0; i < strArr.Length; i++)
         {
             unitObjects[i].Label.text = strArr[i];
+            unitObjects[i].instanceUnitID = intArr[i];
             Color color = unitObjects[i].GetComponent<Image>().color;
             color.a = 1;
             unitObjects[i].GetComponent<Image>().color = color;
@@ -185,11 +186,12 @@ public class CreateAnimImage : MonoBehaviour {
         lastCharCount = HowManyButtons2;
     }
     
-    public void Set2(string[] strArr)
+    public void Set2(string[] strArr, int[] intArr)
     {
         for (int i = 0; i < strArr.Length; i++)
         {
             charUnitObjects[i].Label.text = strArr[i];
+            charUnitObjects[i].instanceCharID = intArr[i];
             Color color = charUnitObjects[i].GetComponent<Image>().color;
             color.a = 1;
             charUnitObjects[i].GetComponent<Image>().color = color;

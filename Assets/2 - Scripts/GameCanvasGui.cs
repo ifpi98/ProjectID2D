@@ -214,6 +214,7 @@ public class GameCanvasGui : MonoBehaviour
     void WriteMadeSlot()
     {
         string[] strArr = new string[game.madeSlotCount];
+        int[] intArr = new int[game.madeSlotCount];
 
         for (int i = 0; i < game.madeSlotCount; i++)
         {
@@ -238,13 +239,14 @@ public class GameCanvasGui : MonoBehaviour
             }
 
             strArr[i] = str.ToString();
+            intArr[i] = Convert.ToInt16(mon.unitData2[madeSlotNumber[i], 0]);
 
             //writeGO.GetComponentInChildren<Text>().text = str.ToString();
-            
+
             //DestroyImmediate(writeGO);
         }
 
-        createMadeSlotHistoryList.Set(strArr);
+        createMadeSlotHistoryList.Set(strArr,intArr);
         madeSlotAvailableUnitText.text = game.madeSlotCount + " / " + game.availableUnit;
 
     }
@@ -252,6 +254,7 @@ public class GameCanvasGui : MonoBehaviour
     void WriteCharDegreeList()
     {
         string[] strArr = new string[game.countForMakingCharDegreeList];
+        int[] intArr = new int[game.countForMakingCharDegreeList];
 
         for (int i = 0; i < game.countForMakingCharDegreeList; i++)
         {
@@ -301,12 +304,13 @@ public class GameCanvasGui : MonoBehaviour
             //}
 
             strArr[i] = str.ToString();
+            intArr[i] = Convert.ToInt16(mon.charData2[charDegreeNumber[i], 0]);
             //writeGO.GetComponentInChildren<Text>().text = str.ToString();
             //charDegreeAvailableCharText.text = game.countForMakingCharDegreeList + " / " + game.availableChar; 
             //DestroyImmediate(writeGO);
         }
 
-        createCharDegreeList.Set2(strArr);
+        createCharDegreeList.Set2(strArr, intArr);
         charDegreeAvailableCharText.text = game.countForMakingCharDegreeList + " / " + game.availableChar;
     }
 

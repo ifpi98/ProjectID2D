@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: {fileID: 11400012}
+  instanceCharID: 0
 --- !u!114 &11485916
 MonoBehaviour:
   m_ObjectHideFlags: 1
