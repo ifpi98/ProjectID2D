@@ -76,11 +76,17 @@ public class GameCanvasGui : MonoBehaviour
     Text drawCardResultDP2BgText;
     Text drawCardResultDP2Bg10Text;
 
+    Button descriptionBg;
+    Button description2Bg;
+    Text descriptionBgText;
+    Text description2BgText;
+
     public Button settingPopUp_CheckButt;    
 
     EasyTween easyTweenDrawCardResultPopUp;
     EasyTween easyTweenDrawCardResultPopUp10;
     EasyTween easyTweenNotifyNoCreditPopUp;
+    EasyTween easyTweenDescriptionPopUp;
 
     //private CreateAnimImage createAnimImage0;
     //private CreateAnimImage createAnimImage1;
@@ -199,6 +205,12 @@ public class GameCanvasGui : MonoBehaviour
         drawCardResultDP2Bg10Text = drawCardResultDP2Bg10.GetComponentInChildren<Text>();
 
         settingPopUp_CheckButt = GameObject.Find("SettingPopUp_CheckButt").GetComponent<Button>();
+
+        descriptionBg = GameObject.Find("DescriptionBg").GetComponent<Button>();
+        description2Bg = GameObject.Find("Description2Bg").GetComponent<Button>();
+        descriptionBgText = descriptionBg.GetComponentInChildren<Text>();
+        description2BgText = description2Bg.GetComponentInChildren<Text>();
+        easyTweenDescriptionPopUp = GameObject.Find("DescriptionPopUpAnim").GetComponent<EasyTween>();
 
         //drawCardPopUp_CheckButtAfter = GameObject.Find("DrawCardPopUp_CheckButtAfter").GetComponent<Button>();
         //drawCardPopUp_CheckButtAfter.gameObject.SetActive(false);
@@ -408,6 +420,50 @@ public class GameCanvasGui : MonoBehaviour
         //    destoryGO = GameObject.Find(slotname);
         //    DestroyImmediate(destoryGO);
         //}
+    }
+
+    public void CharDescription(int instanceCharID)
+    {
+        StringBuilder strTitle = new StringBuilder();
+
+        strTitle.Append(mon.charData2[instanceCharID, 1]);        
+
+        StringBuilder strDesc = new StringBuilder();
+
+        strDesc.Append(mon.charData2[instanceCharID, 12]);
+        strDesc.Append("\n");
+        strDesc.Append("\n");
+
+        if (mon.charData2[instanceCharID, 5] == "")
+        {
+            // do nothing!
+        }
+        else
+        {
+            strDesc.Append("성우: " + mon.charData2[instanceCharID, 5]);
+            strDesc.Append("\n");
+        }
+                
+        strDesc.Append("출처: 나무위키, 문서의 표현을 일부 수정하였음");
+
+        descriptionBgText.text = strTitle.ToString(); 
+        description2BgText.text = strDesc.ToString();
+        easyTweenDescriptionPopUp.OpenCloseObjectAnimation();
+    }
+
+    public void UnitDescription(int instanceUnitID)
+    {
+        StringBuilder strTitle = new StringBuilder();
+
+        strTitle.Append(mon.unitData2[instanceUnitID, 1]);
+
+        StringBuilder strDesc = new StringBuilder();
+
+        strDesc.Append(mon.unitData2[instanceUnitID, 15]);
+
+        descriptionBgText.text = strTitle.ToString();
+        description2BgText.text = strDesc.ToString();
+        easyTweenDescriptionPopUp.OpenCloseObjectAnimation();
     }
 
 

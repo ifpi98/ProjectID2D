@@ -8,7 +8,7 @@ public class UnitParser : MonoBehaviour
     public string[] _unitData;
     string[] sourceUnit;
     string[] _tempUD;
-    public string[,] _tempUD2 = new string[300, 15];
+    public string[,] _tempUD2 = new string[300, 20];
 
 
     void Start()
