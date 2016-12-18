@@ -891,7 +891,7 @@ public class Game : MonoBehaviour
                 }
                 catch
                 {
-                    Debug.Log("nullException??");
+                    Debug.Log("nullException?? Character!!");
                 }
             }
         }
@@ -915,7 +915,7 @@ public class Game : MonoBehaviour
                 }
                 catch
                 {
-                    Debug.Log("nullException??");
+                    Debug.Log("nullException?? Unit!!");
                 }
 
             }
