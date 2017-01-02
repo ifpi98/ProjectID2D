@@ -940,7 +940,7 @@ public class Game : MonoBehaviour
                 }
                 catch
                 {
-                    Debug.Log("nullException??");
+                    Debug.Log("nullException?? CharCardRank");
                 }
 
             }
