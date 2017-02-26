@@ -54,6 +54,11 @@ public class GameCanvasGui : MonoBehaviour
     public Button levelUpInfoDPBg;
     public Text levelUpInfoDPBgText;
 
+    public Button unitMakeHintDPBg;
+    public Text unitMakeHintBgText;
+    public Button unitMakeHintInfoDPBg;
+    public Text unitMakeHintInfoDPBgText;
+
     public Button madeSlotHistoryPopUp;
     public Text madeSlotCountText;
     public Button madeSlotInfoPopUp_CheckButtAfter;
@@ -178,6 +183,11 @@ public class GameCanvasGui : MonoBehaviour
         levelUpDPBgText = levelUpDPBg.GetComponentInChildren<Text>();
         levelUpInfoDPBg = GameObject.Find("LevelUpInfoDPBg").GetComponent<Button>();
         levelUpInfoDPBgText = levelUpInfoDPBg.GetComponentInChildren<Text>();
+
+        unitMakeHintDPBg = GameObject.Find("UnitMakeHintDPBg").GetComponent<Button>();
+        unitMakeHintBgText = unitMakeHintDPBg.GetComponentInChildren<Text>();
+        unitMakeHintInfoDPBg = GameObject.Find("UnitMakeHintInfoDPBg").GetComponent<Button>();
+        unitMakeHintInfoDPBgText = unitMakeHintInfoDPBg.GetComponentInChildren<Text>();
 
         madeSlotHistoryPopUp = GameObject.Find("MadeSlotInfoPopUp_CheckButt").GetComponent<Button>();
         madeSlotCountText = madeSlotHistoryPopUp.GetComponentInChildren<Text>();
