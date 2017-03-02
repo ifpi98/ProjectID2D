@@ -259,6 +259,8 @@ public class Game : MonoBehaviour
             {
                 availableUnitNowCount = availableUnitNowCount + 1;
                 unitCanDebutList.Add(tempUnitList2[i] + 1);
+                // Debug.Log(tempUnitList2[i] + 1);   
+                // 위 주석 처리된 부분은 이 부분에서 리스트에 들어가는 유닛들 번호를 로그로 찍는 명령
                 if (availableUnitNowCount != unitCanDebutList.Count)
                 {
                     Debug.Log("ERRRRRRROOOR!");
