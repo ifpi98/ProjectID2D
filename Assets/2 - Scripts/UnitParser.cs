@@ -8,7 +8,7 @@ public class UnitParser : MonoBehaviour
     public string[] _unitData;
     string[] sourceUnit;
     string[] _tempUD;
-    public string[,] _tempUD2 = new string[400, 20];
+    public string[,] _tempUD2 = new string[500, 20];
 
 
     void Start()
@@ -17,9 +17,9 @@ public class UnitParser : MonoBehaviour
         TextAsset _unitData0 = (TextAsset)Resources.Load("Datas/DataUnit");
         StringReader sr = new StringReader(_unitData0.text);
 
-        sourceUnit = new string[400];
+        sourceUnit = new string[500];
 
-        for (int i = 0; i < 400; i++)
+        for (int i = 0; i < 500; i++)
         {
             sourceUnit[i] = sr.ReadLine();
             if (sourceUnit[i] == null)
@@ -35,7 +35,7 @@ public class UnitParser : MonoBehaviour
 
     public void Parse()
     {
-        _unitData = new string[373];
+        _unitData = new string[393];
 
 
 
