@@ -5,12 +5,12 @@ public class Monster : MonoBehaviour
 {
 
     //public string[] unitData;
-    public string[,] unitData2 = new string[400,15];
+    public string[,] unitData2 = new string[500,15];
     public string[,] charData2 = new string[200,15];
     public string[,] expLvData2 = new string[200, 15];
-    public string[,] locData2 = new string[400, 15];
+    public string[,] locData2 = new string[500, 15];
     public string[,] cardRankData2 = new string[200, 15];
-    public int[,] unitData3 = new int[400, 5];
+    public int[,] unitData3 = new int[500, 5];
     public int[] charAge;
     public int charcount;
     public int unitcount;
