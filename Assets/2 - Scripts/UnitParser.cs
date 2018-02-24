@@ -35,7 +35,7 @@ public class UnitParser : MonoBehaviour
 
     public void Parse()
     {
-        _unitData = new string[429];
+        _unitData = new string[438];
 
 
 
