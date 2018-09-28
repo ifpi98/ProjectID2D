@@ -72,7 +72,8 @@ public class GameCanvasGui : MonoBehaviour
     public CreateAnimImage createCharDegreeList;
     public Button charDegreeAvailableChar;
     public Text charDegreeAvailableCharText;
-    
+    public Button charNumberTextButton;
+    public Text charNumberText;
 
     public Button drawCardPopUp;
     public Button drawCardPopUp_CheckButtAfter;
@@ -237,6 +238,7 @@ public class GameCanvasGui : MonoBehaviour
     {
         string[] strArr = new string[game.madeSlotCount];
         int[] intArr = new int[game.madeSlotCount];
+        string[] intArr2 = new string[game.madeSlotCount];
 
         for (int i = 0; i < game.madeSlotCount; i++)
         {
@@ -247,7 +249,9 @@ public class GameCanvasGui : MonoBehaviour
             StringBuilder str = new StringBuilder();            
             int unitcount = Convert.ToInt16(mon.unitData2[madeSlotNumber[i], 14]);
 
-            str.Append(mon.unitData2[madeSlotNumber[i], 1] + "' (" + madeSlotNumber[i] + ")"  );
+            //            str.Append("유닛명: '" + mon.unitData2[madeSlotNumber[i], 1] + "' (" + madeSlotNumber[i] + ")"  );
+            str.Append("유닛명 : '" + mon.unitData2[madeSlotNumber[i], 1]);
+                //+ "' (" + madeSlotNumber[i] + ")"  );
             str.Append("\n멤버 : ");
 
             for (int y = 0; y < unitcount; y++)
@@ -262,13 +266,15 @@ public class GameCanvasGui : MonoBehaviour
 
             strArr[i] = str.ToString();
             intArr[i] = Convert.ToInt16(mon.unitData2[madeSlotNumber[i], 0]);
+            intArr2[i] = Convert.ToString(i+1);
+            //intArr2[i] = mon.unitData2[madeSlotNumber[i], 0];
 
             //writeGO.GetComponentInChildren<Text>().text = str.ToString();
 
             //DestroyImmediate(writeGO);
         }
 
-        createMadeSlotHistoryList.Set(strArr,intArr);
+        createMadeSlotHistoryList.Set(strArr,intArr,intArr2);
         madeSlotAvailableUnitText.text = game.madeSlotCount + " / " + game.availableUnit;
 
     }
@@ -277,6 +283,7 @@ public class GameCanvasGui : MonoBehaviour
     {
         string[] strArr = new string[game.countForMakingCharDegreeList];
         int[] intArr = new int[game.countForMakingCharDegreeList];
+        string[] intArr2 = new string[game.countForMakingCharDegreeList];
 
         for (int i = 0; i < game.countForMakingCharDegreeList; i++)
         {
@@ -327,12 +334,14 @@ public class GameCanvasGui : MonoBehaviour
 
             strArr[i] = str.ToString();
             intArr[i] = Convert.ToInt16(mon.charData2[charDegreeNumber[i], 0]);
+            intArr2[i] = Convert.ToString(i + 1);
+            //intArr2[i] = Convert.ToString(mon.charData2[charDegreeNumber[i], 0]);
             //writeGO.GetComponentInChildren<Text>().text = str.ToString();
             //charDegreeAvailableCharText.text = game.countForMakingCharDegreeList + " / " + game.availableChar; 
             //DestroyImmediate(writeGO);
         }
 
-        createCharDegreeList.Set2(strArr, intArr);
+        createCharDegreeList.Set2(strArr, intArr, intArr2);
         charDegreeAvailableCharText.text = game.countForMakingCharDegreeList + " / " + game.availableChar;
     }
 
@@ -797,12 +806,12 @@ public class GameCanvasGui : MonoBehaviour
             GameObject tempGO5;
             GameObject tempGO6;
 
-            tempGO1 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
-            tempGO2 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
-            tempGO3 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
-            tempGO4 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
-            tempGO5 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
-            tempGO6 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
+            tempGO1 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(-1000, 0), 10), Quaternion.identity) as GameObject;
+            tempGO2 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(-1000, 0), 10), Quaternion.identity) as GameObject;
+            tempGO3 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(-1000, 0), 10), Quaternion.identity) as GameObject;
+            tempGO4 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(0, 1000), 10), Quaternion.identity) as GameObject;
+            tempGO5 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(0, 1000), 10), Quaternion.identity) as GameObject;
+            tempGO6 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(0, 1000), 10), Quaternion.identity) as GameObject;
 
             Destroy(tempGO1, 5);
             Destroy(tempGO2, 5);
@@ -828,12 +837,12 @@ public class GameCanvasGui : MonoBehaviour
                 GameObject tempGO5;
                 GameObject tempGO6;
 
-                tempGO1 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
-                tempGO2 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
-                tempGO3 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(-1000, 0), 0), Quaternion.identity) as GameObject;
-                tempGO4 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
-                tempGO5 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
-                tempGO6 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(0, 1000), 0), Quaternion.identity) as GameObject;
+                tempGO1 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(-1000, 0), 10), Quaternion.identity) as GameObject;
+                tempGO2 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(-1000, 0), 10), Quaternion.identity) as GameObject;
+                tempGO3 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(-1000, 0), 10), Quaternion.identity) as GameObject;
+                tempGO4 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-1000, -300), UnityEngine.Random.Range(0, 1000), 10), Quaternion.identity) as GameObject;
+                tempGO5 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(-300, 400), UnityEngine.Random.Range(0, 1000), 10), Quaternion.identity) as GameObject;
+                tempGO6 = Instantiate(ssrEffect, new Vector3(UnityEngine.Random.Range(400, 1000), UnityEngine.Random.Range(0, 1000), 10), Quaternion.identity) as GameObject;
 
                 Destroy(tempGO1, 5);
                 Destroy(tempGO2, 5);

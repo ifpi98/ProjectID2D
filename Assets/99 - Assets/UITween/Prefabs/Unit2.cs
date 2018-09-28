@@ -7,6 +7,7 @@ public class Unit2 : MonoBehaviour
     Game game;
     GameCanvasGui gCanvas;
     public Text Label;
+    public Text NumberLabel;
     public int instanceCharID;
 
     void Start()
