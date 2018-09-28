@@ -247,7 +247,7 @@ public class GameCanvasGui : MonoBehaviour
             StringBuilder str = new StringBuilder();            
             int unitcount = Convert.ToInt16(mon.unitData2[madeSlotNumber[i], 14]);
 
-            str.Append("유닛명 : '" + mon.unitData2[madeSlotNumber[i], 1] + "' (" + madeSlotNumber[i] + ")"  );
+            str.Append(mon.unitData2[madeSlotNumber[i], 1] + "' (" + madeSlotNumber[i] + ")"  );
             str.Append("\n멤버 : ");
 
             for (int y = 0; y < unitcount; y++)
@@ -289,7 +289,7 @@ public class GameCanvasGui : MonoBehaviour
 
             int tempCardRank = game.charCardRank[charDegreeNumber[i]];
 
-            str.Append("이름 : " + mon.charData2[charDegreeNumber[i], 1]);
+            str.Append(mon.charData2[charDegreeNumber[i], 1]);
             str.Append("\n친애도 : " + game.charDearDegree[charDegreeNumber[i]]);
 
             if (Convert.ToInt16(mon.charData2[charDegreeNumber[i], 2]) == 0)
